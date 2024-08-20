@@ -38,20 +38,19 @@ const Home: FC = () => {
           </Box>
         </Grid>
 
-        <Grid item xs={12} sm={12} md={1} lg={1} xl={1}>
-        </Grid>
-        <Grid item xs={12} sm={12} md={3} lg={3} xl={3}>
+        <Grid item xs={12} sm={12} md={12} lg={1} xl={1}></Grid>
+        <Grid item xs={12} sm={12} md={12} lg={3} xl={3}>
           <Filters />
         </Grid>
-        <Grid item xs={12} sm={12} md={8} lg={8} xl={8}>
+        <Grid item xs={12} sm={12} md={12} lg={8} xl={8}>
           <Grid container spacing={2}>
             {[...Array(30)].map((item, _idx) => (
               <Grid
                 key={`${item}_${_idx}`}
                 item
                 xs={12}
-                sm={12}
-                md={3}
+                sm={6}
+                md={4}
                 lg={3}
                 xl={3}
               >
