@@ -6,6 +6,7 @@ import Header from "@components/Header";
 import Banner from "@components/Banner";
 import Footer from "@components/Footer";
 import Card from "@components/Card";
+import Filters from "@components/Filters";
 import Sorting from "@components/Sorting";
 
 const Home: FC = () => {
@@ -26,6 +27,7 @@ const Home: FC = () => {
 
       <Grid container spacing={2} px={6} py={6}>
         <Grid item xs={12} sm={12} md={4} lg={4} xl={4}></Grid>
+
         <Grid item xs={12} sm={12} md={8} lg={8} xl={8}>
           <Box display="flex" justifyContent="space-between">
             <Typography variant="h6" fontWeight="bold" mt={2}>
@@ -36,7 +38,10 @@ const Home: FC = () => {
           </Box>
         </Grid>
 
-        <Grid item xs={12} sm={12} md={4} lg={4} xl={4}>
+        <Grid item xs={12} sm={12} md={1} lg={1} xl={1}>
+        </Grid>
+        <Grid item xs={12} sm={12} md={3} lg={3} xl={3}>
+          <Filters />
         </Grid>
         <Grid item xs={12} sm={12} md={8} lg={8} xl={8}>
           <Grid container spacing={2}>

@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import * as React from "react";
 import { Box, TextField, InputAdornment } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import ArrowForwardIosSharpIcon from "@mui/icons-material/ArrowForwardIosSharp";
@@ -25,6 +25,7 @@ import {
 const Accordion = styled((props: AccordionProps) => (
   <MuiAccordion disableGutters elevation={0} square {...props} />
 ))(({ theme }) => ({
+  marginBottom: 16,
   border: `1px solid ${theme.palette.divider}`,
   "&:not(:last-child)": {
     borderBottom: 0,
@@ -54,8 +55,9 @@ const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
   borderTop: "1px solid rgba(0, 0, 0, .125)",
 }));
 
-const Filters: FC = () => {
+const Filters: React.FC = () => {
   const [expanded, setExpanded] = React.useState<string | false>("panel1");
+
   const [listCities, setListCities] = React.useState<CityType[]>(cities);
   const [listNationalities, setNationalities] =
     React.useState<NationalityType[]>(nationalities);
@@ -129,7 +131,6 @@ const Filters: FC = () => {
       <Accordion
         expanded={expanded === "panel2"}
         onChange={handleChange("panel2")}
-        sx={{ mt: 2 }}
       >
         <AccordionSummary aria-controls="panel2d-content" id="panel2d-header">
           <Typography>Nationality</Typography>
@@ -151,7 +152,6 @@ const Filters: FC = () => {
       <Accordion
         expanded={expanded === "panel3"}
         onChange={handleChange("panel3")}
-        sx={{ mt: 2 }}
       >
         <AccordionSummary aria-controls="panel3d-content" id="panel3d-header">
           <Typography>Job Type</Typography>
@@ -173,7 +173,6 @@ const Filters: FC = () => {
       <Accordion
         expanded={expanded === "panel4"}
         onChange={handleChange("panel4")}
-        sx={{ mt: 2 }}
       >
         <AccordionSummary aria-controls="panel4d-content" id="panel4d-header">
           <Typography>Salary</Typography>
@@ -209,7 +208,6 @@ const Filters: FC = () => {
       <Accordion
         expanded={expanded === "panel5"}
         onChange={handleChange("panel5")}
-        sx={{ mt: 2 }}
       >
         <AccordionSummary aria-controls="panel5d-content" id="panel5d-header">
           <Typography>Experience</Typography>
