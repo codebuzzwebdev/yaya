@@ -6,7 +6,7 @@ import Header from "@components/Header";
 import Banner from "@components/Banner";
 import Footer from "@components/Footer";
 import Card from "@components/Card";
-// import Filters from "@components/Filters";
+import Filters from "@components/Filters";
 import Sorting from "@components/Sorting";
 
 const Home: FC = () => {
@@ -40,7 +40,7 @@ const Home: FC = () => {
 
         <Grid item xs={12} sm={12} md={12} lg={1} xl={1}></Grid>
         <Grid item xs={12} sm={12} md={12} lg={3} xl={3}>
-          {/* <Filters /> */}
+          <Filters />
         </Grid>
         <Grid item xs={12} sm={12} md={12} lg={8} xl={8}>
           <Grid container spacing={2}>
