@@ -1,84 +1,88 @@
-export const common = {
-  black: "#000000",
-  white: "#FFFFFF",
+import { colors } from "@mui/material";
+
+export const common = colors.common;
+
+export const theme = {
+  light_orange: "#FADFE8",
+  orange: "#FF8570",
+  pink: "#EEB0D3",
+  blue: "#A89CE3",
+  red: "#F2395B",
 };
 
-export const light_grey = {
-  50: "#FAFAFA",
-  100: "#F5F5F5",
-  200: "#EEEEEE",
-  300: "#E0E0E0",
-  400: "#BDBDBD",
-  500: "#9E9E9E",
-  600: "#757575",
-  700: "#616161",
-  800: "#424242",
-  900: "#212121",
-};
-
-export const dark_grey = {
-  50: "#212121",
-  100: "#424242",
-  200: "#616161",
-  300: "#757575",
-  400: "#9E9E9E",
-  500: "#BDBDBD",
-  600: "#E0E0E0",
-  700: "#EEEEEE",
-  800: "#F5F5F5",
-  900: "#FAFAFA",
+export const grey = {
+  light: {
+    50: colors.grey[50],
+    100: colors.grey[100],
+    200: colors.grey[200],
+    300: colors.grey[300],
+    400: colors.grey[400],
+    500: colors.grey[500],
+    600: colors.grey[600],
+    700: colors.grey[700],
+    800: colors.grey[800],
+    900: colors.grey[900],
+  },
+  dark: {
+    50: colors.grey[900],
+    100: colors.grey[800],
+    200: colors.grey[700],
+    300: colors.grey[600],
+    400: colors.grey[500],
+    500: colors.grey[400],
+    600: colors.grey[300],
+    700: colors.grey[200],
+    800: colors.grey[100],
+    900: colors.grey[50],
+  },
 };
 
 export const info = {
-  main: "#006C9C",
-  light: "#00B8D9",
-  dark: "#004E74",
+  light: colors.blue[50],
+  main: colors.blue[200],
+  dark: colors.blue[600],
 };
 
 export const warning = {
-  main: "#FCF3CF",
-  light: "#FFF1DE",
-  dark: "#B76D00",
+  light: colors.orange[50],
+  main: colors.orange[200],
+  dark: colors.orange[600],
 };
 
 export const success = {
-  main: "#118D57",
-  light: "#E1F5E6",
-  dark: "#0E7045",
+  light: colors.green[50],
+  main: colors.green[200],
+  dark: colors.green[600],
 };
 
 export const error = {
-  main: "#B71D18",
-  light: "#FFE5DF",
-  dark: "#8A1713",
+  light: colors.red[50],
+  main: colors.red[200],
+  dark: colors.red[600],
 };
 
-export const light_primary = {
-  main: "#FF8570",
-  light: "#FADFE8",
-  dark: "#FF8C00",
+export const primary = {
+  light: {
+    light: theme.light_orange,
+    main: colors.grey[50],
+    dark: theme.orange,
+  },
+  dark: {
+    light: theme.light_orange,
+    main: colors.common.black,
+    dark: theme.orange,
+  },
 };
 
-export const dark_primary = {
-  main: "#141A21",
-  light: "#18302E",
-  dark: "#49D48F",
+export const secondary = {
+  light: {
+    light: theme.light_orange,
+    main: colors.common.white,
+    dark: theme.orange,
+  },
+  dark: {
+    light: theme.light_orange,
+    main: colors.grey[900],
+    dark: theme.orange,
+  },
 };
-
-export const light_secondary = {
-  main: "#667085",
-  light: "#667085",
-  dark: "#667085",
-};
-
-export const dark_secondary = {
-  main: "#1C252E",
-  light: "#1C252E",
-  dark: "#1C252E",
-};
-
-export const others = {
-  red: "#F2395B",
-  pink: "#EEB0D3",
-  blue: "#A89CE3"
-}

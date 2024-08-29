@@ -8,7 +8,6 @@ import NanniePNG from "@assets/nannie.png";
 import FlagPNG from "@assets/flag2.png";
 
 import * as colors from "@themes/colors";
-
 export interface CardProps {
   handleNavigate: () => void;
 }
@@ -22,6 +21,9 @@ const Card: FC<CardProps> = ({ handleNavigate }) => {
       sx={{
         boxShadow: "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px",
         cursor: "pointer",
+        "&:hover": {
+          boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px",
+        },
       }}
       onClick={handleNavigate}
     >
@@ -107,7 +109,7 @@ const Card: FC<CardProps> = ({ handleNavigate }) => {
           </Typography>
         </Box>
         <Box
-          bgcolor={colors.others.pink}
+          bgcolor={colors.theme.pink}
           px={1}
           py={0.5}
           borderRadius={1}
@@ -122,7 +124,7 @@ const Card: FC<CardProps> = ({ handleNavigate }) => {
           </Typography>
         </Box>
         <Box
-          bgcolor={colors.others.blue}
+          bgcolor={colors.theme.blue}
           px={1}
           py={0.5}
           borderRadius={1}

@@ -3,3 +3,16 @@
   padding: 0;
   font-family: 'Roboto', sans-serif;
 }
+
+.store-images {
+  object-fit: cover;
+  cursor: pointer;
+  margin-right: 8px;
+  margin-top: 8px;
+  border-radius: 8px;
+  border: 2px solid #000000;
+}
+
+.store-images:hover {
+  border-color: #FF8570;
+}

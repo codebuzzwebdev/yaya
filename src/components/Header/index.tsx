@@ -56,9 +56,9 @@ const Header: FC<HeaderProps> = ({ handleNavigate }) => {
                     mx={2}
                     sx={{
                       cursor: "pointer",
-                      "&:hover": { color: theme.palette.primary.main },
+                      "&:hover": { color: theme.palette.primary.dark },
                     }}
-                    color={theme.palette.secondary.main}
+                    color={theme.palette.grey[600]}
                   >
                     {item}
                   </Typography>
@@ -77,7 +77,7 @@ const Header: FC<HeaderProps> = ({ handleNavigate }) => {
                   ml={1}
                   sx={{
                     cursor: "pointer",
-                    "&:hover": { color: theme.palette.primary.main },
+                    "&:hover": { color: theme.palette.primary.dark },
                   }}
                 >
                   UAE

@@ -56,7 +56,18 @@ const User: FC = () => {
               </Typography>
 
               <Box display="flex" mt={1}>
-                <Box bgcolor={colors.others.red} px={2} py={1} borderRadius={1}>
+                <Box
+                  bgcolor={colors.theme.red}
+                  px={2}
+                  py={1}
+                  borderRadius={1}
+                  sx={{
+                    cursor: "pointer",
+                    "&:hover": {
+                      bgcolor: theme.palette.error.dark,
+                    },
+                  }}
+                >
                   <Typography
                     variant="body1"
                     color={theme.palette.common.white}
@@ -65,13 +76,19 @@ const User: FC = () => {
                   </Typography>
                 </Box>
                 <Box
-                  bgcolor={colors.others.pink}
+                  bgcolor={colors.theme.pink}
                   px={2}
                   py={1}
                   ml={1}
                   borderRadius={1}
                   display="flex"
                   alignItems="center"
+                  sx={{
+                    cursor: "pointer",
+                    "&:hover": {
+                      bgcolor: theme.palette.error.dark,
+                    },
+                  }}
                 >
                   <img
                     src={BadgePNG}
@@ -93,11 +110,17 @@ const User: FC = () => {
                   </Typography>
                 </Box>
                 <Box
-                  bgcolor={colors.others.blue}
+                  bgcolor={colors.theme.blue}
                   px={2}
                   py={1}
                   ml={1}
                   borderRadius={1}
+                  sx={{
+                    cursor: "pointer",
+                    "&:hover": {
+                      bgcolor: theme.palette.error.dark,
+                    },
+                  }}
                 >
                   <Typography
                     variant="body1"
@@ -109,12 +132,18 @@ const User: FC = () => {
               </Box>
 
               <Box
-                bgcolor={theme.palette.primary.main}
+                bgcolor={theme.palette.primary.dark}
                 display="inline-block"
                 px={4}
                 py={2}
                 borderRadius={1}
                 mt={1}
+                sx={{
+                  cursor: "pointer",
+                  "&:hover": {
+                    bgcolor: theme.palette.error.dark,
+                  },
+                }}
               >
                 <Box display="flex" alignItems="center">
                   <Typography
@@ -175,6 +204,12 @@ const User: FC = () => {
               p={1}
               borderRadius={1}
               width="fit-content"
+              sx={{
+                cursor: "pointer",
+                "&:hover": {
+                  bgcolor: theme.palette.error.light,
+                },
+              }}
             >
               <img
                 src={LinkPNG}
@@ -188,7 +223,7 @@ const User: FC = () => {
               />
               <Typography
                 variant="body1"
-                color={theme.palette.primary.main}
+                color={theme.palette.primary.dark}
                 mr={1}
               >
                 Copy Link
@@ -203,6 +238,12 @@ const User: FC = () => {
               borderRadius={1}
               width="fit-content"
               ml={1}
+              sx={{
+                cursor: "pointer",
+                "&:hover": {
+                  bgcolor: theme.palette.error.light,
+                },
+              }}
             >
               <img
                 src={MailPNG}
@@ -231,12 +272,7 @@ const User: FC = () => {
               alt="Google"
               width={180}
               height={50}
-              style={{
-                objectFit: "cover",
-                cursor: "pointer",
-                marginRight: 8,
-                borderRadius: 8,
-              }}
+              className="store-images"
             />
 
             <img
@@ -244,7 +280,7 @@ const User: FC = () => {
               alt="Apple"
               width={180}
               height={50}
-              style={{ objectFit: "cover", cursor: "pointer", borderRadius: 8 }}
+              className="store-images"
             />
           </Box>
         </Grid>

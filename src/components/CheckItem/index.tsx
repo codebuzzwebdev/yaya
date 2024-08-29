@@ -19,18 +19,18 @@ const CheckItem: FC<CheckItemProps> = ({
   const theme = useTheme();
 
   return (
-    <Box display="flex" alignItems="center">
+    <Box display="flex" alignItems="center" sx={{ cursor: "pointer" }}>
       <Checkbox name={name} checked={checked} onChange={handleChange} />
       <Box width="100%" display="flex" justifyContent="space-between">
         <Typography
           variant="body1"
-          color={checked ? theme.palette.primary.main : theme.palette.grey[600]}
+          color={checked ? theme.palette.primary.dark : theme.palette.grey[600]}
         >
           {label}
         </Typography>
         <Typography
           variant="body1"
-          color={checked ? theme.palette.primary.main : theme.palette.grey[600]}
+          color={checked ? theme.palette.primary.dark : theme.palette.grey[600]}
         >
           {count}
         </Typography>

@@ -1,35 +1,38 @@
-import React, { FC } from 'react';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
-import Select, { SelectChangeEvent } from '@mui/material/Select';
+import React, { FC } from "react";
+import {
+  Box,
+  Typography,
+  MenuItem,
+  FormControl,
+  Select,
+  SelectChangeEvent,
+} from "@mui/material";
 
-const Sorting:FC = () => {
-  const [sort, setSort] = React.useState('');
+const Sorting: FC = () => {
+  const [sort, setSort] = React.useState("Latest");
 
   const handleChange = (event: SelectChangeEvent) => {
     setSort(event.target.value);
   };
 
   return (
-    <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
-      <InputLabel id="demo-select-small-label">Sorting</InputLabel>
-      <Select
-        labelId="demo-select-small-label"
-        id="demo-select-small"
-        value={sort}
-        label="Sorting"
-        onChange={handleChange}
-      >
-        <MenuItem value="">
-          <em>None</em>
-        </MenuItem>
-        <MenuItem value={0}>Recent</MenuItem>
-        <MenuItem value={1}>Latest</MenuItem>
-        <MenuItem value={2}>Old</MenuItem>
-      </Select>
-    </FormControl>
+    <Box display="flex" alignItems="center">
+      <Typography variant="body1" fontWeight="bold">Sort by</Typography>
+      <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
+        <Select
+          labelId="demo-select-small-label"
+          id="demo-select-small"
+          value={sort}
+          label=""
+          onChange={handleChange}
+        >
+          <MenuItem value="Recent">Recent</MenuItem>
+          <MenuItem value="Latest">Latest</MenuItem>
+          <MenuItem value="Old">Old</MenuItem>
+        </Select>
+      </FormControl>
+    </Box>
   );
-}
+};
 
 export default Sorting;

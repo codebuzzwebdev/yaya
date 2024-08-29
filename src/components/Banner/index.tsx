@@ -69,7 +69,7 @@ const Banner: FC = () => {
             <Typography
               variant="h2"
               fontWeight="bold"
-              color={theme.palette.primary.main}
+              color={theme.palette.primary.dark}
             >
               Nannies in UAE
             </Typography>
@@ -77,7 +77,7 @@ const Banner: FC = () => {
             <Typography
               variant="body1"
               my={2}
-              color={theme.palette.secondary.main}
+              color={theme.palette.grey[600]}
             >
               Download our app today to get started. Now completely free, no
               hidden costs.
@@ -109,13 +109,7 @@ const Banner: FC = () => {
                 alt="Google"
                 width={180}
                 height={50}
-                style={{
-                  objectFit: "cover",
-                  cursor: "pointer",
-                  marginRight: 8,
-                  marginTop: 8,
-                  borderRadius: 8,
-                }}
+                className="store-images"
               />
 
               <img
@@ -123,12 +117,7 @@ const Banner: FC = () => {
                 alt="Apple"
                 width={180}
                 height={50}
-                style={{
-                  objectFit: "cover",
-                  cursor: "pointer",
-                  marginTop: 8,
-                  borderRadius: 8,
-                }}
+                className="store-images"
               />
             </Box>
           </Box>

@@ -62,7 +62,7 @@ const Footer: FC = () => {
                   variant="h5"
                   fontWeight="bold"
                   mx={1}
-                  color={theme.palette.primary.main}
+                  color={theme.palette.primary.dark}
                 >
                   Nanny
                 </Typography>
@@ -89,16 +89,22 @@ const Footer: FC = () => {
                 py={1}
                 borderRadius={2}
                 mt={4}
+                sx={{
+                  cursor: "pointer",
+                  "&:hover": {
+                    bgcolor: theme.palette.error.dark,
+                  },
+                }}
               >
                 <Box display="flex" alignItems="center">
                   <Typography
                     variant="h6"
-                    color={theme.palette.primary.main}
+                    color={theme.palette.primary.dark}
                     mr={1}
                   >
                     Find out more
                   </Typography>
-                  <Icon name="rightArrow" color={theme.palette.primary.main} />
+                  <Icon name="rightArrow" color={theme.palette.primary.dark} />
                 </Box>
               </Box>
             </Box>
@@ -133,7 +139,7 @@ const Footer: FC = () => {
                 variant="h4"
                 fontWeight="bold"
                 mx={1}
-                color={theme.palette.primary.main}
+                color={theme.palette.primary.dark}
               >
                 Nanny
               </Typography>
@@ -160,16 +166,26 @@ const Footer: FC = () => {
               py={1}
               borderRadius={2}
               mt={4}
+              sx={{
+                cursor: "pointer",
+                "&:hover": {
+                  bgcolor: theme.palette.error.dark,
+                  "& .typography-hover": {
+                    color: theme.palette.common.white,
+                  },
+                },
+              }}
             >
               <Box display="flex" alignItems="center">
                 <Typography
                   variant="h6"
-                  color={theme.palette.primary.main}
+                  color={theme.palette.primary.dark}
                   mr={1}
+                  className="typography-hover"
                 >
                   Find out more
                 </Typography>
-                <Icon name="rightArrow" color={theme.palette.primary.main} />
+                <Icon name="rightArrow" color={theme.palette.primary.dark} />
               </Box>
             </Box>
           </Box>

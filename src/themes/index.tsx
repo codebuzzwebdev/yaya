@@ -13,16 +13,13 @@ import {
 } from "@mui/material";
 import {
   common,
-  light_grey,
-  dark_grey,
+  grey,
   info,
   warning,
   success,
   error,
-  light_primary,
-  light_secondary,
-  dark_primary,
-  dark_secondary,
+  primary,
+  secondary,
 } from "@themes/colors";
 
 type ThemeContextType = {
@@ -32,7 +29,6 @@ type ThemeContextType = {
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
-// eslint-disable-next-line react-refresh/only-export-components
 export const useThemeContext = () => {
   const context = useContext(ThemeContext);
   if (!context) {
@@ -44,7 +40,6 @@ export const useThemeContext = () => {
 const Theme: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [darkMode, setDarkMode] = useState<boolean>(false);
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   const toggleTheme = () => {
     setDarkMode((prevDarkMode) => !prevDarkMode);
   };
@@ -52,10 +47,10 @@ const Theme: React.FC<{ children: ReactNode }> = ({ children }) => {
   const theme = createTheme({
     palette: {
       mode: darkMode ? "dark" : "light",
-      primary: darkMode ? dark_primary : light_primary,
-      secondary: darkMode ? dark_secondary : light_secondary,
+      primary: darkMode ? primary.dark : primary.light,
+      secondary: darkMode ? secondary.dark : secondary.light,
       common,
-      grey: darkMode ? dark_grey : light_grey,
+      grey: darkMode ? grey.dark : grey.light,
       info,
       warning,
       success,
@@ -76,7 +71,9 @@ const Theme: React.FC<{ children: ReactNode }> = ({ children }) => {
         styleOverrides: {
           root: {
             backgroundImage: "none",
-            backgroundColor: darkMode ? dark_secondary : light_secondary,
+            backgroundColor: darkMode ? secondary.dark : secondary.light,
+            borderBottomLeftRadius: 16,
+            borderBottomRightRadius: 16,
             boxShadow: "rgba(0, 0, 0, 0.1) 0px 4px 12px;",
           },
         },
@@ -99,7 +96,7 @@ const Theme: React.FC<{ children: ReactNode }> = ({ children }) => {
       MuiList: {
         styleOverrides: {
           root: {
-            background: darkMode ? dark_primary.main : light_primary.main,
+            background: darkMode ? primary.dark.main : primary.light.main,
             padding: 0,
           },
         },
@@ -142,14 +139,14 @@ const Theme: React.FC<{ children: ReactNode }> = ({ children }) => {
         styleOverrides: {
           root: {
             "&.MuiButton-containedPrimary": {
-              background: light_primary.main,
+              background: darkMode ? primary.dark.dark : primary.light.dark,
               color: common.white,
               boxShadow: "none",
               borderRadius: "8px",
               fontWeight: "bold",
               textTransform: "capitalize",
               "&:hover": {
-                background: `${light_primary.dark} !important`,
+                background: `${error.dark} !important`,
                 boxShadow: "none",
                 color: common.white,
               },
@@ -160,7 +157,7 @@ const Theme: React.FC<{ children: ReactNode }> = ({ children }) => {
       MuiTabs: {
         styleOverrides: {
           root: {
-            background: darkMode ? dark_primary.main : light_primary.main,
+            background: darkMode ? primary.dark.main : primary.light.main,
             boxShadow: "none",
           },
           indicator: {
@@ -179,7 +176,7 @@ const Theme: React.FC<{ children: ReactNode }> = ({ children }) => {
             fontWeight: "bold",
             boxShadow: "",
             "&.Mui-selected": {
-              background: darkMode ? dark_primary.light : light_primary.light,
+              background: darkMode ? primary.dark.light : primary.light.light,
               color: darkMode ? common.white : common.black,
             },
           },
@@ -189,7 +186,7 @@ const Theme: React.FC<{ children: ReactNode }> = ({ children }) => {
         styleOverrides: {
           notchedOutline: {
             borderRadius: "12px",
-            borderColor: light_grey[200],
+            borderColor: grey.light[400],
           },
         },
       },
@@ -204,7 +201,7 @@ const Theme: React.FC<{ children: ReactNode }> = ({ children }) => {
         styleOverrides: {
           root: {
             "&.Mui-focused": {
-              color: light_grey[500],
+              color: grey.light[400],
             },
           },
         },
@@ -215,7 +212,7 @@ const Theme: React.FC<{ children: ReactNode }> = ({ children }) => {
             overflow: "hidden",
             borderRadius: 0,
             boxShadow: "none",
-            background: darkMode ? dark_primary.main : light_primary.main,
+            background: darkMode ? primary.dark.main : primary.light.main,
           },
         },
       },
@@ -223,13 +220,13 @@ const Theme: React.FC<{ children: ReactNode }> = ({ children }) => {
         styleOverrides: {
           root: {
             "&.Mui-selected": {
-              background: theme.palette.grey[300],
+              background: theme.palette.grey[500],
             },
             "&.Mui-selected:hover": {
-              background: theme.palette.grey[200],
+              background: theme.palette.grey[400],
             },
             "&:hover": {
-              background: theme.palette.grey[200],
+              background: theme.palette.grey[300],
             },
           },
         },
@@ -240,7 +237,7 @@ const Theme: React.FC<{ children: ReactNode }> = ({ children }) => {
             color: common.black,
             borderRadius: 2,
             "&.Mui-checked": {
-              color: light_primary.dark,
+              color: primary.light.dark,
             },
             "& .MuiSvgIcon-root": {
               width: 20,

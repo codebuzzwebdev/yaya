@@ -34,7 +34,7 @@ const Snapshot = () => {
           <Typography
             variant="body1"
             fontSize={18}
-            color={theme.palette.primary.main}
+            color={theme.palette.primary.dark}
           >
             36
           </Typography>
@@ -75,7 +75,7 @@ const Snapshot = () => {
           <Typography
             variant="body1"
             fontSize={18}
-            color={theme.palette.primary.main}
+            color={theme.palette.primary.dark}
           >
             AED 2000-4000
           </Typography>
