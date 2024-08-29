@@ -17,7 +17,7 @@ const Home: FC = () => {
   };
 
   const navigateToUser = () => {
-    // navigate("/user");
+    navigate("/user");
   };
 
   return (
