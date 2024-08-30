@@ -39,45 +39,42 @@ const Footer: FC = () => {
             px={6}
             py={6}
             borderRadius={6}
-            bgcolor={theme.palette.primary.light}
+            bgcolor={theme.palette.secondary.main}
           >
             <Box>
-              <img
-                src={FooterPNG}
-                alt="Footer"
-                width={329}
-                height={346}
-                style={{ objectFit: "cover", marginBottom: 48 }}
-              />
-
               <Box display="flex" justifyContent="center" textAlign="center">
                 <Typography
                   variant="h5"
+                  fontSize={32}
                   fontWeight="bold"
-                  color={theme.palette.common.black}
+                  color={theme.palette.grey[900]}
                 >
                   Become a
-                </Typography>
-                <Typography
-                  variant="h5"
-                  fontWeight="bold"
-                  mx={1}
-                  color={theme.palette.primary.dark}
-                >
-                  Nanny
-                </Typography>
-                <Typography
-                  variant="h5"
-                  fontWeight="bold"
-                  color={theme.palette.common.black}
-                >
-                  on UAE’s
+                  <Typography
+                    variant="h5"
+                    fontSize={32}
+                    fontWeight="bold"
+                    mx={1}
+                    color={theme.palette.primary.main}
+                  >
+                    Nanny
+                  </Typography>
+                  <Typography
+                    variant="h5"
+                    fontSize={32}
+                    fontWeight="bold"
+                    color={theme.palette.grey[900]}
+                  >
+                    on UAE’s
+                  </Typography>
                 </Typography>
               </Box>
+
               <Typography
                 variant="h5"
+                fontSize={32}
                 fontWeight="bold"
-                color={theme.palette.common.black}
+                color={theme.palette.grey[900]}
               >
                 #1 Nanny App
               </Typography>
@@ -93,20 +90,33 @@ const Footer: FC = () => {
                   cursor: "pointer",
                   "&:hover": {
                     bgcolor: theme.palette.error.dark,
+                    "& .typography-hover": {
+                      color: theme.palette.common.white,
+                    },
                   },
                 }}
               >
                 <Box display="flex" alignItems="center">
                   <Typography
                     variant="h6"
-                    color={theme.palette.primary.dark}
+                    fontSize={16}
+                    color={theme.palette.primary.main}
                     mr={1}
+                    className="typography-hover"
                   >
                     Find out more
                   </Typography>
-                  <Icon name="rightArrow" color={theme.palette.primary.dark} />
+                  <Icon name="rightArrow" color={theme.palette.primary.main} />
                 </Box>
               </Box>
+
+              <img
+                src={FooterPNG}
+                alt="Footer"
+                width={329}
+                height={346}
+                style={{ objectFit: "cover", marginTop: 24 }}
+              />
             </Box>
           </Box>
         </Grid>
@@ -123,38 +133,42 @@ const Footer: FC = () => {
           alignItems="center"
           px={6}
           borderRadius={6}
-          bgcolor={theme.palette.primary.light}
+          bgcolor={theme.palette.secondary.main}
           height={298}
         >
           <Box>
             <Box display="flex">
               <Typography
                 variant="h4"
+                fontSize={50}
                 fontWeight="bold"
-                color={theme.palette.common.black}
+                color={theme.palette.grey[900]}
               >
                 Become a
               </Typography>
               <Typography
                 variant="h4"
+                fontSize={50}
                 fontWeight="bold"
                 mx={1}
-                color={theme.palette.primary.dark}
+                color={theme.palette.primary.main}
               >
                 Nanny
               </Typography>
               <Typography
                 variant="h4"
+                fontSize={50}
                 fontWeight="bold"
-                color={theme.palette.common.black}
+                color={theme.palette.grey[900]}
               >
                 on UAE’s
               </Typography>
             </Box>
             <Typography
               variant="h4"
+              fontSize={50}
               fontWeight="bold"
-              color={theme.palette.common.black}
+              color={theme.palette.grey[900]}
             >
               #1 Nanny App
             </Typography>
@@ -179,13 +193,14 @@ const Footer: FC = () => {
               <Box display="flex" alignItems="center">
                 <Typography
                   variant="h6"
-                  color={theme.palette.primary.dark}
+                  fontSize={18}
+                  color={theme.palette.primary.main}
                   mr={1}
                   className="typography-hover"
                 >
                   Find out more
                 </Typography>
-                <Icon name="rightArrow" color={theme.palette.primary.dark} />
+                <Icon name="rightArrow" color={theme.palette.primary.main} />
               </Box>
             </Box>
           </Box>

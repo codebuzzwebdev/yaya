@@ -12,7 +12,6 @@ import Typography from "@mui/material/Typography";
 import CheckItem from "@components/CheckItem";
 
 import {
-  cities,
   CityType,
   nationalities,
   NationalityType,
@@ -27,9 +26,6 @@ const Accordion = styled((props: AccordionProps) => (
 ))(({ theme }) => ({
   marginBottom: 16,
   border: `1px solid ${theme.palette.divider}`,
-  "&:not(:last-child)": {
-    borderBottom: 0,
-  },
   "&::before": {
     display: "none",
   },
@@ -53,9 +49,16 @@ const AccordionSummary = styled((props: AccordionSummaryProps) => (
 const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
   padding: theme.spacing(2),
   borderTop: "1px solid rgba(0, 0, 0, .125)",
+  height: 300,
+  overflowX: "hidden",
+  overflowY: "scroll"
 }));
 
-const Filters: React.FC = () => {
+export interface FilterProps {
+  cities: CityType[];
+}
+
+const Filters: React.FC<FilterProps> = ({ cities }) => {
   const [expanded, setExpanded] = React.useState<string | false>("panel1");
 
   const [listCities, setListCities] = React.useState<CityType[]>(cities);

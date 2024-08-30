@@ -25,7 +25,7 @@ const Header: FC<HeaderProps> = ({ handleNavigate }) => {
       container
       px={{ xs: 1, sm: 1, md: 1, lg: 6 }}
       py={2}
-      bgcolor={theme.palette.grey[50]}
+      bgcolor={theme.palette.primary.light}
     >
       <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
         <Box display="flex" justifyContent="space-between" alignItems="center">
@@ -37,7 +37,7 @@ const Header: FC<HeaderProps> = ({ handleNavigate }) => {
           >
             <img src={Logo} alt="Yaya Middle East" width={32} height={32} />
             <Typography
-              variant="h5"
+              variant="h6"
               ml={1}
               fontWeight="bold"
               display={{ xs: "none", sm: "none", md: "none", lg: "block" }}
@@ -53,12 +53,13 @@ const Header: FC<HeaderProps> = ({ handleNavigate }) => {
                   <Typography
                     key={`${item}_${_idx}`}
                     variant="body1"
+                    fontWeight="bold"
                     mx={2}
                     sx={{
                       cursor: "pointer",
-                      "&:hover": { color: theme.palette.primary.dark },
+                      "&:hover": { color: theme.palette.primary.main },
                     }}
-                    color={theme.palette.grey[600]}
+                    color={theme.palette.grey[500]}
                   >
                     {item}
                   </Typography>
@@ -79,6 +80,7 @@ const Header: FC<HeaderProps> = ({ handleNavigate }) => {
                     cursor: "pointer",
                     "&:hover": { color: theme.palette.primary.dark },
                   }}
+                  color={theme.palette.grey[800]}
                 >
                   UAE
                 </Typography>
@@ -88,7 +90,7 @@ const Header: FC<HeaderProps> = ({ handleNavigate }) => {
                 variant="contained"
                 color="primary"
                 size="large"
-                sx={{ ml: 2 }}
+                sx={{ ml: 2, fontSize: 16 }}
               >
                 Download
               </Button>

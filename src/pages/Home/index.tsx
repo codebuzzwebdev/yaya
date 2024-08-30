@@ -1,16 +1,44 @@
 import { FC } from "react";
 import { useNavigate } from "react-router-dom";
-import { Box, Grid, Typography } from "@mui/material";
+import { useTheme, Box, Grid, Typography } from "@mui/material";
 
 import Header from "@components/Header";
 import Banner from "@components/Banner";
 import Footer from "@components/Footer";
 import Card from "@components/Card";
-import Filters from "@components/Filters";
+// import Filters from "@components/Filters";
 import Sorting from "@components/Sorting";
 
+// import * as constants from "@store/constants";
+// import * as apis from "@store/apis";
+// import request from "@store/request";
+
+// import { CityType } from "@utils";
+
 const Home: FC = () => {
+  const theme = useTheme();
+  // const [isLoading, setLoading] = useState(true);
+  // const [cities, setCities] = useState<CityType[]>();
   const navigate = useNavigate();
+
+  // const fetchCountries = async () => {
+  //   const res: any = await request(apis.GET_COUNTRIES_API, {
+  //     method: constants.POST,
+  //   });
+  //   const _cities: CityType[] = res.data.data.map((ele: any) => {
+  //     return {
+  //       label: ele.country,
+  //       count: ele.id,
+  //       checked: false,
+  //     };
+  //   });
+  //   setCities(_cities);
+  //   setLoading(false);
+  // };
+
+  // useEffect(() => {
+  //   fetchCountries();
+  // }, []);
 
   const navigateToHome = () => {
     navigate("/");
@@ -30,7 +58,7 @@ const Home: FC = () => {
 
         <Grid item xs={12} sm={12} md={8} lg={8} xl={8}>
           <Box display="flex" justifyContent="space-between">
-            <Typography variant="h6" fontWeight="bold" mt={2}>
+            <Typography variant="h5" fontWeight="bold" color={theme.palette.grey[900]} mt={2}>
               Nannies in UAE (241)
             </Typography>
 
@@ -40,11 +68,13 @@ const Home: FC = () => {
 
         <Grid item xs={12} sm={12} md={12} lg={1} xl={1}></Grid>
         <Grid item xs={12} sm={12} md={12} lg={3} xl={3}>
-          <Filters />
+          {/* {!isLoading && cities && cities.length > 0 && (
+            <Filters cities={cities} />
+          )} */}
         </Grid>
         <Grid item xs={12} sm={12} md={12} lg={8} xl={8}>
           <Grid container spacing={2}>
-            {[...Array(30)].map((item, _idx) => (
+            {[...Array(8)].map((item, _idx) => (
               <Grid
                 key={`${item}_${_idx}`}
                 item

@@ -12,14 +12,14 @@ import {
   CssBaseline,
 } from "@mui/material";
 import {
+  primary,
+  secondary,
   common,
   grey,
   info,
   warning,
   success,
   error,
-  primary,
-  secondary,
 } from "@themes/colors";
 
 type ThemeContextType = {
@@ -63,18 +63,7 @@ const Theme: React.FC<{ children: ReactNode }> = ({ children }) => {
       MuiTypography: {
         styleOverrides: {
           root: {
-            fontFamily: "Roboto, Arial, sans-serif",
-          },
-        },
-      },
-      MuiPaper: {
-        styleOverrides: {
-          root: {
-            backgroundImage: "none",
-            backgroundColor: darkMode ? secondary.dark : secondary.light,
-            borderBottomLeftRadius: 16,
-            borderBottomRightRadius: 16,
-            boxShadow: "rgba(0, 0, 0, 0.1) 0px 4px 12px;",
+            fontFamily: "Inter, Arial, sans-serif",
           },
         },
       },
@@ -89,6 +78,7 @@ const Theme: React.FC<{ children: ReactNode }> = ({ children }) => {
             "&.MuiPaper-root": {
               borderRadius: 0,
               boxShadow: "none",
+              background: theme.palette.primary.main,
             },
           },
         },
@@ -96,7 +86,7 @@ const Theme: React.FC<{ children: ReactNode }> = ({ children }) => {
       MuiList: {
         styleOverrides: {
           root: {
-            background: darkMode ? primary.dark.main : primary.light.main,
+            background: darkMode ? primary.dark.light : primary.light.light,
             padding: 0,
           },
         },
@@ -107,8 +97,11 @@ const Theme: React.FC<{ children: ReactNode }> = ({ children }) => {
             borderRadius: 8,
             paddingLeft: "12px !important",
             paddingRight: "12px !important",
-            paddingTop: "8px !important",
-            paddingBottom: "8px !important",
+            paddingTop: "10px !important",
+            paddingBottom: "10px !important",
+            "&:hover": {
+              background: darkMode ? grey.dark[50] : grey.light[200],
+            },
           },
         },
       },
@@ -139,14 +132,14 @@ const Theme: React.FC<{ children: ReactNode }> = ({ children }) => {
         styleOverrides: {
           root: {
             "&.MuiButton-containedPrimary": {
-              background: darkMode ? primary.dark.dark : primary.light.dark,
+              background: darkMode ? primary.dark.main : primary.light.main,
               color: common.white,
               boxShadow: "none",
               borderRadius: "8px",
               fontWeight: "bold",
               textTransform: "capitalize",
               "&:hover": {
-                background: `${error.dark} !important`,
+                background: `${primary.light.dark} !important`,
                 boxShadow: "none",
                 color: common.white,
               },
@@ -157,7 +150,7 @@ const Theme: React.FC<{ children: ReactNode }> = ({ children }) => {
       MuiTabs: {
         styleOverrides: {
           root: {
-            background: darkMode ? primary.dark.main : primary.light.main,
+            background: darkMode ? grey.dark[50] : grey.light[100],
             boxShadow: "none",
           },
           indicator: {
@@ -175,8 +168,11 @@ const Theme: React.FC<{ children: ReactNode }> = ({ children }) => {
             textTransform: "none",
             fontWeight: "bold",
             boxShadow: "",
+            transition: "all 0.3s ease",
             "&.Mui-selected": {
-              background: darkMode ? primary.dark.light : primary.light.light,
+              boxShadow:
+                "rgba(145, 158, 171, 0.2) 0px 0px 2px 0px, rgba(145, 158, 171, 0.12) 0px 12px 24px -4px;",
+              background: darkMode ? common.black : common.white,
               color: darkMode ? common.white : common.black,
             },
           },
@@ -186,7 +182,7 @@ const Theme: React.FC<{ children: ReactNode }> = ({ children }) => {
         styleOverrides: {
           notchedOutline: {
             borderRadius: "12px",
-            borderColor: grey.light[400],
+            borderColor: grey.light[200],
           },
         },
       },
@@ -220,13 +216,14 @@ const Theme: React.FC<{ children: ReactNode }> = ({ children }) => {
         styleOverrides: {
           root: {
             "&.Mui-selected": {
-              background: theme.palette.grey[500],
+              background: primary.light.main,
+              color: common.white
             },
             "&.Mui-selected:hover": {
-              background: theme.palette.grey[400],
+              background: primary.light.dark,
             },
             "&:hover": {
-              background: theme.palette.grey[300],
+              background: darkMode ? grey.dark[200] : grey.light[300],
             },
           },
         },
@@ -234,7 +231,7 @@ const Theme: React.FC<{ children: ReactNode }> = ({ children }) => {
       MuiCheckbox: {
         styleOverrides: {
           root: {
-            color: common.black,
+            color: darkMode ? common.white : common.black,
             borderRadius: 2,
             "&.Mui-checked": {
               color: primary.light.dark,
@@ -242,6 +239,50 @@ const Theme: React.FC<{ children: ReactNode }> = ({ children }) => {
             "& .MuiSvgIcon-root": {
               width: 20,
               height: 20,
+            },
+          },
+        },
+      },
+      MuiTableCell: {
+        styleOverrides: {
+          root: {
+            borderBottom: darkMode
+              ? `1px dashed ${grey.dark[100]}`
+              : `1px dashed ${grey.light[200]}`,
+          },
+        },
+      },
+      MuiTextField: {
+        styleOverrides: {
+          root: {
+            "& .MuiOutlinedInput-root": {
+              "& fieldset": {
+                borderColor: darkMode ? grey.dark[100] : grey.light[200],
+              },
+              "&:hover fieldset": {
+                borderColor: darkMode ? common.white : common.black,
+              },
+              "&.Mui-focused fieldset": {
+                borderColor: darkMode ? common.white : common.black,
+              },
+              "&.Mui-error fieldset": {
+                borderColor: error.main,
+              },
+            },
+            "& .MuiOutlinedInput-input": {
+              borderColor: darkMode ? common.white : common.black,
+              "&:-webkit-autofill": {
+                borderRadius: 12,
+              },
+            },
+            "& .MuiInputLabel-root": {
+              color: grey.light[600],
+              "&.Mui-focused": {
+                color: darkMode ? common.white : common.black,
+              },
+              "&.Mui-error": {
+                color: error.main,
+              },
             },
           },
         },

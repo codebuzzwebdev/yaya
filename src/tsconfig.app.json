@@ -30,6 +30,7 @@
       "@components/*": ["src/components/*"],
       "@pages/*": ["src/pages/*"],
       "@routes": ["src/routes"],
+      "@store/*": ["src/store/*"],
       "@themes/*": ["src/themes/*"],
       "@utils": ["src/utils"],
     }

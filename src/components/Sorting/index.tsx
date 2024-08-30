@@ -1,5 +1,6 @@
 import React, { FC } from "react";
 import {
+  useTheme,
   Box,
   Typography,
   MenuItem,
@@ -9,6 +10,8 @@ import {
 } from "@mui/material";
 
 const Sorting: FC = () => {
+  const theme = useTheme();
+
   const [sort, setSort] = React.useState("Latest");
 
   const handleChange = (event: SelectChangeEvent) => {
@@ -17,7 +20,14 @@ const Sorting: FC = () => {
 
   return (
     <Box display="flex" alignItems="center">
-      <Typography variant="body1" fontWeight="bold">Sort by</Typography>
+      <Typography
+        variant="body1"
+        fontWeight="bold"
+        fontSize={20}
+        color={theme.palette.grey[900]}
+      >
+        Sort by
+      </Typography>
       <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
         <Select
           labelId="demo-select-small-label"
