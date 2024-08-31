@@ -5,10 +5,8 @@ import {
   Grid,
   Typography,
   Button,
-  IconButton,
 } from "@mui/material";
 
-import Icon from "@components/Icon";
 import RightDrawer from "@components/RightDrawer";
 
 import Logo from "@assets/logo.png";

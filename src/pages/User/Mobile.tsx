@@ -6,7 +6,6 @@ import Header from "@components/Header";
 import Icon from "@components/Icon";
 import Snapshot from "@components/Snapshot";
 
-import BadgePNG from "@assets/icons/white-badge.png";
 import NanniePNG from "@assets/nannie.png";
 import GooglePNG from "@assets/google.png";
 import ApplePNG from "@assets/apple.png";
