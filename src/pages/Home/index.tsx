@@ -57,10 +57,10 @@ const Home: FC = () => {
       <Grid
         container
         spacing={2}
-        px={{ xs: 2, sm: 2, md: 4, lg: 6, xl: 6 }}
+        px={{ xs: 4, sm: 4, md: 6, lg: 8, xl: 8 }}
         py={4}
       >
-        <Grid item xs={12} sm={12} md={4} lg={4} xl={4}></Grid>
+        <Grid display={{ xs: "none", sm: "none", md: "block", lg: "block", xl: "block" }} item xs={12} sm={12} md={4} lg={4} xl={4}></Grid>
 
         <Grid item xs={12} sm={12} md={12} lg={8} xl={8}>
           <Box
@@ -109,12 +109,14 @@ const Home: FC = () => {
           </Box>
         </Grid>
 
-        <Grid item xs={12} sm={12} md={12} lg={1} xl={1}></Grid>
-        <Grid item xs={12} sm={12} md={12} lg={3} xl={3}>
+        <Grid display={{ xs: "none", sm: "none", md: "none", lg: "block", xl: "block" }} item xs={12} sm={12} md={12} lg={1} xl={1}></Grid>
+
+        <Grid display={{ xs: "none", sm: "none", md: "none", lg: "block", xl: "block" }} item xs={12} sm={12} md={12} lg={3} xl={3}>
           {/* {!isLoading && cities && cities.length > 0 && (
             <Filters cities={cities} />
           )} */}
         </Grid>
+
         <Grid item xs={12} sm={12} md={12} lg={8} xl={8}>
           <Grid container spacing={2}>
             {[...Array(8)].map((item, _idx) => (
