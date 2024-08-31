@@ -58,49 +58,103 @@ const Banner: FC = () => {
             }}
             mt={{ xs: 3, sm: 3, md: 3, lg: 0, xl: 0 }}
           >
-            <Typography
-              variant="h2"
-              fontWeight="bold"
-              color={theme.palette.grey[700]}
-              fontSize={{ xs: 36, sm: 36, md: 64, lg: 64, xl: 64 }}
+            <Box
+              display={{
+                xs: "none",
+                sm: "none",
+                md: "none",
+                lg: "block",
+                xl: "block",
+              }}
             >
-              Discover
-            </Typography>
+              <Typography
+                variant="h2"
+                fontWeight="bold"
+                color={theme.palette.grey[700]}
+                fontSize={{ xs: 36, sm: 36, md: 64, lg: 64, xl: 64 }}
+              >
+                Discover
+              </Typography>
 
-            <Typography
-              variant="h2"
-              fontWeight="bold"
-              color={theme.palette.grey[700]}
-              fontSize={{ xs: 36, sm: 36, md: 64, lg: 64, xl: 64 }}
-            >
-              Hundreds of
-            </Typography>
+              <Typography
+                variant="h2"
+                fontWeight="bold"
+                color={theme.palette.grey[700]}
+                fontSize={{ xs: 36, sm: 36, md: 64, lg: 64, xl: 64 }}
+              >
+                Hundreds of
+              </Typography>
 
-            <Typography
-              variant="h2"
-              fontWeight="bold"
-              color={theme.palette.primary.main}
-              fontSize={{ xs: 36, sm: 36, md: 64, lg: 64, xl: 64 }}
+              <Typography
+                variant="h2"
+                fontWeight="bold"
+                color={theme.palette.primary.main}
+                fontSize={{ xs: 36, sm: 36, md: 64, lg: 64, xl: 64 }}
+              >
+                Nannies in UAE
+              </Typography>
+              <Typography
+                variant="body1"
+                mt={2}
+                fontSize={20}
+                color={theme.palette.grey[600]}
+              >
+                Download our app today to get started. Now
+              </Typography>
+              <Typography
+                variant="body1"
+                mb={2}
+                fontSize={20}
+                color={theme.palette.grey[600]}
+              >
+                completely free, no hidden costs.
+              </Typography>
+            </Box>
+            <Box
+              display={{
+                xs: "block",
+                sm: "block",
+                md: "block",
+                lg: "none",
+                xl: "none",
+              }}
             >
-              Nannies in UAE
-            </Typography>
+              <Typography
+                variant="h2"
+                fontWeight="bold"
+                color={theme.palette.grey[700]}
+                fontSize={{ xs: 36, sm: 36, md: 64, lg: 64, xl: 64 }}
+              >
+                Search through
+              </Typography>
 
-            <Typography
-              variant="body1"
-              mt={2}
-              fontSize={20}
-              color={theme.palette.grey[600]}
-            >
-              Download our app today to get started. Now
-            </Typography>
-            <Typography
-              variant="body1"
-              mb={2}
-              fontSize={20}
-              color={theme.palette.grey[600]}
-            >
-              completely free, no hidden costs.
-            </Typography>
+              <Typography
+                variant="h2"
+                fontWeight="bold"
+                color={theme.palette.grey[700]}
+                fontSize={{ xs: 36, sm: 36, md: 64, lg: 64, xl: 64 }}
+              >
+                hundreds of
+              </Typography>
+
+              <Typography
+                variant="h2"
+                fontWeight="bold"
+                color={theme.palette.primary.main}
+                fontSize={{ xs: 36, sm: 36, md: 64, lg: 64, xl: 64 }}
+              >
+                Nannies in UAE
+              </Typography>
+              <Typography
+                variant="body1"
+                my={2}
+                fontSize={20}
+                color={theme.palette.grey[600]}
+              >
+                Download our app today to get started. Now completely free, no
+                hidden costs.
+              </Typography>
+            </Box>
 
             <Box
               display="flex"
