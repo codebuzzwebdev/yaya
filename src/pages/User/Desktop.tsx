@@ -28,7 +28,7 @@ const User: FC = () => {
       <Header handleNavigate={navigateToHome} />
 
       <Grid container spacing={2} px={6} py={6}>
-        <Grid item xs={12} sm={12} md={12} lg={12} xl={7}>
+        <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
           <Box display="flex">
             <img
               src={NanniePNG}
@@ -56,12 +56,14 @@ const User: FC = () => {
                 Nanny / Nurse
               </Typography>
 
-              <Box display="flex" mt={2}>
+              <Box display="flex" flexWrap="wrap">
                 <Box
                   bgcolor={colors.theme.red}
                   px={2}
                   py={0.5}
                   height={28}
+                  mr={1}
+                  mt={1}
                   borderRadius={1}
                   sx={{
                     cursor: "pointer",
@@ -83,7 +85,8 @@ const User: FC = () => {
                   px={2}
                   py={0.5}
                   height={28}
-                  ml={1}
+                  mr={1}
+                  mt={1}
                   borderRadius={1}
                   display="flex"
                   alignItems="center"
@@ -119,7 +122,8 @@ const User: FC = () => {
                   px={2}
                   py={0.5}
                   height={28}
-                  ml={1}
+                  mr={1}
+                  mt={1}
                   borderRadius={1}
                   sx={{
                     cursor: "pointer",
@@ -270,7 +274,12 @@ const User: FC = () => {
             Registered on: 15th June 2024
           </Typography>
 
-          <Typography variant="body1" fontSize={20} color={theme.palette.grey[500]} mt={2}>
+          <Typography
+            variant="body1"
+            fontSize={20}
+            color={theme.palette.grey[500]}
+            mt={2}
+          >
             Download our app today to get started. Now completely free, no
             hidden costs.
           </Typography>
@@ -293,7 +302,7 @@ const User: FC = () => {
             />
           </Box>
         </Grid>
-        <Grid item xs={12} sm={12} md={12} lg={12} xl={5}>
+        <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
           <Snapshot />
         </Grid>
       </Grid>

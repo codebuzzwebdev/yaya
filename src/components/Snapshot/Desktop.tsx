@@ -23,11 +23,10 @@ const Snapshot = () => {
         px={4}
         py={3}
         display="flex"
-        justifyContent="space-around"
         alignItems="center"
         mt={2}
       >
-        <Box textAlign="center">
+        <Box width="50%" textAlign="center">
           <Typography variant="body1" fontSize={18} fontWeight="bold">
             Age
           </Typography>
@@ -42,7 +41,7 @@ const Snapshot = () => {
 
         <Divider orientation="vertical" sx={{ height: 50 }} />
 
-        <Box textAlign="center">
+        <Box width="50%" textAlign="center">
           <img src={MapPNG} alt="Nationality" width={32} height={32} />
           <Typography variant="body1" fontSize={16} fontWeight="bold">
             Nationality
@@ -64,11 +63,10 @@ const Snapshot = () => {
         px={4}
         py={3}
         display="flex"
-        justifyContent="space-around"
         alignItems="center"
         mt={2}
       >
-        <Box textAlign="center">
+        <Box width="50%" textAlign="center">
           <Typography variant="body1" fontSize={18} fontWeight="bold">
             Salary (AED)
           </Typography>
@@ -90,7 +88,7 @@ const Snapshot = () => {
 
         <Divider orientation="vertical" sx={{ height: 50 }} />
 
-        <Box textAlign="center">
+        <Box width="50%" textAlign="center">
           <img src={TimerPNG} alt="Map" width={32} height={32} />
           <Typography variant="body1" fontSize={16} fontWeight="bold">
             Job Type
@@ -112,11 +110,10 @@ const Snapshot = () => {
         px={4}
         py={3}
         display="flex"
-        justifyContent="space-around"
         alignItems="center"
         mt={2}
       >
-        <Box textAlign="center">
+        <Box width="50%" textAlign="center">
           <img src={FileSearchPNG} alt="Experience" width={32} height={32} />
           <Typography variant="body1" fontSize={16} fontWeight="bold">
             Experience
@@ -132,7 +129,7 @@ const Snapshot = () => {
 
         <Divider orientation="vertical" sx={{ height: 50 }} />
 
-        <Box textAlign="center">
+        <Box width="50%" textAlign="center">
           <img src={FileShieldPNG} alt="Visa" width={32} height={32} />
           <Typography variant="body1" fontSize={16} fontWeight="bold">
             Visa
@@ -154,11 +151,10 @@ const Snapshot = () => {
         px={4}
         py={3}
         display="flex"
-        justifyContent="space-around"
         alignItems="center"
         mt={2}
       >
-        <Box textAlign="center">
+        <Box width="50%"textAlign="center">
           <img src={StarPNG} alt="Available From" width={32} height={32} />
           <Typography variant="body1" fontSize={16} fontWeight="bold">
             Available From
@@ -174,7 +170,7 @@ const Snapshot = () => {
 
         <Divider orientation="vertical" sx={{ height: 50 }} />
 
-        <Box textAlign="center">
+        <Box width="50%" textAlign="center">
           <img src={MapPinPNG} alt="Job location" width={32} height={32} />
           <Typography variant="body1" fontSize={16} fontWeight="bold">
             Job location
