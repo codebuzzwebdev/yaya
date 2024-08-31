@@ -27,8 +27,13 @@ const User: FC = () => {
     <>
       <Header handleNavigate={navigateToHome} />
 
-      <Grid container spacing={2} px={6} py={6}>
-        <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
+      <Grid
+        container
+        spacing={2}
+        px={{ xs: 2, sm: 2, md: 2, lg: 16, xl: 16 }}
+        py={6}
+      >
+        <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
           <Box display="flex">
             <img
               src={NanniePNG}
@@ -171,7 +176,9 @@ const User: FC = () => {
               </Box>
             </Box>
           </Box>
+        </Grid>
 
+        <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
           <Typography variant="body1" fontSize={18} fontWeight="bold" mt={2}>
             About Me
           </Typography>

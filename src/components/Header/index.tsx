@@ -41,13 +41,13 @@ const Header: FC<HeaderProps> = ({ handleNavigate }) => {
               variant="h6"
               ml={1}
               fontWeight="bold"
-              display={{ xs: "none", sm: "none", md: "none", lg: "block" }}
+              display={{ xs: "none", sm: "none", md: "none", lg: "block", xl: "block" }}
             >
               Yaya Middle East
             </Typography>
           </Box>
 
-          <Box display={{ xs: "none", sm: "none", md: "none", lg: "block" }}>
+          <Box display={{ xs: "none", sm: "none", md: "none", lg: "block", xl: "block" }}>
             <Box display="flex" alignItems="center">
               {menu.map((item, _idx) => (
                 <Typography
@@ -96,7 +96,7 @@ const Header: FC<HeaderProps> = ({ handleNavigate }) => {
             </Box>
           </Box>
 
-          <Box display={{ xs: "block", sm: "block", md: "block", lg: "none" }}>
+          <Box display={{ xs: "block", sm: "block", md: "block", lg: "none", xl: "none" }}>
             <RightDrawer routes={menu} handleNavigate={handleNavigate} />
           </Box>
         </Box>
