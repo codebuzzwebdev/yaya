@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { useNavigate } from "react-router-dom";
-import { useTheme, Box, Grid, Typography } from "@mui/material";
+import { useTheme, Box, Grid, Typography, IconButton } from "@mui/material";
 
 import Header from "@components/Header";
 import Banner from "@components/Banner";
@@ -8,6 +8,7 @@ import Footer from "@components/Footer";
 import Card from "@components/Card";
 // import Filters from "@components/Filters";
 import Sorting from "@components/Sorting";
+import Icon from "@components/Icon";
 
 // import * as constants from "@store/constants";
 // import * as apis from "@store/apis";
@@ -53,16 +54,58 @@ const Home: FC = () => {
       <Header handleNavigate={navigateToHome} />
       <Banner />
 
-      <Grid container spacing={2} px={6} py={6}>
+      <Grid
+        container
+        spacing={2}
+        px={{ xs: 2, sm: 2, md: 4, lg: 6, xl: 6 }}
+        py={4}
+      >
         <Grid item xs={12} sm={12} md={4} lg={4} xl={4}></Grid>
 
-        <Grid item xs={12} sm={12} md={8} lg={8} xl={8}>
-          <Box display="flex" justifyContent="space-between">
-            <Typography variant="h5" fontWeight="bold" color={theme.palette.grey[900]} mt={2}>
+        <Grid item xs={12} sm={12} md={12} lg={8} xl={8}>
+          <Box
+            display="flex"
+            flexDirection={{
+              xs: "column",
+              sm: "column",
+              md: "row",
+              lg: "row",
+              xl: "row",
+            }}
+            justifyContent="space-between"
+          >
+            <Typography
+              variant="body1"
+              fontSize={{ xs: 16, sm: 16, md: 24, lg: 24, xl: 24 }}
+              fontWeight="bold"
+              color={theme.palette.grey[900]}
+              mt={2}
+            >
               Nannies in UAE (241)
             </Typography>
 
-            <Sorting />
+            <Box
+              display="flex"
+              justifyContent="space-between"
+              alignItems="center"
+              mt={{ xs: 2, sm: 2, md: 0, lg: 0, xl: 0 }}
+            >
+              <Sorting />
+
+              <Box
+                display={{
+                  xs: "block",
+                  sm: "block",
+                  md: "block",
+                  lg: "none",
+                  xl: "none",
+                }}
+              >
+                <IconButton sx={{ border: `1px solid #EEE`, p: 1.5 }}>
+                  <Icon name="filter" />
+                </IconButton>
+              </Box>
+            </Box>
           </Box>
         </Grid>
 

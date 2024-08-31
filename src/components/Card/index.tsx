@@ -19,10 +19,12 @@ const Card: FC<CardProps> = ({ handleNavigate }) => {
     <Box
       borderRadius={3}
       sx={{
-        boxShadow: "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px",
+        border: `0.1px solid ${theme.palette.grey[200]}`,
+        boxShadow: "rgba(145, 158, 171, 0.2) 0px 0px 2px 0px, rgba(145, 158, 171, 0.12) 0px 12px 24px -4px;",
         cursor: "pointer",
         "&:hover": {
-          boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px",
+          border: `0.1px solid ${theme.palette.grey[300]}`,
+          boxShadow: "rgba(145, 158, 171, 0.2) 0px 0px 2px 0px, rgba(145, 158, 171, 0.12) 0px 12px 24px -4px;",
         },
       }}
       onClick={handleNavigate}
@@ -32,7 +34,7 @@ const Card: FC<CardProps> = ({ handleNavigate }) => {
           src={NanniePNG}
           alt="Nannie"
           width="100%"
-          height={295}
+          height={220}
           style={{
             objectFit: "cover",
             cursor: "pointer",
@@ -76,8 +78,7 @@ const Card: FC<CardProps> = ({ handleNavigate }) => {
         >
           <Typography
             variant="body1"
-            fontSize={20}
-            fontWeight="bold"
+            fontSize={16}
             color={theme.palette.common.black}
           >
             Jane
@@ -94,7 +95,7 @@ const Card: FC<CardProps> = ({ handleNavigate }) => {
           />
         </Box>
         <Box
-          bgcolor={theme.palette.grey[200]}
+          bgcolor={theme.palette.grey[400]}
           px={1}
           py={0.5}
           borderRadius={1}
@@ -102,7 +103,7 @@ const Card: FC<CardProps> = ({ handleNavigate }) => {
         >
           <Typography
             variant="body1"
-            fontWeight="bold"
+            fontSize={12}
             color={theme.palette.common.black}
           >
             Nanny / Nurse
@@ -117,7 +118,7 @@ const Card: FC<CardProps> = ({ handleNavigate }) => {
         >
           <Typography
             variant="body1"
-            fontWeight="bold"
+            fontSize={12}
             color={theme.palette.common.white}
           >
             Full Time + Live Out
@@ -132,17 +133,25 @@ const Card: FC<CardProps> = ({ handleNavigate }) => {
         >
           <Typography
             variant="body1"
-            fontWeight="bold"
+            fontSize={12}
             color={theme.palette.common.white}
           >
             More than 10 years
           </Typography>
         </Box>
         <Box display="flex" mt={0.5}>
-          <Typography variant="body1" color={theme.palette.common.black}>
+          <Typography
+            variant="body1"
+            fontSize={12}
+            color={theme.palette.common.black}
+          >
             AED2,500-3,000
           </Typography>
-          <Typography variant="body1" color={theme.palette.grey[400]}>
+          <Typography
+            variant="body1"
+            fontSize={12}
+            color={theme.palette.grey[300]}
+          >
             /Mo
           </Typography>
         </Box>

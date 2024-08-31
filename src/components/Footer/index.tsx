@@ -33,6 +33,7 @@ const Footer: FC = () => {
         <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
           <Box
             display="flex"
+            flexDirection="column"
             justifyContent="center"
             alignItems="center"
             textAlign="center"
@@ -106,18 +107,17 @@ const Footer: FC = () => {
                   >
                     Find out more
                   </Typography>
-                  <Icon name="rightArrow" color={theme.palette.primary.main} />
+                  <Icon className="typography-hover" name="rightArrow" color={theme.palette.primary.main} />
                 </Box>
               </Box>
-
-              <img
-                src={FooterPNG}
-                alt="Footer"
-                width={329}
-                height={346}
-                style={{ objectFit: "cover", marginTop: 24 }}
-              />
             </Box>
+            <img
+              src={FooterPNG}
+              alt="Footer"
+              width={329}
+              height={346}
+              style={{ objectFit: "cover", marginTop: 24 }}
+            />
           </Box>
         </Grid>
       </Grid>
@@ -200,8 +200,8 @@ const Footer: FC = () => {
                 >
                   Find out more
                 </Typography>
-                <Icon name="rightArrow" color={theme.palette.primary.main} />
-              </Box>
+                <Icon className="typography-hover" name="rightArrow" color={theme.palette.primary.main} />
+              </Box> 
             </Box>
           </Box>
 

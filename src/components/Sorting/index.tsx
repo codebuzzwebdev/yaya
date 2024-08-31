@@ -22,8 +22,7 @@ const Sorting: FC = () => {
     <Box display="flex" alignItems="center">
       <Typography
         variant="body1"
-        fontWeight="bold"
-        fontSize={20}
+        fontSize={{ xs: 14, sm: 14, md: 20, lg: 20, xl: 20 }}
         color={theme.palette.grey[900]}
       >
         Sort by

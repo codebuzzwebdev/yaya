@@ -53,7 +53,6 @@ const Header: FC<HeaderProps> = ({ handleNavigate }) => {
                   <Typography
                     key={`${item}_${_idx}`}
                     variant="body1"
-                    fontWeight="bold"
                     mx={2}
                     sx={{
                       cursor: "pointer",

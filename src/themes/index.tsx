@@ -94,7 +94,7 @@ const Theme: React.FC<{ children: ReactNode }> = ({ children }) => {
       MuiListItemButton: {
         styleOverrides: {
           root: {
-            borderRadius: 8,
+            // borderRadius: 8,
             paddingLeft: "12px !important",
             paddingRight: "12px !important",
             paddingTop: "10px !important",
@@ -116,7 +116,7 @@ const Theme: React.FC<{ children: ReactNode }> = ({ children }) => {
         styleOverrides: {
           root: {
             margin: "8px 16px",
-            borderRadius: 8,
+            // borderRadius: 8,
             width: 268,
           },
         },
@@ -181,7 +181,7 @@ const Theme: React.FC<{ children: ReactNode }> = ({ children }) => {
       MuiOutlinedInput: {
         styleOverrides: {
           notchedOutline: {
-            borderRadius: "12px",
+            // borderRadius: "12px",
             borderColor: grey.light[200],
           },
         },
@@ -220,10 +220,10 @@ const Theme: React.FC<{ children: ReactNode }> = ({ children }) => {
               color: common.white
             },
             "&.Mui-selected:hover": {
-              background: primary.light.dark,
+              background: primary.light.main,
             },
             "&:hover": {
-              background: darkMode ? grey.dark[200] : grey.light[300],
+              background: grey.light[200]
             },
           },
         },
@@ -232,7 +232,7 @@ const Theme: React.FC<{ children: ReactNode }> = ({ children }) => {
         styleOverrides: {
           root: {
             color: darkMode ? common.white : common.black,
-            borderRadius: 2,
+            // borderRadius: 2,
             "&.Mui-checked": {
               color: primary.light.dark,
             },
@@ -272,7 +272,7 @@ const Theme: React.FC<{ children: ReactNode }> = ({ children }) => {
             "& .MuiOutlinedInput-input": {
               borderColor: darkMode ? common.white : common.black,
               "&:-webkit-autofill": {
-                borderRadius: 12,
+                // borderRadius: 12,
               },
             },
             "& .MuiInputLabel-root": {
