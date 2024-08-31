@@ -9,6 +9,7 @@ import MuiAccordionSummary, {
 import MuiAccordionDetails from "@mui/material/AccordionDetails";
 import Typography from "@mui/material/Typography";
 
+import Loader from "@components/Loader";
 import CheckItem from "@components/CheckItem";
 
 import {
@@ -51,14 +52,14 @@ const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
   borderTop: "1px solid rgba(0, 0, 0, .125)",
   height: 300,
   overflowX: "hidden",
-  overflowY: "scroll"
+  overflowY: "scroll",
 }));
 
-export interface FilterProps {
+export interface AllFilterProps {
   cities: CityType[];
 }
 
-const Filters: React.FC<FilterProps> = ({ cities }) => {
+const AllFilters: React.FC<AllFilterProps> = ({ cities }) => {
   const [expanded, setExpanded] = React.useState<string | false>("panel1");
 
   const [listCities, setListCities] = React.useState<CityType[]>(cities);
@@ -115,7 +116,9 @@ const Filters: React.FC<FilterProps> = ({ cities }) => {
         onChange={handleChange("panel1")}
       >
         <AccordionSummary aria-controls="panel1d-content" id="panel1d-header">
-          <Typography>City</Typography>
+          <Typography variant="body1" fontWeight="bold">
+            City
+          </Typography>
         </AccordionSummary>
         <AccordionDetails>
           {listCities.map((item, _idx) => (
@@ -136,7 +139,9 @@ const Filters: React.FC<FilterProps> = ({ cities }) => {
         onChange={handleChange("panel2")}
       >
         <AccordionSummary aria-controls="panel2d-content" id="panel2d-header">
-          <Typography>Nationality</Typography>
+          <Typography variant="body1" fontWeight="bold">
+            Nationality
+          </Typography>
         </AccordionSummary>
         <AccordionDetails>
           {listNationalities.map((item, _idx) => (
@@ -157,7 +162,9 @@ const Filters: React.FC<FilterProps> = ({ cities }) => {
         onChange={handleChange("panel3")}
       >
         <AccordionSummary aria-controls="panel3d-content" id="panel3d-header">
-          <Typography>Job Type</Typography>
+          <Typography variant="body1" fontWeight="bold">
+            Job Type
+          </Typography>
         </AccordionSummary>
         <AccordionDetails>
           {listJobTypes.map((item, _idx) => (
@@ -178,7 +185,9 @@ const Filters: React.FC<FilterProps> = ({ cities }) => {
         onChange={handleChange("panel4")}
       >
         <AccordionSummary aria-controls="panel4d-content" id="panel4d-header">
-          <Typography>Salary</Typography>
+          <Typography variant="body1" fontWeight="bold">
+            Salary
+          </Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Box display="flex" flexDirection="column">
@@ -213,7 +222,9 @@ const Filters: React.FC<FilterProps> = ({ cities }) => {
         onChange={handleChange("panel5")}
       >
         <AccordionSummary aria-controls="panel5d-content" id="panel5d-header">
-          <Typography>Experience</Typography>
+          <Typography variant="body1" fontWeight="bold">
+            Experience
+          </Typography>
         </AccordionSummary>
         <AccordionDetails>
           {listExperiences.map((item, _idx) => (
@@ -230,6 +241,18 @@ const Filters: React.FC<FilterProps> = ({ cities }) => {
       </Accordion>
     </div>
   );
+};
+
+export interface FilterProps {
+  isLoading: boolean;
+  cities: CityType[];
+}
+
+const Filters: React.FC<FilterProps> = ({ isLoading, ...props }) => {
+  if (isLoading) {
+    return <Loader />;
+  }
+  return <AllFilters {...props} />;
 };
 
 export default Filters;

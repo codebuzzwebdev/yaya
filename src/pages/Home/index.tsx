@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useTheme, Box, Grid, Typography, IconButton } from "@mui/material";
 
@@ -6,40 +6,41 @@ import Header from "@components/Header";
 import Banner from "@components/Banner";
 import Footer from "@components/Footer";
 import Card from "@components/Card";
-// import Filters from "@components/Filters";
+import Filters from "@components/Filters";
 import Sorting from "@components/Sorting";
 import Icon from "@components/Icon";
+import LeftDrawer from "@components/LeftDrawer";
 
-// import * as constants from "@store/constants";
-// import * as apis from "@store/apis";
-// import request from "@store/request";
+import * as constants from "@store/constants";
+import * as apis from "@store/apis";
+import request from "@store/request";
 
-// import { CityType } from "@utils";
+import { CityType } from "@utils";
 
 const Home: FC = () => {
   const theme = useTheme();
-  // const [isLoading, setLoading] = useState(true);
-  // const [cities, setCities] = useState<CityType[]>();
+  const [isLoading, setLoading] = useState(true);
+  const [cities, setCities] = useState<CityType[]>();
   const navigate = useNavigate();
 
-  // const fetchCountries = async () => {
-  //   const res: any = await request(apis.GET_COUNTRIES_API, {
-  //     method: constants.POST,
-  //   });
-  //   const _cities: CityType[] = res.data.data.map((ele: any) => {
-  //     return {
-  //       label: ele.country,
-  //       count: ele.id,
-  //       checked: false,
-  //     };
-  //   });
-  //   setCities(_cities);
-  //   setLoading(false);
-  // };
+  const fetchCountries = async () => {
+    const res: any = await request(apis.GET_COUNTRIES_API, {
+      method: constants.POST,
+    });
+    const _cities: CityType[] = res.data.data.map((ele: any) => {
+      return {
+        label: ele.country,
+        count: ele.id,
+        checked: false,
+      };
+    });
+    setCities(_cities);
+    setLoading(false);
+  };
 
-  // useEffect(() => {
-  //   fetchCountries();
-  // }, []);
+  useEffect(() => {
+    fetchCountries();
+  }, []);
 
   const navigateToHome = () => {
     navigate("/");
@@ -60,7 +61,21 @@ const Home: FC = () => {
         px={{ xs: 4, sm: 4, md: 6, lg: 8, xl: 8 }}
         py={4}
       >
-        <Grid display={{ xs: "none", sm: "none", md: "block", lg: "block", xl: "block" }} item xs={12} sm={12} md={4} lg={4} xl={4}></Grid>
+        <Grid
+          display={{
+            xs: "none",
+            sm: "none",
+            md: "block",
+            lg: "block",
+            xl: "block",
+          }}
+          item
+          xs={12}
+          sm={12}
+          md={4}
+          lg={4}
+          xl={4}
+        ></Grid>
 
         <Grid item xs={12} sm={12} md={12} lg={8} xl={8}>
           <Box
@@ -101,20 +116,44 @@ const Home: FC = () => {
                   xl: "none",
                 }}
               >
-                <IconButton sx={{ border: `1px solid #EEE`, p: 1.5 }}>
-                  <Icon name="filter" />
-                </IconButton>
+                <LeftDrawer isLoading={isLoading} cities={cities} />
               </Box>
             </Box>
           </Box>
         </Grid>
 
-        <Grid display={{ xs: "none", sm: "none", md: "none", lg: "block", xl: "block" }} item xs={12} sm={12} md={12} lg={1} xl={1}></Grid>
+        <Grid
+          display={{
+            xs: "none",
+            sm: "none",
+            md: "none",
+            lg: "block",
+            xl: "block",
+          }}
+          item
+          xs={12}
+          sm={12}
+          md={12}
+          lg={1}
+          xl={1}
+        ></Grid>
 
-        <Grid display={{ xs: "none", sm: "none", md: "none", lg: "block", xl: "block" }} item xs={12} sm={12} md={12} lg={3} xl={3}>
-          {/* {!isLoading && cities && cities.length > 0 && (
-            <Filters cities={cities} />
-          )} */}
+        <Grid
+          display={{
+            xs: "none",
+            sm: "none",
+            md: "none",
+            lg: "block",
+            xl: "block",
+          }}
+          item
+          xs={12}
+          sm={12}
+          md={12}
+          lg={3}
+          xl={3}
+        >
+          <Filters isLoading={isLoading} cities={cities} />
         </Grid>
 
         <Grid item xs={12} sm={12} md={12} lg={8} xl={8}>

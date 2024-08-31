@@ -234,7 +234,7 @@ const Theme: React.FC<{ children: ReactNode }> = ({ children }) => {
             color: darkMode ? common.white : common.black,
             // borderRadius: 2,
             "&.Mui-checked": {
-              color: primary.light.dark,
+              color: primary.light.main,
             },
             "& .MuiSvgIcon-root": {
               width: 20,
