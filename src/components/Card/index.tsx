@@ -8,11 +8,17 @@ import NanniePNG from "@assets/nannie.png";
 import FlagPNG from "@assets/flag2.png";
 
 import * as colors from "@themes/colors";
+
+export interface ItemProps {
+  firstName: string;
+  lastName: string;
+}
 export interface CardProps {
+  data: ItemProps;
   handleNavigate: () => void;
 }
 
-const Card: FC<CardProps> = ({ handleNavigate }) => {
+const Card: FC<CardProps> = ({ data, handleNavigate }) => {
   const theme = useTheme();
 
   return (
@@ -20,11 +26,13 @@ const Card: FC<CardProps> = ({ handleNavigate }) => {
       borderRadius={3}
       sx={{
         border: `0.1px solid ${theme.palette.grey[200]}`,
-        boxShadow: "rgba(145, 158, 171, 0.2) 0px 0px 2px 0px, rgba(145, 158, 171, 0.12) 0px 12px 24px -4px;",
+        boxShadow:
+          "rgba(145, 158, 171, 0.2) 0px 0px 2px 0px, rgba(145, 158, 171, 0.12) 0px 12px 24px -4px;",
         cursor: "pointer",
         "&:hover": {
           border: `0.1px solid ${theme.palette.grey[300]}`,
-          boxShadow: "rgba(145, 158, 171, 0.2) 0px 0px 2px 0px, rgba(145, 158, 171, 0.12) 0px 12px 24px -4px;",
+          boxShadow:
+            "rgba(145, 158, 171, 0.2) 0px 0px 2px 0px, rgba(145, 158, 171, 0.12) 0px 12px 24px -4px;",
         },
       }}
       onClick={handleNavigate}
@@ -81,7 +89,7 @@ const Card: FC<CardProps> = ({ handleNavigate }) => {
             fontSize={16}
             color={theme.palette.common.black}
           >
-            Jane
+            {data.firstName} {data.lastName}
           </Typography>
           <img
             src={FlagPNG}

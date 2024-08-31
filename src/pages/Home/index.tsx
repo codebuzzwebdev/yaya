@@ -2,10 +2,11 @@ import { FC, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useTheme, Box, Grid, Typography } from "@mui/material";
 
+import Loader from "@components/Loader";
 import Header from "@components/Header";
 import Banner from "@components/Banner";
 import Footer from "@components/Footer";
-import Card from "@components/Card";
+import Card, { ItemProps } from "@components/Card";
 import Filters from "@components/Filters";
 import Sorting from "@components/Sorting";
 import LeftDrawer from "@components/LeftDrawer";
@@ -19,11 +20,27 @@ import { CityType, NationalityType, JobType, ExperienceType } from "@utils";
 const Home: FC = () => {
   const theme = useTheme();
   const [isLoading, setLoading] = useState(true);
+  const [data, setData] = useState<ItemProps[]>([]);
+  const [isFilterLoading, setFilterLoading] = useState(true);
   const [cities, setCities] = useState<CityType[]>([]);
   const [nationalities, setNationalities] = useState<NationalityType[]>([]);
   const [jobTypes, setJobTypes] = useState<JobType[]>([]);
   const [experiences, setExperiences] = useState<ExperienceType[]>([]);
   const navigate = useNavigate();
+
+  const fetchNannies = async () => {
+    const res: any = await request(apis.GET_FILTERED_NANNIES_API, {
+      method: constants.POST,
+    });
+    const _data: ItemProps[] = res.data.data.helpers.map((ele: any) => {
+      return {
+        firstName: ele.firstName,
+        lastName: ele.lastName,
+      };
+    });
+    setData(_data);
+    setLoading(false);
+  };
 
   const fetchFilters = async () => {
     const res1: any = await request(apis.GET_COUNTRIES_API, {
@@ -70,10 +87,11 @@ const Home: FC = () => {
     setNationalities(_nationalities);
     setJobTypes(_jobTypes);
     setExperiences(_experiences);
-    setLoading(false);
+    setFilterLoading(false);
   };
 
   useEffect(() => {
+    fetchNannies();
     fetchFilters();
   }, []);
 
@@ -152,7 +170,7 @@ const Home: FC = () => {
                 }}
               >
                 <LeftDrawer
-                  isLoading={isLoading}
+                  isLoading={isFilterLoading}
                   data={{ cities, nationalities, jobTypes, experiences }}
                 />
               </Box>
@@ -192,26 +210,32 @@ const Home: FC = () => {
           xl={3}
         >
           <Filters
-            isLoading={isLoading}
+            isLoading={isFilterLoading}
             data={{ cities, nationalities, jobTypes, experiences }}
           />
         </Grid>
 
         <Grid item xs={12} sm={12} md={12} lg={8} xl={8}>
           <Grid container spacing={2}>
-            {[...Array(8)].map((item, _idx) => (
-              <Grid
-                key={`${item}_${_idx}`}
-                item
-                xs={12}
-                sm={6}
-                md={4}
-                lg={3}
-                xl={3}
-              >
-                <Card handleNavigate={navigateToUser} />
+            {!isLoading && data && data.length > 0 ? (
+              data.map((item, _idx) => (
+                <Grid
+                  key={`${item.firstName}_${_idx}`}
+                  item
+                  xs={12}
+                  sm={6}
+                  md={4}
+                  lg={3}
+                  xl={3}
+                >
+                  <Card data={item} handleNavigate={navigateToUser} />
+                </Grid>
+              ))
+            ) : (
+              <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+                <Loader />
               </Grid>
-            ))}
+            )}
           </Grid>
         </Grid>
       </Grid>

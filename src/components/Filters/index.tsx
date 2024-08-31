@@ -129,7 +129,7 @@ const AllFilter: React.FC<AllFilterProps> = ({ data }) => {
         <AccordionDetails>
           {listCities.map((item, _idx) => (
             <CheckItem
-              key={`${item}_${_idx}`}
+              key={`${item.label}_${_idx}`}
               name={`city_${_idx}`}
               label={item.label}
               count={item.count}
@@ -152,7 +152,7 @@ const AllFilter: React.FC<AllFilterProps> = ({ data }) => {
         <AccordionDetails>
           {listNationalities.map((item, _idx) => (
             <CheckItem
-              key={`${item}_${_idx}`}
+              key={`${item.label}_${_idx}`}
               name={`nationality_${_idx}`}
               label={item.label}
               count={item.count}
@@ -175,7 +175,7 @@ const AllFilter: React.FC<AllFilterProps> = ({ data }) => {
         <AccordionDetails>
           {listJobTypes.map((item, _idx) => (
             <CheckItem
-              key={`${item}_${_idx}`}
+              key={`${item.label}_${_idx}`}
               name={`jobType_${_idx}`}
               label={item.label}
               count={item.count}
@@ -235,7 +235,7 @@ const AllFilter: React.FC<AllFilterProps> = ({ data }) => {
         <AccordionDetails>
           {listExperiences.map((item, _idx) => (
             <CheckItem
-              key={`${item}_${_idx}`}
+              key={`${item.label}_${_idx}`}
               name={`experience_${_idx}`}
               label={item.label}
               count={item.count}
