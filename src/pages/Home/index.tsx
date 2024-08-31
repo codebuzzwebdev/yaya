@@ -1,6 +1,6 @@
 import { FC, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useTheme, Box, Grid, Typography, IconButton } from "@mui/material";
+import { useTheme, Box, Grid, Typography } from "@mui/material";
 
 import Header from "@components/Header";
 import Banner from "@components/Banner";
@@ -8,38 +8,73 @@ import Footer from "@components/Footer";
 import Card from "@components/Card";
 import Filters from "@components/Filters";
 import Sorting from "@components/Sorting";
-import Icon from "@components/Icon";
 import LeftDrawer from "@components/LeftDrawer";
 
 import * as constants from "@store/constants";
 import * as apis from "@store/apis";
 import request from "@store/request";
 
-import { CityType } from "@utils";
+import { CityType, NationalityType, JobType, ExperienceType } from "@utils";
 
 const Home: FC = () => {
   const theme = useTheme();
   const [isLoading, setLoading] = useState(true);
-  const [cities, setCities] = useState<CityType[]>();
+  const [cities, setCities] = useState<CityType[]>([]);
+  const [nationalities, setNationalities] = useState<NationalityType[]>([]);
+  const [jobTypes, setJobTypes] = useState<JobType[]>([]);
+  const [experiences, setExperiences] = useState<ExperienceType[]>([]);
   const navigate = useNavigate();
 
-  const fetchCountries = async () => {
-    const res: any = await request(apis.GET_COUNTRIES_API, {
+  const fetchFilters = async () => {
+    const res1: any = await request(apis.GET_COUNTRIES_API, {
       method: constants.POST,
     });
-    const _cities: CityType[] = res.data.data.map((ele: any) => {
+    const res2: any = await request(apis.GET_NATIONALITIES_API, {
+      method: constants.POST,
+    });
+    const res3: any = await request(apis.GET_JOB_TYPES_API, {
+      method: constants.POST,
+    });
+    const res4: any = await request(apis.GET_EXPERIENCES_API, {
+      method: constants.POST,
+    });
+    const _cities: CityType[] = res1.data.data.map((ele: any) => {
       return {
         label: ele.country,
         count: ele.id,
         checked: false,
       };
     });
+    const _nationalities: CityType[] = res2.data.data.map((ele: any) => {
+      return {
+        label: ele.nationality,
+        count: ele.id,
+        checked: false,
+      };
+    });
+    const _jobTypes: JobType[] = res3.data.data.map((ele: any) => {
+      return {
+        label: ele.title,
+        count: ele.id,
+        checked: false,
+      };
+    });
+    const _experiences: ExperienceType[] = res4.data.data.map((ele: any) => {
+      return {
+        label: `${ele.experienceOperator} ${ele.years} year(s)`,
+        count: ele.id,
+        checked: false,
+      };
+    });
     setCities(_cities);
+    setNationalities(_nationalities);
+    setJobTypes(_jobTypes);
+    setExperiences(_experiences);
     setLoading(false);
   };
 
   useEffect(() => {
-    fetchCountries();
+    fetchFilters();
   }, []);
 
   const navigateToHome = () => {
@@ -116,7 +151,10 @@ const Home: FC = () => {
                   xl: "none",
                 }}
               >
-                <LeftDrawer isLoading={isLoading} cities={cities} />
+                <LeftDrawer
+                  isLoading={isLoading}
+                  data={{ cities, nationalities, jobTypes, experiences }}
+                />
               </Box>
             </Box>
           </Box>
@@ -153,7 +191,10 @@ const Home: FC = () => {
           lg={3}
           xl={3}
         >
-          <Filters isLoading={isLoading} cities={cities} />
+          <Filters
+            isLoading={isLoading}
+            data={{ cities, nationalities, jobTypes, experiences }}
+          />
         </Grid>
 
         <Grid item xs={12} sm={12} md={12} lg={8} xl={8}>

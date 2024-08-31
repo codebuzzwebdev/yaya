@@ -12,15 +12,7 @@ import Typography from "@mui/material/Typography";
 import Loader from "@components/Loader";
 import CheckItem from "@components/CheckItem";
 
-import {
-  CityType,
-  nationalities,
-  NationalityType,
-  jobTypes,
-  JobType,
-  experiences,
-  ExperienceType,
-} from "@utils";
+import { CityType, NationalityType, JobType, ExperienceType } from "@utils";
 
 const Accordion = styled((props: AccordionProps) => (
   <MuiAccordion disableGutters elevation={0} square {...props} />
@@ -55,19 +47,33 @@ const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
   overflowY: "scroll",
 }));
 
-export interface AllFilterProps {
+export interface FilterProps {
   cities: CityType[];
+  nationalities: NationalityType[];
+  jobTypes: JobType[];
+  experiences: ExperienceType[];
 }
 
-const AllFilters: React.FC<AllFilterProps> = ({ cities }) => {
+export interface AllFilterProps {
+  data: FilterProps;
+}
+
+export interface FilterLoadingProps {
+  isLoading: boolean;
+  data: FilterProps;
+}
+
+const AllFilter: React.FC<AllFilterProps> = ({ data }) => {
   const [expanded, setExpanded] = React.useState<string | false>("panel1");
 
-  const [listCities, setListCities] = React.useState<CityType[]>(cities);
-  const [listNationalities, setNationalities] =
-    React.useState<NationalityType[]>(nationalities);
-  const [listJobTypes, setJobTypes] = React.useState<JobType[]>(jobTypes);
-  const [listExperiences, setExperiences] =
-    React.useState<ExperienceType[]>(experiences);
+  const [listCities, setListCities] = React.useState<CityType[]>(data.cities);
+  const [listNationalities, setNationalities] = React.useState<
+    NationalityType[]
+  >(data.nationalities);
+  const [listJobTypes, setJobTypes] = React.useState<JobType[]>(data.jobTypes);
+  const [listExperiences, setExperiences] = React.useState<ExperienceType[]>(
+    data.experiences
+  );
 
   const handleChange =
     (panel: string) => (_event: React.SyntheticEvent, newExpanded: boolean) => {
@@ -243,16 +249,11 @@ const AllFilters: React.FC<AllFilterProps> = ({ cities }) => {
   );
 };
 
-export interface FilterProps {
-  isLoading: boolean;
-  cities: CityType[];
-}
-
-const Filters: React.FC<FilterProps> = ({ isLoading, ...props }) => {
+const Filters: React.FC<FilterLoadingProps> = ({ isLoading, data }) => {
   if (isLoading) {
     return <Loader />;
   }
-  return <AllFilters {...props} />;
+  return <AllFilter data={data} />;
 };
 
 export default Filters;

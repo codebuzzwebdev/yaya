@@ -2,18 +2,12 @@ import React, { FC } from "react";
 import { useTheme, Box, Drawer, List, IconButton } from "@mui/material";
 
 import Icon from "@components/Icon";
-import Filters from "@components/Filters";
-
-import { CityType } from "@utils";
+import Filters, { FilterLoadingProps } from "@components/Filters";
 
 type Position = "left" | "right" | "top" | "bottom";
 const position: Position = "left";
-export interface LeftDrawerProps {
-  isLoading: boolean;
-  cities: CityType[];
-}
 
-const LeftDrawer: FC<LeftDrawerProps> = ({ isLoading, cities }) => {
+const LeftDrawer: FC<FilterLoadingProps> = (props) => {
   const theme = useTheme();
   const [state, setState] = React.useState({
     top: false,
@@ -53,7 +47,7 @@ const LeftDrawer: FC<LeftDrawerProps> = ({ isLoading, cities }) => {
             pt: 4,
           }}
         >
-          <Filters isLoading={isLoading} cities={cities} />
+          <Filters {...props} />
         </List>
       </Box>
     </Box>
