@@ -12,7 +12,7 @@ const Snapshot = () => {
 
   return (
     <>
-      <Typography variant="h6" fontWeight="bold" mt={2}>
+      <Typography variant="body1" fontSize={18} fontWeight="bold" mt={2}>
         Snapshot
       </Typography>
 
@@ -33,8 +33,8 @@ const Snapshot = () => {
           </Typography>
           <Typography
             variant="body1"
-            fontSize={18}
-            color={theme.palette.primary.dark}
+            fontSize={20}
+            color={theme.palette.primary.main}
           >
             36
           </Typography>
@@ -44,13 +44,13 @@ const Snapshot = () => {
 
         <Box textAlign="center">
           <img src={MapPNG} alt="Nationality" width={32} height={32} />
-          <Typography variant="body1" fontSize={18} fontWeight="bold">
+          <Typography variant="body1" fontSize={16} fontWeight="bold">
             Nationality
           </Typography>
           <Typography
             variant="body1"
-            fontSize={18}
-            color={theme.palette.grey[400]}
+            fontSize={16}
+            color={theme.palette.grey[300]}
           >
             Philippines
           </Typography>
@@ -74,15 +74,15 @@ const Snapshot = () => {
           </Typography>
           <Typography
             variant="body1"
-            fontSize={18}
-            color={theme.palette.primary.dark}
+            fontSize={20}
+            color={theme.palette.primary.main}
           >
             AED 2000-4000
           </Typography>
           <Typography
             variant="body1"
-            fontSize={18}
-            color={theme.palette.grey[400]}
+            fontSize={14}
+            color={theme.palette.grey[300]}
           >
             Monthly Salary
           </Typography>
@@ -92,13 +92,13 @@ const Snapshot = () => {
 
         <Box textAlign="center">
           <img src={TimerPNG} alt="Map" width={32} height={32} />
-          <Typography variant="body1" fontSize={18} fontWeight="bold">
+          <Typography variant="body1" fontSize={16} fontWeight="bold">
             Job Type
           </Typography>
           <Typography
             variant="body1"
-            fontSize={18}
-            color={theme.palette.grey[400]}
+            fontSize={16}
+            color={theme.palette.grey[300]}
           >
             Full time + Live out
           </Typography>
@@ -118,13 +118,13 @@ const Snapshot = () => {
       >
         <Box textAlign="center">
           <img src={FileSearchPNG} alt="Experience" width={32} height={32} />
-          <Typography variant="body1" fontSize={18} fontWeight="bold">
+          <Typography variant="body1" fontSize={16} fontWeight="bold">
             Experience
           </Typography>
           <Typography
             variant="body1"
-            fontSize={18}
-            color={theme.palette.grey[400]}
+            fontSize={16}
+            color={theme.palette.grey[300]}
           >
             5-10 Years
           </Typography>
@@ -134,13 +134,13 @@ const Snapshot = () => {
 
         <Box textAlign="center">
           <img src={FileShieldPNG} alt="Visa" width={32} height={32} />
-          <Typography variant="body1" fontSize={18} fontWeight="bold">
+          <Typography variant="body1" fontSize={16} fontWeight="bold">
             Visa
           </Typography>
           <Typography
             variant="body1"
-            fontSize={18}
-            color={theme.palette.grey[400]}
+            fontSize={16}
+            color={theme.palette.grey[300]}
           >
             Visa Required
           </Typography>
@@ -160,13 +160,13 @@ const Snapshot = () => {
       >
         <Box textAlign="center">
           <img src={StarPNG} alt="Available From" width={32} height={32} />
-          <Typography variant="body1" fontSize={18} fontWeight="bold">
+          <Typography variant="body1" fontSize={16} fontWeight="bold">
             Available From
           </Typography>
           <Typography
             variant="body1"
-            fontSize={18}
-            color={theme.palette.grey[400]}
+            fontSize={16}
+            color={theme.palette.grey[300]}
           >
             1st July
           </Typography>
@@ -176,13 +176,13 @@ const Snapshot = () => {
 
         <Box textAlign="center">
           <img src={MapPinPNG} alt="Job location" width={32} height={32} />
-          <Typography variant="body1" fontSize={18} fontWeight="bold">
+          <Typography variant="body1" fontSize={16} fontWeight="bold">
             Job location
           </Typography>
           <Typography
             variant="body1"
-            fontSize={18}
-            color={theme.palette.grey[400]}
+            fontSize={16}
+            color={theme.palette.grey[300]}
           >
             Dubai
           </Typography>

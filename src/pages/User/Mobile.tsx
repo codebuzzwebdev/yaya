@@ -27,16 +27,22 @@ const User: FC = () => {
     <>
       <Header handleNavigate={navigateToHome} />
 
-      <Grid container spacing={2} px={6} py={6}>
+      <Grid
+        container
+        spacing={2}
+        px={{ xs: 2, sm: 2, md: 4, lg: 6, xl: 6 }}
+        py={6}
+      >
         <Grid item xs={12} sm={12} md={7} lg={7} xl={7}>
           <Box display="flex" flexDirection="column">
             <Box textAlign="center">
-              <Typography variant="body1" fontWeight="bold">
+              <Typography variant="body1" fontSize={24} fontWeight="bold">
                 Jane Doe
               </Typography>
 
               <Typography
                 variant="body1"
+                fontSize={18}
                 color={theme.palette.grey[600]}
                 mt={1}
               >
@@ -47,7 +53,8 @@ const User: FC = () => {
                 <Box
                   bgcolor={colors.theme.red}
                   px={2}
-                  py={1}
+                  py={0.5}
+                  height={28}
                   borderRadius={1}
                   sx={{
                     cursor: "pointer",
@@ -58,15 +65,17 @@ const User: FC = () => {
                 >
                   <Typography
                     variant="body1"
+                    fontSize={14}
                     color={theme.palette.common.white}
                   >
                     New
                   </Typography>
                 </Box>
                 <Box
-                  bgcolor={colors.theme.pink}
+                  bgcolor={colors.theme.green}
                   px={2}
-                  py={1}
+                  py={0.5}
+                  height={28}
                   ml={1}
                   borderRadius={1}
                   display="flex"
@@ -78,20 +87,9 @@ const User: FC = () => {
                     },
                   }}
                 >
-                  <img
-                    src={BadgePNG}
-                    alt="Badge"
-                    width={20}
-                    height={20}
-                    style={{
-                      objectFit: "cover",
-                      cursor: "pointer",
-                      marginRight: 2,
-                      borderRadius: 8,
-                    }}
-                  />
                   <Typography
                     variant="body1"
+                    fontSize={14}
                     color={theme.palette.common.white}
                   >
                     Yaya Pick
@@ -110,7 +108,7 @@ const User: FC = () => {
                 src={NanniePNG}
                 alt="Nannie"
                 width="100%"
-                height={400}
+                height={360}
                 style={{
                   objectFit: "cover",
                   cursor: "pointer",
@@ -122,6 +120,7 @@ const User: FC = () => {
                 bgcolor={colors.theme.pink}
                 px={2}
                 py={0.5}
+                height={28}
                 borderRadius={1}
                 bottom={16}
                 left={16}
@@ -133,7 +132,8 @@ const User: FC = () => {
                 }}
               >
                 <Typography
-                  variant="caption"
+                  variant="body1"
+                  fontSize={14}
                   color={theme.palette.common.white}
                 >
                   Full Time
@@ -144,6 +144,7 @@ const User: FC = () => {
                 bgcolor={colors.theme.blue}
                 px={2}
                 py={0.5}
+                height={28}
                 borderRadius={1}
                 bottom={16}
                 right={16}
@@ -155,7 +156,8 @@ const User: FC = () => {
                 }}
               >
                 <Typography
-                  variant="caption"
+                  variant="body1"
+                  fontSize={14}
                   color={theme.palette.common.white}
                 >
                   Video Greeting
@@ -200,7 +202,7 @@ const User: FC = () => {
               Want to work with us? You're in good company!
             </Typography>
 
-            <Typography variant="h6" fontWeight="bold" mt={2}>
+            <Typography variant="body1" fontSize={18} fontWeight="bold" mt={2}>
               Share this job:
             </Typography>
 
@@ -208,10 +210,16 @@ const User: FC = () => {
               <Box
                 display="flex"
                 alignItems="center"
-                bgcolor={theme.palette.grey[200]}
+                bgcolor={colors.theme.light_blue}
                 p={1}
                 borderRadius={1}
                 width="fit-content"
+                sx={{
+                  cursor: "pointer",
+                  "&:hover": {
+                    bgcolor: theme.palette.error.light,
+                  },
+                }}
               >
                 <img
                   src={LinkPNG}
@@ -235,10 +243,17 @@ const User: FC = () => {
               <Box
                 display="flex"
                 alignItems="center"
-                bgcolor={theme.palette.grey[200]}
+                bgcolor={colors.theme.light_blue}
                 p={1}
                 borderRadius={1}
+                width="fit-content"
                 ml={1}
+                sx={{
+                  cursor: "pointer",
+                  "&:hover": {
+                    bgcolor: theme.palette.error.light,
+                  },
+                }}
               >
                 <img
                   src={MailPNG}
@@ -258,7 +273,7 @@ const User: FC = () => {
           </Typography>
 
           <Box
-            bgcolor={theme.palette.primary.dark}
+            bgcolor={theme.palette.primary.main}
             px={4}
             py={2}
             borderRadius={1}
@@ -287,9 +302,10 @@ const User: FC = () => {
 
           <Typography
             variant="body1"
-            textAlign="center"
-            color={theme.palette.grey[600]}
+            fontSize={20}
+            color={theme.palette.grey[500]}
             mt={2}
+            textAlign="center"
           >
             Download our app today to get started. Now completely free, no
             hidden costs.

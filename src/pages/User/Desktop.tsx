@@ -28,7 +28,7 @@ const User: FC = () => {
       <Header handleNavigate={navigateToHome} />
 
       <Grid container spacing={2} px={6} py={6}>
-        <Grid item xs={12} sm={12} md={7} lg={7} xl={7}>
+        <Grid item xs={12} sm={12} md={12} lg={12} xl={7}>
           <Box display="flex">
             <img
               src={NanniePNG}
@@ -43,23 +43,25 @@ const User: FC = () => {
             />
 
             <Box ml={3}>
-              <Typography variant="body1" fontWeight="bold">
+              <Typography variant="body1" fontSize={18} fontWeight="bold">
                 Jane Doe
               </Typography>
 
               <Typography
                 variant="body1"
+                fontSize={16}
                 color={theme.palette.grey[600]}
                 mt={1}
               >
                 Nanny / Nurse
               </Typography>
 
-              <Box display="flex" mt={1}>
+              <Box display="flex" mt={2}>
                 <Box
                   bgcolor={colors.theme.red}
                   px={2}
-                  py={1}
+                  py={0.5}
+                  height={28}
                   borderRadius={1}
                   sx={{
                     cursor: "pointer",
@@ -70,15 +72,17 @@ const User: FC = () => {
                 >
                   <Typography
                     variant="body1"
+                    fontSize={14}
                     color={theme.palette.common.white}
                   >
                     New
                   </Typography>
                 </Box>
                 <Box
-                  bgcolor={colors.theme.pink}
+                  bgcolor={colors.theme.orange}
                   px={2}
-                  py={1}
+                  py={0.5}
+                  height={28}
                   ml={1}
                   borderRadius={1}
                   display="flex"
@@ -93,8 +97,8 @@ const User: FC = () => {
                   <img
                     src={BadgePNG}
                     alt="Badge"
-                    width={20}
-                    height={20}
+                    width={16}
+                    height={16}
                     style={{
                       objectFit: "cover",
                       cursor: "pointer",
@@ -104,6 +108,7 @@ const User: FC = () => {
                   />
                   <Typography
                     variant="body1"
+                    fontSize={14}
                     color={theme.palette.common.white}
                   >
                     Yaya Pick
@@ -112,7 +117,8 @@ const User: FC = () => {
                 <Box
                   bgcolor={colors.theme.blue}
                   px={2}
-                  py={1}
+                  py={0.5}
+                  height={28}
                   ml={1}
                   borderRadius={1}
                   sx={{
@@ -124,6 +130,7 @@ const User: FC = () => {
                 >
                   <Typography
                     variant="body1"
+                    fontSize={14}
                     color={theme.palette.common.white}
                   >
                     Video Greeting
@@ -132,12 +139,13 @@ const User: FC = () => {
               </Box>
 
               <Box
-                bgcolor={theme.palette.primary.dark}
+                bgcolor={theme.palette.primary.main}
                 display="inline-block"
                 px={4}
                 py={2}
+                height={56}
                 borderRadius={1}
-                mt={1}
+                mt={3}
                 sx={{
                   cursor: "pointer",
                   "&:hover": {
@@ -147,7 +155,8 @@ const User: FC = () => {
               >
                 <Box display="flex" alignItems="center">
                   <Typography
-                    variant="h6"
+                    variant="body1"
+                    fontSize={16}
                     color={theme.palette.common.white}
                     mr={1}
                   >
@@ -159,7 +168,7 @@ const User: FC = () => {
             </Box>
           </Box>
 
-          <Typography variant="h6" fontWeight="bold" mt={2}>
+          <Typography variant="body1" fontSize={18} fontWeight="bold" mt={2}>
             About Me
           </Typography>
 
@@ -192,7 +201,7 @@ const User: FC = () => {
             Want to work with us? You're in good company!
           </Typography>
 
-          <Typography variant="h6" fontWeight="bold" mt={2}>
+          <Typography variant="body1" fontSize={18} fontWeight="bold" mt={2}>
             Share this job:
           </Typography>
 
@@ -200,7 +209,7 @@ const User: FC = () => {
             <Box
               display="flex"
               alignItems="center"
-              bgcolor={theme.palette.grey[200]}
+              bgcolor={colors.theme.light_blue}
               p={1}
               borderRadius={1}
               width="fit-content"
@@ -233,7 +242,7 @@ const User: FC = () => {
             <Box
               display="flex"
               alignItems="center"
-              bgcolor={theme.palette.grey[200]}
+              bgcolor={colors.theme.light_blue}
               p={1}
               borderRadius={1}
               width="fit-content"
@@ -261,7 +270,7 @@ const User: FC = () => {
             Registered on: 15th June 2024
           </Typography>
 
-          <Typography variant="body1" color={theme.palette.grey[600]} mt={2}>
+          <Typography variant="body1" fontSize={20} color={theme.palette.grey[500]} mt={2}>
             Download our app today to get started. Now completely free, no
             hidden costs.
           </Typography>
@@ -284,7 +293,7 @@ const User: FC = () => {
             />
           </Box>
         </Grid>
-        <Grid item xs={12} sm={12} md={5} lg={5} xl={5}>
+        <Grid item xs={12} sm={12} md={12} lg={12} xl={5}>
           <Snapshot />
         </Grid>
       </Grid>

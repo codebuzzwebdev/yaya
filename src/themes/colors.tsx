@@ -5,9 +5,12 @@ export const theme = {
   secondary: "#FBFBFC",
   territory: "#FEF5F8",
   main: "#FF8570",
+  orange: "#F87997",
   pink: "#EEB0D3",
+  light_blue: "#E7F0FA",
   blue: "#A89CE3",
   red: "#F2395B",
+  green: "#74B0B6",
 };
 
 export const primary = {
