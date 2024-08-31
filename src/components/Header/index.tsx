@@ -9,6 +9,7 @@ import {
 } from "@mui/material";
 
 import Icon from "@components/Icon";
+import RightDrawer from "@components/RightDrawer";
 
 import Logo from "@assets/logo.png";
 import Flag from "@assets/flag.png";
@@ -16,6 +17,8 @@ import Flag from "@assets/flag.png";
 export interface HeaderProps {
   handleNavigate: () => void;
 }
+
+const menu = ["Home", "About Us", "Services", "Resources", "Support"];
 
 const Header: FC<HeaderProps> = ({ handleNavigate }) => {
   const theme = useTheme();
@@ -48,22 +51,21 @@ const Header: FC<HeaderProps> = ({ handleNavigate }) => {
 
           <Box display={{ xs: "none", sm: "none", md: "none", lg: "block" }}>
             <Box display="flex" alignItems="center">
-              {["Home", "About Us", "Services", "Resources", "Support"].map(
-                (item, _idx) => (
-                  <Typography
-                    key={`${item}_${_idx}`}
-                    variant="body1"
-                    mx={2}
-                    sx={{
-                      cursor: "pointer",
-                      "&:hover": { color: theme.palette.primary.main },
-                    }}
-                    color={theme.palette.grey[500]}
-                  >
-                    {item}
-                  </Typography>
-                )
-              )}
+              {menu.map((item, _idx) => (
+                <Typography
+                  key={`${item}_${_idx}`}
+                  variant="body1"
+                  mx={2}
+                  sx={{
+                    cursor: "pointer",
+                    "&:hover": { color: theme.palette.primary.main },
+                  }}
+                  color={theme.palette.grey[500]}
+                  onClick={handleNavigate}
+                >
+                  {item}
+                </Typography>
+              ))}
 
               <Box
                 display="flex"
@@ -97,9 +99,7 @@ const Header: FC<HeaderProps> = ({ handleNavigate }) => {
           </Box>
 
           <Box display={{ xs: "block", sm: "block", md: "block", lg: "none" }}>
-            <IconButton>
-              <Icon name="menu" />
-            </IconButton>
+            <RightDrawer routes={menu} handleNavigate={handleNavigate} />
           </Box>
         </Box>
       </Grid>

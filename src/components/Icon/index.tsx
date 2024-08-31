@@ -4,12 +4,14 @@ import SpeedIcon from "@mui/icons-material/Speed";
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import MenuIcon from '@mui/icons-material/Menu';
 import TuneIcon from '@mui/icons-material/Tune';
+import CloseIcon from '@mui/icons-material/Close';
 
 const iconMap = {
   speed: SpeedIcon,
   rightArrow: ArrowForwardIcon,
   menu: MenuIcon,
-  filter: TuneIcon
+  filter: TuneIcon,
+  close: CloseIcon
 };
 
 export type IconName = keyof typeof iconMap;
