@@ -9,6 +9,7 @@ import FlagPNG from "@assets/flag2.png";
 import * as colors from "@themes/colors";
 
 export interface ItemProps {
+  id: string;
   firstName: string;
   lastName: string;
   position: string;
@@ -21,7 +22,7 @@ export interface ItemProps {
 }
 export interface CardProps {
   data: ItemProps;
-  handleNavigate: () => void;
+  handleNavigate: (data: ItemProps) => void;
 }
 
 const Card: FC<CardProps> = ({ data, handleNavigate }) => {
@@ -41,7 +42,7 @@ const Card: FC<CardProps> = ({ data, handleNavigate }) => {
             "rgba(145, 158, 171, 0.2) 0px 0px 2px 0px, rgba(145, 158, 171, 0.12) 0px 12px 24px -4px;",
         },
       }}
-      onClick={handleNavigate}
+      onClick={() => handleNavigate(data)}
     >
       <Box position="relative">
         <img

@@ -1,4 +1,9 @@
+import { FC } from "react";
 import { useTheme, Box, Typography } from "@mui/material";
+
+import { ItemProps } from "@pages/User";
+
+import Loader from "@components/Loader";
 
 import MapPNG from "@assets/icons/map.png";
 import TimerPNG from "@assets/icons/timer.png";
@@ -7,8 +12,17 @@ import FileShieldPNG from "@assets/icons/file-shield.png";
 import StarPNG from "@assets/icons/star.png";
 import MapPinPNG from "@assets/icons/map-pin.png";
 
-const Snapshot = () => {
+export interface MobileProps {
+  loading: boolean;
+  data: ItemProps | null;
+}
+
+const Mobile: FC<MobileProps> = ({ loading, data }) => {
   const theme = useTheme();
+
+  if (loading) {
+    return <Loader />;
+  }
 
   return (
     <>
@@ -62,7 +76,7 @@ const Snapshot = () => {
             fontSize={16}
             color={theme.palette.grey[300]}
           >
-            Philippines
+            {data?.nationality}
           </Typography>
         </Box>
       </Box>
@@ -87,7 +101,7 @@ const Snapshot = () => {
             fontSize={20}
             color={theme.palette.primary.main}
           >
-            AED 2000-3000
+            AED {data?.minSalary}-{data?.maxSalary}
           </Typography>
           <Typography
             variant="body1"
@@ -120,7 +134,7 @@ const Snapshot = () => {
             fontSize={16}
             color={theme.palette.grey[300]}
           >
-            Full time + Live out
+            {data?.jobType}
           </Typography>
         </Box>
       </Box>
@@ -146,7 +160,7 @@ const Snapshot = () => {
             fontSize={16}
             color={theme.palette.grey[300]}
           >
-            5-10 Years
+            {data?.experience}
           </Typography>
         </Box>
       </Box>
@@ -224,7 +238,7 @@ const Snapshot = () => {
             fontSize={16}
             color={theme.palette.grey[300]}
           >
-            Dubai
+            {data?.jobLocation}
           </Typography>
         </Box>
       </Box>
@@ -232,4 +246,4 @@ const Snapshot = () => {
   );
 };
 
-export default Snapshot;
+export default Mobile;

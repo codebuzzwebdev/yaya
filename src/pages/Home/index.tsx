@@ -83,6 +83,7 @@ const Home: FC = () => {
     });
     const _data: ItemProps[] = res.data.data.helpers.map((ele: any) => {
       return {
+        id: ele?.id,
         firstName: ele?.firstName,
         lastName: ele?.lastName,
         position: ele?.position?.title || "NA",
@@ -108,8 +109,8 @@ const Home: FC = () => {
     fetchFilters();
   }, []);
 
-  const navigateToUser = () => {
-    navigate("/user");
+  const navigateToUser = (data: ItemProps) => {
+    navigate(`/user/${data.id}`);
   };
 
   return (
@@ -231,7 +232,7 @@ const Home: FC = () => {
             {!isLoading && data && data.length > 0 ? (
               data.map((item, _idx) => (
                 <Grid
-                  key={`${item.firstName}_${_idx}`}
+                  key={`${item.id}_${_idx}`}
                   item
                   xs={12}
                   sm={6}

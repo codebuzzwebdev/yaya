@@ -22,7 +22,7 @@ export const routes: RouteType[] = [
   },
   {
     title: "User",
-    path: "/user",
+    path: "/user/:id",
     icon: "speed",
     element: User,
   },

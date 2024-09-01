@@ -1,10 +1,12 @@
 import { FC } from "react";
 import { useTheme, Grid, Box, Typography } from "@mui/material";
 
+import { ItemProps } from "@pages/User";
+
+import Loader from "@components/Loader";
 import Icon from "@components/Icon";
 import Snapshot from "@components/Snapshot";
 
-import NanniePNG from "@assets/nannie.png";
 import GooglePNG from "@assets/google.png";
 import ApplePNG from "@assets/apple.png";
 import LinkPNG from "@assets/icons/link.png";
@@ -12,8 +14,28 @@ import MailPNG from "@assets/icons/mail.png";
 
 import * as colors from "@themes/colors";
 
-const User: FC = () => {
+export interface MobileProps {
+  loading: boolean;
+  data: ItemProps | null;
+}
+
+const Mobile: FC<MobileProps> = ({ loading, data }) => {
   const theme = useTheme();
+
+  if (loading) {
+    return (
+      <Grid
+        container
+        spacing={2}
+        px={{ xs: 2, sm: 2, md: 2, lg: 16, xl: 16 }}
+        py={6}
+      >
+        <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+          <Loader />
+        </Grid>
+      </Grid>
+    );
+  }
 
   return (
     <Grid
@@ -26,7 +48,7 @@ const User: FC = () => {
         <Box display="flex" flexDirection="column">
           <Box textAlign="center">
             <Typography variant="body1" fontSize={24} fontWeight="bold">
-              Jane Doe
+              {data?.firstName} {data?.lastName}
             </Typography>
 
             <Typography
@@ -35,7 +57,7 @@ const User: FC = () => {
               color={theme.palette.grey[600]}
               mt={1}
             >
-              Nanny / Nurse
+              {data?.position}
             </Typography>
 
             <Box display="flex" justifyContent="center" mt={1}>
@@ -70,6 +92,7 @@ const User: FC = () => {
                 display="flex"
                 alignItems="center"
                 sx={{
+                  display: data?.yayaPick === 1 ? "block" : "none",
                   cursor: "pointer",
                   "&:hover": {
                     bgcolor: theme.palette.error.dark,
@@ -94,7 +117,7 @@ const User: FC = () => {
             mt={2}
           >
             <img
-              src={NanniePNG}
+              src={data?.photo}
               alt="Nannie"
               width="100%"
               height={360}
@@ -125,7 +148,7 @@ const User: FC = () => {
                 fontSize={14}
                 color={theme.palette.common.white}
               >
-                Full Time
+                {data?.jobType}
               </Typography>
             </Box>
             <Box
@@ -156,7 +179,7 @@ const User: FC = () => {
         </Box>
 
         <Grid item xs={12} sm={12} md={5} lg={5} xl={5}>
-          <Snapshot />
+          <Snapshot loading={loading} data={data} />
 
           <Typography variant="h6" fontWeight="bold" mt={2}>
             About Me
@@ -324,4 +347,4 @@ const User: FC = () => {
   );
 };
 
-export default User;
+export default Mobile;

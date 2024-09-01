@@ -1,11 +1,13 @@
 import { FC } from "react";
 import { useTheme, Grid, Box, Typography } from "@mui/material";
 
+import { ItemProps } from "@pages/User";
+
+import Loader from "@components/Loader";
 import Icon from "@components/Icon";
 import Snapshot from "@components/Snapshot";
 
 import BadgePNG from "@assets/icons/white-badge.png";
-import NanniePNG from "@assets/nannie.png";
 import GooglePNG from "@assets/google.png";
 import ApplePNG from "@assets/apple.png";
 import LinkPNG from "@assets/icons/link.png";
@@ -13,8 +15,28 @@ import MailPNG from "@assets/icons/mail.png";
 
 import * as colors from "@themes/colors";
 
-const User: FC = () => {
+export interface DesktopProps {
+  loading: boolean;
+  data: ItemProps | null;
+}
+
+const Desktop: FC<DesktopProps> = ({ loading, data }) => {
   const theme = useTheme();
+
+  if (loading) {
+    return (
+      <Grid
+        container
+        spacing={2}
+        px={{ xs: 2, sm: 2, md: 2, lg: 16, xl: 16 }}
+        py={6}
+      >
+        <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+          <Loader />
+        </Grid>
+      </Grid>
+    );
+  }
 
   return (
     <Grid
@@ -26,7 +48,7 @@ const User: FC = () => {
       <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
         <Box display="flex">
           <img
-            src={NanniePNG}
+            src={data?.photo}
             alt="Nannie"
             width={185}
             height={185}
@@ -39,7 +61,7 @@ const User: FC = () => {
 
           <Box ml={3}>
             <Typography variant="body1" fontSize={18} fontWeight="bold">
-              Jane Doe
+              {data?.firstName} {data?.lastName}
             </Typography>
 
             <Typography
@@ -48,7 +70,7 @@ const User: FC = () => {
               color={theme.palette.grey[600]}
               mt={1}
             >
-              Nanny / Nurse
+              {data?.position}
             </Typography>
 
             <Box display="flex" flexWrap="wrap">
@@ -86,6 +108,7 @@ const User: FC = () => {
                 display="flex"
                 alignItems="center"
                 sx={{
+                  display: data?.yayaPick === 1 ? "block" : "none",
                   cursor: "pointer",
                   "&:hover": {
                     bgcolor: theme.palette.error.dark,
@@ -300,10 +323,10 @@ const User: FC = () => {
         </Box>
       </Grid>
       <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
-        <Snapshot />
+        <Snapshot loading={loading} data={data} />
       </Grid>
     </Grid>
   );
 };
 
-export default User;
+export default Desktop;
