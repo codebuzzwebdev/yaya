@@ -4,7 +4,6 @@ import { useTheme, Box, Typography } from "@mui/material";
 import BadgePNG from "@assets/icons/badge.png";
 import VideoPNG from "@assets/icons/video.png";
 
-import NanniePNG from "@assets/nannie.png";
 import FlagPNG from "@assets/flag2.png";
 
 import * as colors from "@themes/colors";
@@ -12,6 +11,13 @@ import * as colors from "@themes/colors";
 export interface ItemProps {
   firstName: string;
   lastName: string;
+  position: string;
+  jobType: string;
+  experience: string;
+  minSalary: string;
+  maxSalary: string;
+  yayaPick: number;
+  photo: string;
 }
 export interface CardProps {
   data: ItemProps;
@@ -39,7 +45,7 @@ const Card: FC<CardProps> = ({ data, handleNavigate }) => {
     >
       <Box position="relative">
         <img
-          src={NanniePNG}
+          src={data.photo}
           alt="Nannie"
           width="100%"
           height={220}
@@ -69,6 +75,7 @@ const Card: FC<CardProps> = ({ data, handleNavigate }) => {
           width={32}
           height={32}
           style={{
+            display: data.yayaPick === 1 ? "block" : "none",
             objectFit: "cover",
             cursor: "pointer",
             position: "absolute",
@@ -114,7 +121,7 @@ const Card: FC<CardProps> = ({ data, handleNavigate }) => {
             fontSize={12}
             color={theme.palette.common.black}
           >
-            Nanny / Nurse
+            {data.position}
           </Typography>
         </Box>
         <Box
@@ -129,7 +136,7 @@ const Card: FC<CardProps> = ({ data, handleNavigate }) => {
             fontSize={12}
             color={theme.palette.common.white}
           >
-            Full Time + Live Out
+            {data.jobType}
           </Typography>
         </Box>
         <Box
@@ -144,7 +151,7 @@ const Card: FC<CardProps> = ({ data, handleNavigate }) => {
             fontSize={12}
             color={theme.palette.common.white}
           >
-            More than 10 years
+            {data.experience}
           </Typography>
         </Box>
         <Box display="flex" mt={0.5}>
@@ -153,7 +160,7 @@ const Card: FC<CardProps> = ({ data, handleNavigate }) => {
             fontSize={12}
             color={theme.palette.common.black}
           >
-            AED2,500-3,000
+            AED{data.minSalary}-{data.maxSalary}
           </Typography>
           <Typography
             variant="body1"
