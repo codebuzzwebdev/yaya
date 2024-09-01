@@ -9,10 +9,12 @@ import MuiAccordionSummary, {
 import MuiAccordionDetails from "@mui/material/AccordionDetails";
 import Typography from "@mui/material/Typography";
 
+import useDebounce from "@hooks/useDebounce";
+
 import Loader from "@components/Loader";
 import CheckItem from "@components/CheckItem";
 
-import { CityType, NationalityType, JobType, ExperienceType, nationalities, jobTypes, experiences } from "@utils";
+import { CityType, NationalityType, JobType, ExperienceType } from "@utils";
 
 const Accordion = styled((props: AccordionProps) => (
   <MuiAccordion disableGutters elevation={0} square {...props} />
@@ -73,9 +75,25 @@ const AllFilter: React.FC<AllFilterProps> = ({ data, callback }) => {
     NationalityType[]
   >(data.nationalities);
   const [listJobTypes, setJobTypes] = React.useState<JobType[]>(data.jobTypes);
+  const [isChanged, setIsChanged] = React.useState<boolean>(false);
+  const [minSalary, setMinSalary] = React.useState<string>("");
+  const [maxSalary, setMaxSalary] = React.useState<string>("");
   const [listExperiences, setExperiences] = React.useState<ExperienceType[]>(
     data.experiences
   );
+
+  useDebounce(() => {
+    if (isChanged) {
+      callback({
+        cities: listCities,
+        nationalities: listNationalities,
+        jobTypes: listJobTypes,
+        experiences: listExperiences,
+        minSalary,
+        maxSalary,
+      });
+    }
+  }, [isChanged, minSalary, maxSalary]);
 
   const handleChange =
     (panel: string) => (_event: React.SyntheticEvent, newExpanded: boolean) => {
@@ -95,30 +113,68 @@ const AllFilter: React.FC<AllFilterProps> = ({ data, callback }) => {
       case "city":
         newListCities[_idx].checked = _event.target.checked;
         setListCities(newListCities);
-        callback({ cities: newListCities, nationalities: newNationalities, jobTypes: newJobTypes, experiences: newExperiences });
+        callback({
+          cities: newListCities,
+          nationalities: newNationalities,
+          jobTypes: newJobTypes,
+          experiences: newExperiences,
+          minSalary,
+          maxSalary,
+        });
         break;
 
       case "nationality":
         newNationalities[_idx].checked = _event.target.checked;
         setNationalities(newNationalities);
-        callback({ cities: newListCities, nationalities: newNationalities, jobTypes: newJobTypes, experiences: newExperiences });
+        callback({
+          cities: newListCities,
+          nationalities: newNationalities,
+          jobTypes: newJobTypes,
+          experiences: newExperiences,
+          minSalary,
+          maxSalary,
+        });
         break;
 
       case "jobType":
         newJobTypes[_idx].checked = _event.target.checked;
         setJobTypes(newJobTypes);
-        callback({ cities: newListCities, nationalities: newNationalities, jobTypes: newJobTypes, experiences: newExperiences });
+        callback({
+          cities: newListCities,
+          nationalities: newNationalities,
+          jobTypes: newJobTypes,
+          experiences: newExperiences,
+          minSalary,
+          maxSalary,
+        });
         break;
 
       case "experience":
         newExperiences[_idx].checked = _event.target.checked;
         setExperiences(newExperiences);
-        callback({ cities: newListCities, nationalities: newNationalities, jobTypes: newJobTypes, experiences: newExperiences });
+        callback({
+          cities: newListCities,
+          nationalities: newNationalities,
+          jobTypes: newJobTypes,
+          experiences: newExperiences,
+          minSalary,
+          maxSalary,
+        });
         break;
 
       default:
         break;
     }
+  };
+
+  const handleMinChange = (e: any) => {
+    setMinSalary(e.target.value);
+    setIsChanged(true);
+  };
+
+  const handleMaxChange = (e: any) => {
+    setMaxSalary(e.target.value);
+    setIsChanged(true);
   };
 
   return (
@@ -206,8 +262,9 @@ const AllFilter: React.FC<AllFilterProps> = ({ data, callback }) => {
             <TextField
               name="min"
               placeholder="Min:"
-              value=""
+              value={minSalary}
               margin="normal"
+              onChange={handleMinChange}
               InputProps={{
                 startAdornment: (
                   <InputAdornment position="start">$</InputAdornment>
@@ -217,8 +274,9 @@ const AllFilter: React.FC<AllFilterProps> = ({ data, callback }) => {
             <TextField
               name="max"
               placeholder="Max:"
-              value=""
+              value={maxSalary}
               margin="normal"
+              onChange={handleMaxChange}
               InputProps={{
                 startAdornment: (
                   <InputAdornment position="start">$</InputAdornment>
@@ -255,7 +313,11 @@ const AllFilter: React.FC<AllFilterProps> = ({ data, callback }) => {
   );
 };
 
-const Filters: React.FC<FilterLoadingProps> = ({ isLoading, data, callback }) => {
+const Filters: React.FC<FilterLoadingProps> = ({
+  isLoading,
+  data,
+  callback,
+}) => {
   if (isLoading) {
     return <Loader />;
   }

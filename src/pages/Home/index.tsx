@@ -109,10 +109,22 @@ const Home: FC = () => {
     fetchFilters();
   }, []);
 
-  const fetchFilteredNannies = async (data: any) => {
+  const fetchFilteredNannies = async ({
+    nationalities,
+    cities,
+    jobTypes,
+    experiences,
+    minSalary,
+    maxSalary,
+  }: any) => {
     setLoading(true);
     const formData = new FormData();
-    formData.append("nationalities", JSON.stringify(data));
+    formData.append("nationalities", JSON.stringify(nationalities));
+    formData.append("cities", JSON.stringify(cities));
+    formData.append("jobTypes", JSON.stringify(jobTypes));
+    formData.append("experiences", JSON.stringify(experiences));
+    formData.append("minSalary", minSalary);
+    formData.append("maxSalary", maxSalary);
     const res: any = await request(apis.GET_FILTERED_NANNIES_API, {
       method: constants.POST,
       data: formData,
@@ -144,7 +156,23 @@ const Home: FC = () => {
     const _nationalities = filters.nationalities
       .filter((e: NationalityType) => e.checked)
       .map((e2: NationalityType) => e2.count);
-    fetchFilteredNannies(_nationalities);
+    const _cities = filters.cities
+      .filter((e: CityType) => e.checked)
+      .map((e2: CityType) => e2.count);
+    const _jobTypes = filters.jobTypes
+      .filter((e: JobType) => e.checked)
+      .map((e2: JobType) => e2.count);
+    const _experiences = filters.experiences
+      .filter((e: ExperienceType) => e.checked)
+      .map((e2: ExperienceType) => e2.count);
+    fetchFilteredNannies({
+      nationalities: _nationalities,
+      cities: _cities,
+      jobTypes: _jobTypes,
+      experiences: _experiences,
+      minSalary: filters.minSalary,
+      maxSalary: filters.maxSalary,
+    });
   };
 
   const navigateToUser = (data: ItemProps) => {
