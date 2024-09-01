@@ -12,7 +12,7 @@ import Typography from "@mui/material/Typography";
 import Loader from "@components/Loader";
 import CheckItem from "@components/CheckItem";
 
-import { CityType, NationalityType, JobType, ExperienceType } from "@utils";
+import { CityType, NationalityType, JobType, ExperienceType, nationalities, jobTypes, experiences } from "@utils";
 
 const Accordion = styled((props: AccordionProps) => (
   <MuiAccordion disableGutters elevation={0} square {...props} />
@@ -56,14 +56,16 @@ export interface FilterProps {
 
 export interface AllFilterProps {
   data: FilterProps;
+  callback: (e: any) => void;
 }
 
 export interface FilterLoadingProps {
   isLoading: boolean;
   data: FilterProps;
+  callback: (e: any) => void;
 }
 
-const AllFilter: React.FC<AllFilterProps> = ({ data }) => {
+const AllFilter: React.FC<AllFilterProps> = ({ data, callback }) => {
   const [expanded, setExpanded] = React.useState<string | false>("panel1");
 
   const [listCities, setListCities] = React.useState<CityType[]>(data.cities);
@@ -93,21 +95,25 @@ const AllFilter: React.FC<AllFilterProps> = ({ data }) => {
       case "city":
         newListCities[_idx].checked = _event.target.checked;
         setListCities(newListCities);
+        callback({ cities: newListCities, nationalities: newNationalities, jobTypes: newJobTypes, experiences: newExperiences });
         break;
 
       case "nationality":
         newNationalities[_idx].checked = _event.target.checked;
         setNationalities(newNationalities);
+        callback({ cities: newListCities, nationalities: newNationalities, jobTypes: newJobTypes, experiences: newExperiences });
         break;
 
       case "jobType":
         newJobTypes[_idx].checked = _event.target.checked;
         setJobTypes(newJobTypes);
+        callback({ cities: newListCities, nationalities: newNationalities, jobTypes: newJobTypes, experiences: newExperiences });
         break;
 
       case "experience":
         newExperiences[_idx].checked = _event.target.checked;
         setExperiences(newExperiences);
+        callback({ cities: newListCities, nationalities: newNationalities, jobTypes: newJobTypes, experiences: newExperiences });
         break;
 
       default:
@@ -249,11 +255,11 @@ const AllFilter: React.FC<AllFilterProps> = ({ data }) => {
   );
 };
 
-const Filters: React.FC<FilterLoadingProps> = ({ isLoading, data }) => {
+const Filters: React.FC<FilterLoadingProps> = ({ isLoading, data, callback }) => {
   if (isLoading) {
     return <Loader />;
   }
-  return <AllFilter data={data} />;
+  return <AllFilter data={data} callback={callback} />;
 };
 
 export default Filters;

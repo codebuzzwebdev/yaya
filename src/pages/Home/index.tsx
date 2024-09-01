@@ -109,6 +109,44 @@ const Home: FC = () => {
     fetchFilters();
   }, []);
 
+  const fetchFilteredNannies = async (data: any) => {
+    setLoading(true);
+    const formData = new FormData();
+    formData.append("nationalities", JSON.stringify(data));
+    const res: any = await request(apis.GET_FILTERED_NANNIES_API, {
+      method: constants.POST,
+      data: formData,
+    });
+    const _data: ItemProps[] = res.data.data.helpers.map((ele: any) => {
+      return {
+        id: ele?.id,
+        firstName: ele?.firstName,
+        lastName: ele?.lastName,
+        position: ele?.position?.title || "NA",
+        jobType: ele?.jobType?.title || "NA",
+        experience:
+          `${ele?.yearOfExperience?.experienceOperator} ${ele?.yearOfExperience?.years} year(s)` ||
+          "NA",
+        minSalary: `${ele?.minSalary.toLocaleString()}` || "NA",
+        maxSalary: `${ele?.maxSalary.toLocaleString()}` || "NA",
+        yayaPick: ele?.yayaPick,
+        photo:
+          ele.photos && ele.photos.length > 0 && ele.photos[0].imageUrl
+            ? `${BASE_URL}/${ele.photos[0].imageUrl}`
+            : PlaceholderPNG,
+      };
+    });
+    setData(_data);
+    setLoading(false);
+  };
+
+  const callback = (filters: any) => {
+    const _nationalities = filters.nationalities
+      .filter((e: NationalityType) => e.checked)
+      .map((e2: NationalityType) => e2.count);
+    fetchFilteredNannies(_nationalities);
+  };
+
   const navigateToUser = (data: ItemProps) => {
     navigate(`/user/${data.id}`);
   };
@@ -181,6 +219,7 @@ const Home: FC = () => {
                 <LeftDrawer
                   isLoading={isFilterLoading}
                   data={{ cities, nationalities, jobTypes, experiences }}
+                  callback={callback}
                 />
               </Box>
             </Box>
@@ -224,6 +263,7 @@ const Home: FC = () => {
           <Filters
             isLoading={isFilterLoading}
             data={{ cities, nationalities, jobTypes, experiences }}
+            callback={callback}
           />
         </Grid>
 
