@@ -217,13 +217,13 @@ const Theme: React.FC<{ children: ReactNode }> = ({ children }) => {
           root: {
             "&.Mui-selected": {
               background: primary.light.main,
-              color: common.white
+              color: common.white,
             },
             "&.Mui-selected:hover": {
               background: primary.light.main,
             },
             "&:hover": {
-              background: grey.light[200]
+              background: grey.light[200],
             },
           },
         },
@@ -283,6 +283,16 @@ const Theme: React.FC<{ children: ReactNode }> = ({ children }) => {
               "&.Mui-error": {
                 color: error.main,
               },
+            },
+          },
+        },
+      },
+      MuiPaginationItem: {
+        styleOverrides: {
+          root: {
+            color: common.black,
+            "&.Mui-selected": {
+              color: common.white,
             },
           },
         },

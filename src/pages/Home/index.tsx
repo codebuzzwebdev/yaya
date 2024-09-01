@@ -8,6 +8,7 @@ import Card from "@components/Card";
 import Filters from "@components/Filters";
 import Sorting from "@components/Sorting";
 import LeftDrawer from "@components/LeftDrawer";
+import Pagination from "@components/Pagination";
 
 import { cities, nationalities, jobTypes, experiences } from "@utils";
 
@@ -26,7 +27,7 @@ const Home: FC = () => {
       <Grid
         container
         spacing={2}
-        px={{ xs: 4, sm: 4, md: 6, lg: 8, xl: 8 }}
+        px={{ xs: 3, sm: 3, md: 6, lg: 8, xl: 8 }}
         py={4}
       >
         <Grid
@@ -152,6 +153,12 @@ const Home: FC = () => {
                 />
               </Grid>
             ))}
+          </Grid>
+
+          <Grid container spacing={2} mt={3}>
+            <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+              <Pagination />
+            </Grid>
           </Grid>
         </Grid>
       </Grid>
