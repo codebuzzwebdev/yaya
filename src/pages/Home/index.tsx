@@ -183,29 +183,39 @@ const Home: FC = () => {
     <>
       <Banner />
 
-      <Grid
-        container
-        spacing={2}
-        px={{ xs: 3, sm: 3, md: 6, lg: 8, xl: 8 }}
-        py={4}
-      >
+      <Grid container spacing={2} p={{ xs: 8, sm: 8, md: 4, lg: 4, xl: 4 }}>
+        {/* TOP SECTION */}
         <Grid
+          item
+          xs={12}
+          sm={12}
+          md={12}
+          lg={1}
+          xl={1}
           display={{
             xs: "none",
             sm: "none",
-            md: "block",
+            md: "none",
             lg: "block",
             xl: "block",
           }}
+        />
+        <Grid
           item
           xs={12}
           sm={12}
           md={4}
-          lg={4}
-          xl={4}
-        ></Grid>
-
-        <Grid item xs={12} sm={12} md={12} lg={8} xl={8}>
+          lg={3}
+          xl={3}
+          display={{
+            xs: "none",
+            sm: "none",
+            md: "none",
+            lg: "block",
+            xl: "block",
+          }}
+        />
+        <Grid item xs={12} sm={12} md={12} lg={7} xl={7}>
           <Box
             display="flex"
             flexDirection={{
@@ -253,24 +263,13 @@ const Home: FC = () => {
             </Box>
           </Box>
         </Grid>
-
         <Grid
-          display={{
-            xs: "none",
-            sm: "none",
-            md: "none",
-            lg: "block",
-            xl: "block",
-          }}
           item
           xs={12}
           sm={12}
           md={12}
           lg={1}
           xl={1}
-        ></Grid>
-
-        <Grid
           display={{
             xs: "none",
             sm: "none",
@@ -278,15 +277,25 @@ const Home: FC = () => {
             lg: "block",
             xl: "block",
           }}
+        />
+
+        {/* CENTER SECTION */}
+        <Grid item xs={12} sm={12} md={12} lg={1} xl={1} />
+
+        <Grid
           item
           xs={12}
           sm={12}
-          md={12}
+          md={3}
           lg={3}
           xl={3}
-          position="sticky"
-          top="76px"
-          height="fit-content"
+          display={{
+            xs: "none",
+            sm: "none",
+            md: "none",
+            lg: "block",
+            xl: "block",
+          }}
         >
           <Filters
             isLoading={isFilterLoading}
@@ -295,7 +304,7 @@ const Home: FC = () => {
           />
         </Grid>
 
-        <Grid item xs={12} sm={12} md={12} lg={8} xl={8}>
+        <Grid item xs={12} sm={12} md={12} lg={7} xl={7}>
           <Grid container spacing={2}>
             {!isLoading && data && data.length > 0 ? (
               data.map((item, _idx) => (
@@ -304,8 +313,8 @@ const Home: FC = () => {
                   item
                   xs={12}
                   sm={6}
-                  md={4}
-                  lg={3}
+                  md={3}
+                  lg={4}
                   xl={3}
                 >
                   <Card data={item} handleNavigate={navigateToUser} />
@@ -335,9 +344,10 @@ const Home: FC = () => {
             </Grid>
           </Grid>
         </Grid>
-      </Grid>
 
-      <Footer />
+        <Grid item xs={12} sm={12} md={12} lg={1} xl={1} />
+        <Footer />
+      </Grid>
     </>
   );
 };

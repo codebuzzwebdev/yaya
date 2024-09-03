@@ -51,10 +51,10 @@ const Card: FC<CardProps> = ({ data, handleNavigate }) => {
           width="100%"
           height={220}
           style={{
-            objectFit: "cover",
+            objectFit: "fill",
             cursor: "pointer",
-            borderTopLeftRadius: 16,
-            borderTopRightRadius: 16,
+            borderTopLeftRadius: 12,
+            borderTopRightRadius: 12,
           }}
         />
         <img

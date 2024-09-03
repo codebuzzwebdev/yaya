@@ -68,7 +68,7 @@ export interface FilterLoadingProps {
 }
 
 const AllFilter: React.FC<AllFilterProps> = ({ data, callback }) => {
-  const [expanded, setExpanded] = React.useState<string | false>("panel1");
+  const [expanded, setExpanded] = React.useState<string | false>(false);
 
   const [listCities, setListCities] = React.useState<CityType[]>(data.cities);
   const [listNationalities, setNationalities] = React.useState<

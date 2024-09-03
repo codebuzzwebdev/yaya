@@ -34,6 +34,7 @@ const Banner: FC = () => {
       container
       px={{ xs: 1, sm: 1, md: 2, lg: 6 }}
       py={{ xs: 2, sm: 2, md: 4, lg: 0 }}
+      pr={{ lg: 0 }}
       bgcolor={theme.palette.secondary.light}
     >
       <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>

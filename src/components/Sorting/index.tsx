@@ -35,7 +35,6 @@ const Sorting: FC = () => {
           label=""
           onChange={handleChange}
         >
-          <MenuItem value="Recent">Recent</MenuItem>
           <MenuItem value="Latest">Latest</MenuItem>
           <MenuItem value="Old">Old</MenuItem>
         </Select>

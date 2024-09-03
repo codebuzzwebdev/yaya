@@ -55,7 +55,7 @@ const Desktop: FC<DesktopProps> = ({ loading, data }) => {
             style={{
               objectFit: "cover",
               cursor: "pointer",
-              borderRadius: 16,
+              borderRadius: 12,
             }}
           />
 
