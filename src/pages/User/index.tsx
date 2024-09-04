@@ -40,6 +40,10 @@ const User: FC = () => {
   const [isLoading, setLoading] = useState(true);
   const [data, setData] = useState<ItemProps | null>(null);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const fetchNannie = async (id: string) => {
     const formData = new FormData();
     formData.append("id", id);

@@ -17,21 +17,39 @@ import * as constants from "@store/constants";
 import * as apis from "@store/apis";
 import request from "@store/request";
 
-import { CityType, NationalityType, JobType, ExperienceType } from "@utils";
+import {
+  CityType,
+  NationalityType,
+  JobType,
+  ExperienceType,
+  PaginationType,
+} from "@utils";
 
 const BASE_URL = import.meta.env.VITE_IMAGE_URL;
+
+const init = {
+  page: 1,
+  perPage: 30,
+  totalPages: 0,
+  totalRecords: 0,
+};
 
 const Home: FC = () => {
   const theme = useTheme();
   const navigate = useNavigate();
 
   const [isLoading, setLoading] = useState(true);
+  const [pagination, setPagination] = useState<PaginationType>(init);
   const [data, setData] = useState<ItemProps[]>([]);
   const [isFilterLoading, setFilterLoading] = useState(true);
   const [cities, setCities] = useState<CityType[]>([]);
   const [nationalities, setNationalities] = useState<NationalityType[]>([]);
   const [jobTypes, setJobTypes] = useState<JobType[]>([]);
   const [experiences, setExperiences] = useState<ExperienceType[]>([]);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pagination.page]);
 
   const fetchFilters = async () => {
     try {
@@ -87,10 +105,15 @@ const Home: FC = () => {
   };
 
   const fetchNannies = async () => {
+    const formData = new FormData();
+    formData.append("page", JSON.stringify(pagination.page));
+    formData.append("perPage", JSON.stringify(pagination.perPage));
     const res: any = await request(apis.GET_FILTERED_NANNIES_API, {
       method: constants.POST,
+      data: formData,
     });
-    const _data: ItemProps[] = res.data.data.helpers.map((ele: any) => {
+    const result = res.data.data;
+    const _data: ItemProps[] = result.helpers.map((ele: any) => {
       return {
         id: ele?.id,
         firstName: ele?.firstName,
@@ -110,13 +133,21 @@ const Home: FC = () => {
       };
     });
     setData(_data);
+    setPagination({
+      ...pagination,
+      totalPages: result.totalPages,
+      totalRecords: result.totalRecords,
+    });
     setLoading(false);
   };
 
   useEffect(() => {
-    fetchNannies();
     fetchFilters();
   }, []);
+
+  useEffect(() => {
+    fetchNannies();
+  }, [pagination.page]);
 
   const fetchFilteredNannies = async ({
     nationalities,
@@ -128,17 +159,23 @@ const Home: FC = () => {
   }: any) => {
     setLoading(true);
     const formData = new FormData();
-    formData.append("nationalities", JSON.stringify(nationalities));
-    formData.append("city", JSON.stringify(cities));
-    formData.append("positionType", JSON.stringify(jobTypes));
-    formData.append("experiences", JSON.stringify(experiences));
-    formData.append("minSalary", minSalary);
-    formData.append("maxSalary", maxSalary);
+    formData.append("page", JSON.stringify(init.page));
+    formData.append("perPage", JSON.stringify(init.perPage));
+    if (nationalities?.length > 0)
+      formData.append("nationalities", JSON.stringify(nationalities));
+    if (cities?.length > 0) formData.append("city", JSON.stringify(cities));
+    if (jobTypes?.length > 0)
+      formData.append("positionType", JSON.stringify(jobTypes));
+    if (experiences?.length > 0)
+      formData.append("experiences", JSON.stringify(experiences));
+    if (minSalary) formData.append("minSalary", minSalary);
+    if (maxSalary) formData.append("maxSalary", maxSalary);
     const res: any = await request(apis.GET_FILTERED_NANNIES_API, {
       method: constants.POST,
       data: formData,
     });
-    const _data: ItemProps[] = res.data.data.helpers.map((ele: any) => {
+    const result = res.data.data;
+    const _data: ItemProps[] = result.helpers.map((ele: any) => {
       return {
         id: ele?.id,
         firstName: ele?.firstName,
@@ -158,6 +195,11 @@ const Home: FC = () => {
       };
     });
     setData(_data);
+    setPagination({
+      ...pagination,
+      totalPages: result.totalPages,
+      totalRecords: result.totalRecords,
+    });
     setLoading(false);
   };
 
@@ -182,6 +224,11 @@ const Home: FC = () => {
       minSalary: filters.minSalary,
       maxSalary: filters.maxSalary,
     });
+  };
+
+  const onPagination = (page: number) => {
+    setLoading(true);
+    setPagination({ ...pagination, page });
   };
 
   const navigateToUser = (data: ItemProps) => {
@@ -243,7 +290,7 @@ const Home: FC = () => {
               color={theme.palette.grey[900]}
               mt={2}
             >
-              Nannies in UAE (241)
+              Nannies in UAE ({pagination.totalRecords})
             </Typography>
 
             <Box
@@ -359,7 +406,10 @@ const Home: FC = () => {
             }}
           >
             <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
-              <Pagination />
+              <Pagination
+                count={pagination.totalPages}
+                onChange={onPagination}
+              />
             </Grid>
           </Grid>
         </Grid>
@@ -377,7 +427,7 @@ const Home: FC = () => {
         }}
         mb={6}
       >
-        <Pagination />
+        <Pagination count={pagination.totalPages} onChange={onPagination} />
       </Box>
 
       <Box>

@@ -1,6 +1,16 @@
+import { FC } from "react";
 import { Box, Pagination as MuiPagination } from "@mui/material";
 
-const Pagination = () => {
+export interface PaginationProps {
+  count: number;
+  onChange: (page: number) => void;
+}
+
+const Pagination: FC<PaginationProps> = ({ count, onChange }) => {
+  const handleChange = (_e: any, page: number) => {
+    onChange(page);
+  };
+
   return (
     <>
       <Box
@@ -13,7 +23,12 @@ const Pagination = () => {
         }}
       >
         <Box display="flex" justifyContent="center">
-          <MuiPagination size="large" count={10} color="primary" />
+          <MuiPagination
+            size="large"
+            count={count}
+            color="primary"
+            onChange={handleChange}
+          />
         </Box>
       </Box>
 
@@ -27,7 +42,12 @@ const Pagination = () => {
         }}
       >
         <Box display="flex" justifyContent="center">
-          <MuiPagination size="small" count={10} color="primary" />
+          <MuiPagination
+            size="small"
+            count={count}
+            color="primary"
+            onChange={handleChange}
+          />
         </Box>
       </Box>
     </>

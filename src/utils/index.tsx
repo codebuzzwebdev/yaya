@@ -577,3 +577,10 @@ export const experiences: ExperienceType[] = [
     checked: false,
   },
 ];
+
+export interface PaginationType {
+  page: number;
+  perPage: number;
+  totalPages: number;
+  totalRecords: number;
+}
