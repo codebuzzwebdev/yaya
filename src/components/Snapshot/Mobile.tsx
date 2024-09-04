@@ -50,7 +50,7 @@ const Mobile: FC<MobileProps> = ({ loading, data }) => {
             fontSize={20}
             color={theme.palette.primary.main}
           >
-            36
+            {data?.age}
           </Typography>
         </Box>
       </Box>
@@ -186,7 +186,7 @@ const Mobile: FC<MobileProps> = ({ loading, data }) => {
             fontSize={16}
             color={theme.palette.grey[300]}
           >
-            Visa Required
+            {data?.visa}
           </Typography>
         </Box>
       </Box>
@@ -212,7 +212,7 @@ const Mobile: FC<MobileProps> = ({ loading, data }) => {
             fontSize={16}
             color={theme.palette.grey[300]}
           >
-            1st July
+            {data?.availableFrom}
           </Typography>
         </Box>
       </Box>
@@ -238,7 +238,7 @@ const Mobile: FC<MobileProps> = ({ loading, data }) => {
             fontSize={16}
             color={theme.palette.grey[300]}
           >
-            {data?.jobLocation}
+            {data?.city}
           </Typography>
         </Box>
       </Box>

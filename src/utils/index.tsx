@@ -431,6 +431,7 @@ export const countries: readonly CountryType[] = [
 ];
 
 export interface CityType {
+  id: number;
   label: string;
   count: number;
   checked: boolean;
@@ -438,26 +439,31 @@ export interface CityType {
 
 export const cities: CityType[] = [
   {
+    id: 1,
     label: "United States",
     count: 1200,
     checked: false,
   },
   {
+    id: 2,
     label: "Canada",
     count: 1200,
     checked: false,
   },
   {
+    id: 3,
     label: "England",
     count: 1200,
     checked: false,
   },
   {
+    id: 4,
     label: "UAE",
     count: 1200,
     checked: false,
   },
   {
+    id: 5,
     label: "Philippines",
     count: 1200,
     checked: false,
@@ -465,6 +471,7 @@ export const cities: CityType[] = [
 ];
 
 export interface NationalityType {
+  id: number;
   label: string;
   count: number;
   checked: boolean;
@@ -472,26 +479,31 @@ export interface NationalityType {
 
 export const nationalities: NationalityType[] = [
   {
+    id: 1,
     label: "Philippines",
     count: 1200,
     checked: false,
   },
   {
+    id: 2,
     label: "Uganda",
     count: 1200,
     checked: false,
   },
   {
+    id: 3,
     label: "Sri Lanka",
     count: 1200,
     checked: false,
   },
   {
+    id: 4,
     label: "Kenya",
     count: 1200,
     checked: false,
   },
   {
+    id: 5,
     label: "Bangladesh",
     count: 1200,
     checked: false,
@@ -499,6 +511,7 @@ export const nationalities: NationalityType[] = [
 ];
 
 export interface JobType {
+  id: number;
   label: string;
   count: number;
   checked: boolean;
@@ -506,21 +519,25 @@ export interface JobType {
 
 export const jobTypes: JobType[] = [
   {
+    id: 1,
     label: "Full Time + Live In",
     count: 1200,
     checked: false,
   },
   {
+    id: 2,
     label: "Full Time + Live Out",
     count: 1200,
     checked: false,
   },
   {
+    id: 3,
     label: "Full Time + Flexible",
     count: 1200,
     checked: false,
   },
   {
+    id: 4,
     label: "Part Time",
     count: 1200,
     checked: false,
@@ -528,6 +545,7 @@ export const jobTypes: JobType[] = [
 ];
 
 export interface ExperienceType {
+  id: number;
   label: string;
   count: number;
   checked: boolean;
@@ -535,21 +553,25 @@ export interface ExperienceType {
 
 export const experiences: ExperienceType[] = [
   {
+    id: 1,
     label: "Less than 2 years",
     count: 1200,
     checked: false,
   },
   {
+    id: 2,
     label: "More than 2 years",
     count: 1200,
     checked: false,
   },
   {
+    id: 3,
     label: "More than 5 years",
     count: 1200,
     checked: false,
   },
   {
+    id: 4,
     label: "More than 10 years",
     count: 1200,
     checked: false,

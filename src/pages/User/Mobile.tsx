@@ -7,8 +7,8 @@ import Loader from "@components/Loader";
 import Icon from "@components/Icon";
 import Snapshot from "@components/Snapshot";
 
-import GooglePNG from "@assets/google.png";
-import ApplePNG from "@assets/apple.png";
+import GooglePNG from "@assets/google.svg";
+import ApplePNG from "@assets/apple.svg";
 import LinkPNG from "@assets/icons/link.png";
 import MailPNG from "@assets/icons/mail.png";
 
@@ -41,7 +41,7 @@ const Mobile: FC<MobileProps> = ({ loading, data }) => {
     <Grid
       container
       spacing={2}
-      px={{ xs: 2, sm: 2, md: 4, lg: 6, xl: 6 }}
+      px={{ xs: 6, sm: 6, md: 4, lg: 6, xl: 6 }}
       py={6}
     >
       <Grid item xs={12} sm={12} md={7} lg={7} xl={7}>
@@ -120,11 +120,11 @@ const Mobile: FC<MobileProps> = ({ loading, data }) => {
               src={data?.photo}
               alt="Nannie"
               width="100%"
-              height={360}
+              height={350}
               style={{
                 objectFit: "cover",
                 cursor: "pointer",
-                borderRadius: 32,
+                borderRadius: 8,
               }}
             />
             <Box
@@ -161,6 +161,7 @@ const Mobile: FC<MobileProps> = ({ loading, data }) => {
               bottom={16}
               right={16}
               sx={{
+                display: data?.videoUrl ? "block" : "none",
                 cursor: "pointer",
                 "&:hover": {
                   bgcolor: theme.palette.error.dark,
@@ -186,32 +187,7 @@ const Mobile: FC<MobileProps> = ({ loading, data }) => {
           </Typography>
 
           <Typography variant="body1" color={theme.palette.grey[600]} mt={2}>
-            Velstar is a Shopify Plus agency, and we partner with brands to help
-            them grow, we also do the same with our people!
-          </Typography>
-
-          <Typography variant="body1" color={theme.palette.grey[600]} mt={2}>
-            Here at Velstar, we don't just make websites, we create exceptional
-            digital experiences that consumers love. Our team of designers,
-            developers, strategists, and creators work together to push brands
-            to the next level. From Platform Migration, User Experience & User
-            Interface Design, to Digital Marketing, we have a proven track
-            record in delivering outstanding eCommerce solutions and driving
-            sales for our clients.
-          </Typography>
-
-          <Typography variant="body1" color={theme.palette.grey[600]} mt={2}>
-            The role will involve translating project specifications into clean,
-            test-driven, easily maintainable code. You will work with the
-            Project and Development teams as well as with the Technical
-            Director, adhering closely to project plans and delivering work that
-            meets functional & non-functional requirements. You will have the
-            opportunity to create new, innovative, secure and scalable features
-            for our clients on the Shopify platform
-          </Typography>
-
-          <Typography variant="body1" color={theme.palette.grey[600]} mt={2}>
-            Want to work with us? You're in good company!
+            {data?.about}
           </Typography>
 
           <Typography variant="body1" fontSize={18} fontWeight="bold" mt={2}>
@@ -281,7 +257,7 @@ const Mobile: FC<MobileProps> = ({ loading, data }) => {
         </Grid>
 
         <Typography variant="body1" mt={2}>
-          Registered on: 15th June 2024
+          Registered on: {data?.registeredOn}
         </Typography>
 
         <Box

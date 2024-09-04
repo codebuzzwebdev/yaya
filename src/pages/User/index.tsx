@@ -19,12 +19,19 @@ export interface ItemProps {
   lastName: string;
   position: string;
   yayaPick: number;
+  videoUrl: string;
+  about: string;
+  registeredOn: number;
+  age: number;
   nationality: string;
   minSalary: string;
   maxSalary: string;
+  hourlyRate: string;
   jobType: string;
   experience: string;
-  jobLocation: string;
+  visa: string;
+  availableFrom: number;
+  city: string;
 }
 
 const User: FC = () => {
@@ -40,7 +47,7 @@ const User: FC = () => {
       method: constants.POST,
       data: formData,
     });
-    const ele: any = res.data.data.helpers[0];
+    const ele: any = res.data.data;
     const _data = {
       photo:
         ele.photos && ele.photos.length > 0 && ele.photos[0].imageUrl
@@ -50,14 +57,21 @@ const User: FC = () => {
       lastName: ele?.lastName,
       position: ele?.position?.title || "NA",
       yayaPick: ele?.yayaPick,
+      videoUrl: ele?.videoUrl,
+      about: ele?.about || "NA",
+      registeredOn: ele?.createdAt,
+      age: ele?.age,
       nationality: ele?.nationality?.nationality || "NA",
       minSalary: `${ele?.minSalary.toLocaleString()}` || "NA",
       maxSalary: `${ele?.maxSalary.toLocaleString()}` || "NA",
+      hourlyRate: ele?.hourlyRate,
       jobType: ele?.jobType?.title || "NA",
       experience:
         `${ele?.yearOfExperience?.experienceOperator} ${ele?.yearOfExperience?.years} year(s)` ||
         "NA",
-      jobLocation: ele?.city?.city,
+      visa: ele?.visa || "NA",
+      availableFrom: ele?.startDate,
+      city: ele?.city?.city,
     };
     setData(_data);
     setLoading(false);

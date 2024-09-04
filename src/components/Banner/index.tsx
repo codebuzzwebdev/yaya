@@ -3,8 +3,8 @@ import { useTheme, Box, Grid, Typography } from "@mui/material";
 
 import BannerPNG from "@assets/banner.png";
 import BannerSquarePNG from "@assets/banner-square.png";
-import GooglePNG from "@assets/google.png";
-import ApplePNG from "@assets/apple.png";
+import GooglePNG from "@assets/google.svg";
+import ApplePNG from "@assets/apple.svg";
 
 const Banner: FC = () => {
   const theme = useTheme();

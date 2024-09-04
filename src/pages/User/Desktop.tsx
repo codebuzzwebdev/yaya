@@ -8,8 +8,8 @@ import Icon from "@components/Icon";
 import Snapshot from "@components/Snapshot";
 
 import BadgePNG from "@assets/icons/white-badge.png";
-import GooglePNG from "@assets/google.png";
-import ApplePNG from "@assets/apple.png";
+import GooglePNG from "@assets/google.svg";
+import ApplePNG from "@assets/apple.svg";
 import LinkPNG from "@assets/icons/link.png";
 import MailPNG from "@assets/icons/mail.png";
 
@@ -144,6 +144,7 @@ const Desktop: FC<DesktopProps> = ({ loading, data }) => {
                 mt={1}
                 borderRadius={1}
                 sx={{
+                  display: data?.videoUrl ? "block" : "none",
                   cursor: "pointer",
                   "&:hover": {
                     bgcolor: theme.palette.error.dark,
@@ -197,32 +198,7 @@ const Desktop: FC<DesktopProps> = ({ loading, data }) => {
         </Typography>
 
         <Typography variant="body1" color={theme.palette.grey[600]} mt={2}>
-          Velstar is a Shopify Plus agency, and we partner with brands to help
-          them grow, we also do the same with our people!
-        </Typography>
-
-        <Typography variant="body1" color={theme.palette.grey[600]} mt={2}>
-          Here at Velstar, we don't just make websites, we create exceptional
-          digital experiences that consumers love. Our team of designers,
-          developers, strategists, and creators work together to push brands to
-          the next level. From Platform Migration, User Experience & User
-          Interface Design, to Digital Marketing, we have a proven track record
-          in delivering outstanding eCommerce solutions and driving sales for
-          our clients.
-        </Typography>
-
-        <Typography variant="body1" color={theme.palette.grey[600]} mt={2}>
-          The role will involve translating project specifications into clean,
-          test-driven, easily maintainable code. You will work with the Project
-          and Development teams as well as with the Technical Director, adhering
-          closely to project plans and delivering work that meets functional &
-          non-functional requirements. You will have the opportunity to create
-          new, innovative, secure and scalable features for our clients on the
-          Shopify platform
-        </Typography>
-
-        <Typography variant="body1" color={theme.palette.grey[600]} mt={2}>
-          Want to work with us? You're in good company!
+          {data?.about}
         </Typography>
 
         <Typography variant="body1" fontSize={18} fontWeight="bold" mt={2}>
@@ -291,7 +267,7 @@ const Desktop: FC<DesktopProps> = ({ loading, data }) => {
         </Box>
 
         <Typography variant="body1" mt={2}>
-          Registered on: 15th June 2024
+          Registered on: {data?.registeredOn}
         </Typography>
 
         <Typography

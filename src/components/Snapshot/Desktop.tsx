@@ -49,7 +49,7 @@ const Desktop: FC<DesktopProps> = ({ loading, data }) => {
             fontSize={20}
             color={theme.palette.primary.main}
           >
-            36
+            {data?.age}
           </Typography>
         </Box>
 
@@ -153,7 +153,7 @@ const Desktop: FC<DesktopProps> = ({ loading, data }) => {
             fontSize={16}
             color={theme.palette.grey[300]}
           >
-            Visa Required
+            {data?.visa}
           </Typography>
         </Box>
       </Box>
@@ -178,7 +178,7 @@ const Desktop: FC<DesktopProps> = ({ loading, data }) => {
             fontSize={16}
             color={theme.palette.grey[300]}
           >
-            1st July
+            {data?.availableFrom}
           </Typography>
         </Box>
 
@@ -194,7 +194,7 @@ const Desktop: FC<DesktopProps> = ({ loading, data }) => {
             fontSize={16}
             color={theme.palette.grey[300]}
           >
-            {data?.jobLocation}
+            {data?.city}
           </Typography>
         </Box>
       </Box>

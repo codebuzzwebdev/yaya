@@ -35,34 +35,43 @@ const Home: FC = () => {
 
   const fetchFilters = async () => {
     try {
+      const formData = new FormData();
+      formData.append("country", "United Arab Emirates");
       const [res1, res2, res3, res4]: any = await Promise.all([
-        request(apis.GET_COUNTRIES_API, { method: constants.POST }),
+        request(apis.GET_CITIES_API, {
+          method: constants.POST,
+          data: formData,
+        }),
         request(apis.GET_NATIONALITIES_API, { method: constants.POST }),
         request(apis.GET_JOB_TYPES_API, { method: constants.POST }),
         request(apis.GET_EXPERIENCES_API, { method: constants.POST }),
       ]);
 
       const _cities: CityType[] = res1.data.data.map((ele: any) => ({
-        label: ele.country,
-        count: ele.id,
+        id: ele.id,
+        label: ele.city,
+        count: ele.count,
         checked: false,
       }));
 
       const _nationalities: CityType[] = res2.data.data.map((ele: any) => ({
+        id: ele.id,
         label: ele.nationality,
-        count: ele.id,
+        count: ele.count,
         checked: false,
       }));
 
       const _jobTypes: JobType[] = res3.data.data.map((ele: any) => ({
+        id: ele.id,
         label: ele.title,
-        count: ele.id,
+        count: ele.count,
         checked: false,
       }));
 
       const _experiences: ExperienceType[] = res4.data.data.map((ele: any) => ({
+        id: ele.id,
         label: `${ele.experienceOperator} ${ele.years} year(s)`,
-        count: ele.id,
+        count: ele.count,
         checked: false,
       }));
 
@@ -120,8 +129,8 @@ const Home: FC = () => {
     setLoading(true);
     const formData = new FormData();
     formData.append("nationalities", JSON.stringify(nationalities));
-    formData.append("cities", JSON.stringify(cities));
-    formData.append("jobTypes", JSON.stringify(jobTypes));
+    formData.append("city", JSON.stringify(cities));
+    formData.append("positionType", JSON.stringify(jobTypes));
     formData.append("experiences", JSON.stringify(experiences));
     formData.append("minSalary", minSalary);
     formData.append("maxSalary", maxSalary);
@@ -155,16 +164,16 @@ const Home: FC = () => {
   const callback = (filters: any) => {
     const _nationalities = filters.nationalities
       .filter((e: NationalityType) => e.checked)
-      .map((e2: NationalityType) => e2.count);
+      .map((e2: NationalityType) => e2.id);
     const _cities = filters.cities
       .filter((e: CityType) => e.checked)
-      .map((e2: CityType) => e2.count);
+      .map((e2: CityType) => e2.id);
     const _jobTypes = filters.jobTypes
       .filter((e: JobType) => e.checked)
-      .map((e2: JobType) => e2.count);
+      .map((e2: JobType) => e2.id);
     const _experiences = filters.experiences
       .filter((e: ExperienceType) => e.checked)
-      .map((e2: ExperienceType) => e2.count);
+      .map((e2: ExperienceType) => e2.id);
     fetchFilteredNannies({
       nationalities: _nationalities,
       cities: _cities,
@@ -338,7 +347,17 @@ const Home: FC = () => {
             )}
           </Grid>
 
-          <Grid container spacing={2} mt={3}>
+          <Grid
+            container
+            mt={12}
+            display={{
+              xs: "none",
+              sm: "none",
+              md: "block",
+              lg: "block",
+              xl: "block",
+            }}
+          >
             <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
               <Pagination />
             </Grid>
@@ -346,8 +365,24 @@ const Home: FC = () => {
         </Grid>
 
         <Grid item xs={12} sm={12} md={12} lg={1} xl={1} />
-        <Footer />
       </Grid>
+
+      <Box
+        display={{
+          xs: "block",
+          sm: "block",
+          md: "none",
+          lg: "none",
+          xl: "none",
+        }}
+        mb={6}
+      >
+        <Pagination />
+      </Box>
+
+      <Box>
+        <Footer />
+      </Box>
     </>
   );
 };
