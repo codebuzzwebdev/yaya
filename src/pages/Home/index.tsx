@@ -151,6 +151,7 @@ const Home: FC = () => {
             ? `${BASE_URL}/${ele.photos[0].imageUrl}`
             : PlaceholderPNG,
         createdAt: ele?.createdAt,
+        countryCode: ele?.nationality?.countryCode
       };
     });
     setData(_data);

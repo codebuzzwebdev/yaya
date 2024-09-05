@@ -8,6 +8,8 @@ import FlagPNG from "@assets/flag2.png";
 
 import * as colors from "@themes/colors";
 
+const VITE_FLAG_URL = import.meta.env.VITE_FLAG_URL;
+
 export interface ItemProps {
   id: string;
   firstName: string;
@@ -21,6 +23,7 @@ export interface ItemProps {
   videoUrl: string;
   photo: string;
   createdAt: number;
+  countryCode: string;
 }
 export interface CardProps {
   data: ItemProps;
@@ -103,9 +106,9 @@ const Card: FC<CardProps> = ({ data, handleNavigate }) => {
             {data.firstName} {data.lastName}
           </Typography>
           <img
-            src={FlagPNG}
+            src={`${VITE_FLAG_URL}/${data.countryCode.toLowerCase()}.png`}
             alt="Flag"
-            width={32}
+            width={24}
             height={16}
             style={{
               objectFit: "cover",
