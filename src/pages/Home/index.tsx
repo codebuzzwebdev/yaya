@@ -23,6 +23,7 @@ import {
   JobType,
   ExperienceType,
   PaginationType,
+  FiltersType,
 } from "@utils";
 
 const BASE_URL = import.meta.env.VITE_IMAGE_URL;
@@ -32,6 +33,15 @@ const init = {
   perPage: 30,
   totalPages: 0,
   totalRecords: 0,
+};
+
+const initFilters = {
+  c: [],
+  n: [],
+  j: [],
+  e: [],
+  min: "0",
+  max: "0",
 };
 
 const Home: FC = () => {
@@ -46,6 +56,7 @@ const Home: FC = () => {
   const [nationalities, setNationalities] = useState<NationalityType[]>([]);
   const [jobTypes, setJobTypes] = useState<JobType[]>([]);
   const [experiences, setExperiences] = useState<ExperienceType[]>([]);
+  const [filters, setFilters] = useState<FiltersType>(initFilters);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -105,9 +116,17 @@ const Home: FC = () => {
   };
 
   const fetchNannies = async () => {
+    setLoading(true);
+    const { c, n, j, e, min, max } = filters;
     const formData = new FormData();
     formData.append("page", JSON.stringify(pagination.page));
     formData.append("perPage", JSON.stringify(pagination.perPage));
+    if (c?.length > 0) formData.append("cities", JSON.stringify(c));
+    if (n?.length > 0) formData.append("nationalities", JSON.stringify(n));
+    if (j?.length > 0) formData.append("positions", JSON.stringify(j));
+    if (e?.length > 0) formData.append("experiences", JSON.stringify(e));
+    if (min) formData.append("minSalary", min);
+    if (max) formData.append("maxSalary", max);
     const res: any = await request(apis.GET_FILTERED_NANNIES_API, {
       method: constants.POST,
       data: formData,
@@ -126,6 +145,7 @@ const Home: FC = () => {
         minSalary: `${ele?.minSalary.toLocaleString()}` || "NA",
         maxSalary: `${ele?.maxSalary.toLocaleString()}` || "NA",
         yayaPick: ele?.yayaPick,
+        videoUrl: ele?.videoUrl,
         photo:
           ele.photos && ele.photos.length > 0 && ele.photos[0].imageUrl
             ? `${BASE_URL}/${ele.photos[0].imageUrl}`
@@ -147,82 +167,28 @@ const Home: FC = () => {
 
   useEffect(() => {
     fetchNannies();
-  }, [pagination.page]);
+  }, [pagination.page, filters]);
 
-  const fetchFilteredNannies = async ({
-    nationalities,
-    cities,
-    jobTypes,
-    experiences,
-    minSalary,
-    maxSalary,
-  }: any) => {
-    setLoading(true);
-    const formData = new FormData();
-    formData.append("page", JSON.stringify(init.page));
-    formData.append("perPage", JSON.stringify(init.perPage));
-    if (nationalities?.length > 0)
-      formData.append("nationalities", JSON.stringify(nationalities));
-    if (cities?.length > 0) formData.append("city", JSON.stringify(cities));
-    if (jobTypes?.length > 0)
-      formData.append("positionType", JSON.stringify(jobTypes));
-    if (experiences?.length > 0)
-      formData.append("experiences", JSON.stringify(experiences));
-    if (minSalary) formData.append("minSalary", minSalary);
-    if (maxSalary) formData.append("maxSalary", maxSalary);
-    const res: any = await request(apis.GET_FILTERED_NANNIES_API, {
-      method: constants.POST,
-      data: formData,
-    });
-    const result = res.data.data;
-    const _data: ItemProps[] = result.helpers.map((ele: any) => {
-      return {
-        id: ele?.id,
-        firstName: ele?.firstName,
-        lastName: ele?.lastName,
-        position: ele?.position?.title || "NA",
-        jobType: ele?.jobType?.title || "NA",
-        experience:
-          `${ele?.yearOfExperience?.experienceOperator} ${ele?.yearOfExperience?.years} year(s)` ||
-          "NA",
-        minSalary: `${ele?.minSalary.toLocaleString()}` || "NA",
-        maxSalary: `${ele?.maxSalary.toLocaleString()}` || "NA",
-        yayaPick: ele?.yayaPick,
-        photo:
-          ele.photos && ele.photos.length > 0 && ele.photos[0].imageUrl
-            ? `${BASE_URL}/${ele.photos[0].imageUrl}`
-            : PlaceholderPNG,
-      };
-    });
-    setData(_data);
-    setPagination({
-      ...pagination,
-      totalPages: result.totalPages,
-      totalRecords: result.totalRecords,
-    });
-    setLoading(false);
-  };
-
-  const callback = (filters: any) => {
-    const _nationalities = filters.nationalities
-      .filter((e: NationalityType) => e.checked)
-      .map((e2: NationalityType) => e2.id);
-    const _cities = filters.cities
+  const callback = (callbackFilters: any) => {
+    const _cities = callbackFilters.cities
       .filter((e: CityType) => e.checked)
       .map((e2: CityType) => e2.id);
-    const _jobTypes = filters.jobTypes
+    const _nationalities = callbackFilters.nationalities
+      .filter((e: NationalityType) => e.checked)
+      .map((e2: NationalityType) => e2.id);
+    const _jobTypes = callbackFilters.jobTypes
       .filter((e: JobType) => e.checked)
       .map((e2: JobType) => e2.id);
-    const _experiences = filters.experiences
+    const _experiences = callbackFilters.experiences
       .filter((e: ExperienceType) => e.checked)
       .map((e2: ExperienceType) => e2.id);
-    fetchFilteredNannies({
-      nationalities: _nationalities,
-      cities: _cities,
-      jobTypes: _jobTypes,
-      experiences: _experiences,
-      minSalary: filters.minSalary,
-      maxSalary: filters.maxSalary,
+    setFilters({
+      c: _cities,
+      n: _nationalities,
+      j: _jobTypes,
+      e: _experiences,
+      min: callbackFilters.minSalary,
+      max: callbackFilters.maxSalary,
     });
   };
 

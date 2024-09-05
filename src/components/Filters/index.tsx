@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Box, TextField, InputAdornment } from "@mui/material";
+import { useTheme, Box, TextField, InputAdornment } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import ArrowForwardIosSharpIcon from "@mui/icons-material/ArrowForwardIosSharp";
 import MuiAccordion, { AccordionProps } from "@mui/material/Accordion";
@@ -68,6 +68,7 @@ export interface FilterLoadingProps {
 }
 
 const AllFilter: React.FC<AllFilterProps> = ({ data, callback }) => {
+  const theme = useTheme();
   const [expanded, setExpanded] = React.useState<string | false>(false);
 
   const [listCities, setListCities] = React.useState<CityType[]>(data.cities);
@@ -177,8 +178,63 @@ const AllFilter: React.FC<AllFilterProps> = ({ data, callback }) => {
     setIsChanged(true);
   };
 
+  const handleClearAll = () => {
+    setListCities(
+      data.cities.map((e) => {
+        return { ...e, checked: false };
+      })
+    );
+    setNationalities(
+      data.nationalities.map((e) => {
+        return { ...e, checked: false };
+      })
+    );
+    setJobTypes(
+      data.jobTypes.map((e) => {
+        return { ...e, checked: false };
+      })
+    );
+    setExperiences(
+      data.experiences.map((e) => {
+        return { ...e, checked: false };
+      })
+    );
+    setMinSalary("");
+    setMaxSalary("");
+  };
+
+  const checkClearAllVisibility = () => {
+    const _c = listCities.find((e) => e.checked);
+    const _n = listNationalities.find((e) => e.checked);
+    const _j = listJobTypes.find((e) => e.checked);
+    const _e = listExperiences.find((e) => e.checked);
+    const salary = minSalary.length > 0 || minSalary.length > 0;
+    if (_c || _n || _j || _e || salary) return true;
+    return false;
+  };
+
+  const isVisible = checkClearAllVisibility();
+
   return (
-    <div>
+    <Box>
+      <Box display="flex" justifyContent="space-between" pb={3}>
+        <Typography variant="body1" fontWeight="bold">
+          Filters
+        </Typography>
+        <Typography
+          variant="body1"
+          fontWeight="bold"
+          color={theme.palette.primary.main}
+          sx={{
+            display: isVisible ? "block" : "none",
+            cursor: "pointer",
+            "&:hover": { color: theme.palette.primary.dark },
+          }}
+          onClick={handleClearAll}
+        >
+          Clear All
+        </Typography>
+      </Box>
       <Accordion
         expanded={expanded === "panel1"}
         onChange={handleChange("panel1")}
@@ -309,7 +365,7 @@ const AllFilter: React.FC<AllFilterProps> = ({ data, callback }) => {
           ))}
         </AccordionDetails>
       </Accordion>
-    </div>
+    </Box>
   );
 };
 

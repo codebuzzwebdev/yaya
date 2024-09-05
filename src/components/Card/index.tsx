@@ -18,6 +18,7 @@ export interface ItemProps {
   minSalary: string;
   maxSalary: string;
   yayaPick: number;
+  videoUrl: string;
   photo: string;
 }
 export interface CardProps {
@@ -63,6 +64,7 @@ const Card: FC<CardProps> = ({ data, handleNavigate }) => {
           width={32}
           height={32}
           style={{
+            display: data?.videoUrl ? "block" : "none",
             objectFit: "cover",
             cursor: "pointer",
             position: "absolute",

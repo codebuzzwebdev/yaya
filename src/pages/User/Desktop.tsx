@@ -93,6 +93,7 @@ const Desktop: FC<DesktopProps> = ({ loading, data }) => {
                   variant="body1"
                   fontSize={14}
                   color={theme.palette.common.white}
+                  display={data?.isNew ? "block" : "none"}
                 >
                   New
                 </Typography>
@@ -105,10 +106,9 @@ const Desktop: FC<DesktopProps> = ({ loading, data }) => {
                 mr={1}
                 mt={1}
                 borderRadius={1}
-                display="flex"
+                display={data?.yayaPick === 1 ? "flex" : "none"}
                 alignItems="center"
                 sx={{
-                  display: data?.yayaPick === 1 ? "block" : "none",
                   cursor: "pointer",
                   "&:hover": {
                     bgcolor: theme.palette.error.dark,

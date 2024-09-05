@@ -1,3 +1,4 @@
+import moment from "moment";
 export interface CountryType {
   code: string;
   label: string;
@@ -583,4 +584,25 @@ export interface PaginationType {
   perPage: number;
   totalPages: number;
   totalRecords: number;
+}
+
+export const formatDate = (date: number) => {
+  return moment(date).format("Do MMMM YYYY");
+};
+
+export const isNew = (createdAt: number) => {
+  const currentTime = new Date().getTime();
+  const timeDifference = currentTime - createdAt;
+  const fortyEightHoursInMs = 48 * 60 * 60 * 1000;
+  if (timeDifference < fortyEightHoursInMs) return true;
+  return false;
+};
+
+export interface FiltersType {
+  c: number[];
+  n: number[];
+  j: number[];
+  e: number[];
+  min: string;
+  max: string;
 }

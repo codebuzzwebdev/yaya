@@ -11,6 +11,8 @@ import * as constants from "@store/constants";
 import * as apis from "@store/apis";
 import request from "@store/request";
 
+import { formatDate, isNew } from "@utils";
+
 const BASE_URL = import.meta.env.VITE_IMAGE_URL;
 
 export interface ItemProps {
@@ -21,7 +23,7 @@ export interface ItemProps {
   yayaPick: number;
   videoUrl: string;
   about: string;
-  registeredOn: number;
+  registeredOn: string;
   age: number;
   nationality: string;
   minSalary: string;
@@ -30,8 +32,9 @@ export interface ItemProps {
   jobType: string;
   experience: string;
   visa: string;
-  availableFrom: number;
+  availableFrom: string;
   city: string;
+  isNew: boolean;
 }
 
 const User: FC = () => {
@@ -63,7 +66,7 @@ const User: FC = () => {
       yayaPick: ele?.yayaPick,
       videoUrl: ele?.videoUrl,
       about: ele?.about || "NA",
-      registeredOn: ele?.createdAt,
+      registeredOn: formatDate(ele?.createdAt),
       age: ele?.age,
       nationality: ele?.nationality?.nationality || "NA",
       minSalary: `${ele?.minSalary.toLocaleString()}` || "NA",
@@ -74,8 +77,9 @@ const User: FC = () => {
         `${ele?.yearOfExperience?.experienceOperator} ${ele?.yearOfExperience?.years} year(s)` ||
         "NA",
       visa: ele?.visa || "NA",
-      availableFrom: ele?.startDate,
+      availableFrom: formatDate(ele?.startDate),
       city: ele?.city?.city,
+      isNew: isNew(ele?.createdAt)
     };
     setData(_data);
     setLoading(false);
