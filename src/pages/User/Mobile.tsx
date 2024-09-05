@@ -17,9 +17,18 @@ import * as colors from "@themes/colors";
 export interface MobileProps {
   loading: boolean;
   data: ItemProps | null;
+  handleApple: () => void;
+  handleGoogle: () => void;
+  handleCopy: () => void;
 }
 
-const Mobile: FC<MobileProps> = ({ loading, data }) => {
+const Mobile: FC<MobileProps> = ({
+  loading,
+  data,
+  handleApple,
+  handleGoogle,
+  handleCopy,
+}) => {
   const theme = useTheme();
 
   if (loading) {
@@ -67,6 +76,7 @@ const Mobile: FC<MobileProps> = ({ loading, data }) => {
                 py={0.5}
                 height={28}
                 borderRadius={1}
+                display={data?.isNew ? "block" : "none"}
                 sx={{
                   cursor: "pointer",
                   "&:hover": {
@@ -78,7 +88,6 @@ const Mobile: FC<MobileProps> = ({ loading, data }) => {
                   variant="body1"
                   fontSize={14}
                   color={theme.palette.common.white}
-                  display={data?.isNew ? "block" : "none"}
                 >
                   New
                 </Typography>
@@ -223,6 +232,7 @@ const Mobile: FC<MobileProps> = ({ loading, data }) => {
                 variant="body1"
                 color={theme.palette.primary.dark}
                 mr={1}
+                onClick={handleCopy}
               >
                 Copy Link
               </Typography>
@@ -308,6 +318,7 @@ const Mobile: FC<MobileProps> = ({ loading, data }) => {
             width={180}
             height={50}
             className="store-images"
+            onClick={handleGoogle}
           />
 
           <img
@@ -316,6 +327,7 @@ const Mobile: FC<MobileProps> = ({ loading, data }) => {
             width={180}
             height={50}
             className="store-images"
+            onClick={handleApple}
           />
         </Box>
       </Grid>

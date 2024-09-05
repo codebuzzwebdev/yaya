@@ -20,6 +20,7 @@ export interface ItemProps {
   yayaPick: number;
   videoUrl: string;
   photo: string;
+  createdAt: number;
 }
 export interface CardProps {
   data: ItemProps;

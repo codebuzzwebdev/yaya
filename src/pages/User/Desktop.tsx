@@ -18,9 +18,18 @@ import * as colors from "@themes/colors";
 export interface DesktopProps {
   loading: boolean;
   data: ItemProps | null;
+  handleApple: () => void;
+  handleGoogle: () => void;
+  handleCopy: () => void;
 }
 
-const Desktop: FC<DesktopProps> = ({ loading, data }) => {
+const Desktop: FC<DesktopProps> = ({
+  loading,
+  data,
+  handleApple,
+  handleGoogle,
+  handleCopy,
+}) => {
   const theme = useTheme();
 
   if (loading) {
@@ -82,6 +91,7 @@ const Desktop: FC<DesktopProps> = ({ loading, data }) => {
                 mr={1}
                 mt={1}
                 borderRadius={1}
+                display={data?.isNew ? "block" : "none"}
                 sx={{
                   cursor: "pointer",
                   "&:hover": {
@@ -93,7 +103,6 @@ const Desktop: FC<DesktopProps> = ({ loading, data }) => {
                   variant="body1"
                   fontSize={14}
                   color={theme.palette.common.white}
-                  display={data?.isNew ? "block" : "none"}
                 >
                   New
                 </Typography>
@@ -234,6 +243,7 @@ const Desktop: FC<DesktopProps> = ({ loading, data }) => {
               variant="body1"
               color={theme.palette.primary.dark}
               mr={1}
+              onClick={handleCopy}
             >
               Copy Link
             </Typography>
@@ -287,6 +297,7 @@ const Desktop: FC<DesktopProps> = ({ loading, data }) => {
             width={180}
             height={50}
             className="store-images"
+            onClick={handleGoogle}
           />
 
           <img
@@ -295,6 +306,7 @@ const Desktop: FC<DesktopProps> = ({ loading, data }) => {
             width={180}
             height={50}
             className="store-images"
+            onClick={handleApple}
           />
         </Box>
       </Grid>

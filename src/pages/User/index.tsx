@@ -14,6 +14,8 @@ import request from "@store/request";
 import { formatDate, isNew } from "@utils";
 
 const BASE_URL = import.meta.env.VITE_IMAGE_URL;
+const APP_STORE_URL = import.meta.env.VITE_APP_STORE_URL;
+const PLAY_STORE_URL = import.meta.env.VITE_PLAY_STORE_URL;
 
 export interface ItemProps {
   photo: string;
@@ -79,7 +81,7 @@ const User: FC = () => {
       visa: ele?.visa || "NA",
       availableFrom: formatDate(ele?.startDate),
       city: ele?.city?.city,
-      isNew: isNew(ele?.createdAt)
+      isNew: isNew(ele?.createdAt),
     };
     setData(_data);
     setLoading(false);
@@ -91,14 +93,46 @@ const User: FC = () => {
     }
   }, [id]);
 
+  const handleApple = () => {
+    window.open(APP_STORE_URL);
+  };
+
+  const handleGoogle = () => {
+    window.open(PLAY_STORE_URL);
+  };
+
+  const handleCopy = () => {
+    const currentUrl = window.location.href;
+    navigator.clipboard
+      .writeText(currentUrl)
+      .then(() => {
+        alert("URL copied to clipboard!");
+      })
+      .catch((err) => {
+        console.error("Failed to copy: ", err);
+      });
+  };
+
   return (
     <>
       <Box display={{ xs: "none", sm: "block" }}>
-        <Desktop loading={isLoading} data={data} />
+        <Desktop
+          loading={isLoading}
+          data={data}
+          handleApple={handleApple}
+          handleGoogle={handleGoogle}
+          handleCopy={handleCopy}
+        />
       </Box>
 
       <Box display={{ xs: "block", sm: "none" }}>
-        <Mobile loading={isLoading} data={data} />
+        <Mobile
+          loading={isLoading}
+          data={data}
+          handleApple={handleApple}
+          handleGoogle={handleGoogle}
+          handleCopy={handleCopy}
+        />
       </Box>
     </>
   );

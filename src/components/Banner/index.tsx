@@ -6,6 +6,9 @@ import BannerSquarePNG from "@assets/banner-square.png";
 import GooglePNG from "@assets/google.svg";
 import ApplePNG from "@assets/apple.svg";
 
+const APP_STORE_URL = import.meta.env.VITE_APP_STORE_URL;
+const PLAY_STORE_URL = import.meta.env.VITE_PLAY_STORE_URL;
+
 const Banner: FC = () => {
   const theme = useTheme();
 
@@ -28,6 +31,14 @@ const Banner: FC = () => {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
+
+  const handleApple = () => {
+    window.open(APP_STORE_URL);
+  };
+
+  const handleGoogle = () => {
+    window.open(PLAY_STORE_URL);
+  };
 
   return (
     <Grid
@@ -184,6 +195,7 @@ const Banner: FC = () => {
                 width={180}
                 height={50}
                 className="store-images"
+                onClick={handleGoogle}
               />
 
               <img
@@ -192,6 +204,7 @@ const Banner: FC = () => {
                 width={180}
                 height={50}
                 className="store-images"
+                onClick={handleApple}
               />
             </Box>
           </Box>

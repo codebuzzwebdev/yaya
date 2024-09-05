@@ -150,6 +150,7 @@ const Home: FC = () => {
           ele.photos && ele.photos.length > 0 && ele.photos[0].imageUrl
             ? `${BASE_URL}/${ele.photos[0].imageUrl}`
             : PlaceholderPNG,
+        createdAt: ele?.createdAt,
       };
     });
     setData(_data);
@@ -190,6 +191,20 @@ const Home: FC = () => {
       min: callbackFilters.minSalary,
       max: callbackFilters.maxSalary,
     });
+  };
+
+  const sorting = (val: string) => {
+    setLoading(true);
+    if (val === "Old") {
+      const oldData = data.sort((a, b) => a.createdAt - b.createdAt);
+      setData(oldData);
+    } else {
+      const latestData = data.sort((a, b) => b.createdAt - a.createdAt);
+      setData(latestData);
+    }
+    setTimeout(() => {
+      setLoading(false);
+    }, 1000);
   };
 
   const onPagination = (page: number) => {
@@ -265,7 +280,7 @@ const Home: FC = () => {
               alignItems="center"
               mt={{ xs: 2, sm: 2, md: 0, lg: 0, xl: 0 }}
             >
-              <Sorting />
+              <Sorting callback={sorting} />
 
               <Box
                 display={{

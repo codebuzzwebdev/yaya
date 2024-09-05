@@ -9,13 +9,18 @@ import {
   SelectChangeEvent,
 } from "@mui/material";
 
-const Sorting: FC = () => {
+export interface SortingProps {
+  callback: (e: string) => void;
+}
+
+const Sorting: FC<SortingProps> = ({ callback }) => {
   const theme = useTheme();
 
   const [sort, setSort] = React.useState("Latest");
 
   const handleChange = (event: SelectChangeEvent) => {
     setSort(event.target.value);
+    callback(event.target.value);
   };
 
   return (
