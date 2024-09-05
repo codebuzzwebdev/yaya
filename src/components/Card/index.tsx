@@ -4,8 +4,6 @@ import { useTheme, Box, Typography } from "@mui/material";
 import BadgePNG from "@assets/icons/badge.png";
 import VideoPNG from "@assets/icons/video.png";
 
-import FlagPNG from "@assets/flag2.png";
-
 import * as colors from "@themes/colors";
 
 const VITE_FLAG_URL = import.meta.env.VITE_FLAG_URL;
