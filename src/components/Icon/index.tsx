@@ -5,13 +5,23 @@ import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import MenuIcon from '@mui/icons-material/Menu';
 import TuneIcon from '@mui/icons-material/Tune';
 import CloseIcon from '@mui/icons-material/Close';
+import FacebookIcon from '@mui/icons-material/Facebook';
+import InstagramIcon from '@mui/icons-material/Instagram';
+import YoutubeIcon from '@mui/icons-material/YouTube';
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 
 const iconMap = {
   speed: SpeedIcon,
   rightArrow: ArrowForwardIcon,
   menu: MenuIcon,
   filter: TuneIcon,
-  close: CloseIcon
+  close: CloseIcon,
+  facebook: FacebookIcon,
+  instagram: InstagramIcon,
+  youtube: YoutubeIcon,
+  down: ExpandMoreIcon,
+  right: ChevronRightIcon
 };
 
 export type IconName = keyof typeof iconMap;

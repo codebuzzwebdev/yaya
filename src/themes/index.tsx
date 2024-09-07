@@ -208,7 +208,7 @@ const Theme: React.FC<{ children: ReactNode }> = ({ children }) => {
             overflow: "hidden",
             borderRadius: 0,
             boxShadow: "none",
-            background: darkMode ? primary.dark.main : primary.light.main,
+            background: darkMode ? primary.dark.main : common.white,
           },
         },
       },

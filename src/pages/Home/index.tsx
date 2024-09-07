@@ -4,7 +4,7 @@ import { useTheme, Box, Grid, Typography } from "@mui/material";
 
 import Loader from "@components/Loader";
 import Banner from "@components/Banner";
-import Footer from "@components/Footer";
+import Bottom from "@components/Bottom";
 import Card, { ItemProps } from "@components/Card";
 import Filters from "@components/Filters";
 import Sorting from "@components/Sorting";
@@ -413,7 +413,7 @@ const Home: FC = () => {
       </Box>
 
       <Box>
-        <Footer />
+        <Bottom />
       </Box>
     </>
   );

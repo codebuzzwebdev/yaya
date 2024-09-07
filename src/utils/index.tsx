@@ -606,3 +606,241 @@ export interface FiltersType {
   min: string;
   max: string;
 }
+
+export interface HeaderItem {
+  id: number;
+  title: string;
+  url: string;
+}
+export interface HeaderType {
+  id: number;
+  title: string;
+  items: HeaderItem[];
+}
+
+export const headerItems: HeaderType[] = [
+  {
+    id: 1,
+    title: "Home",
+    items: []
+  },
+  {
+    id: 2,
+    title: "About Us",
+    items: [
+      {
+        id: 1,
+        title: "About Yaya",
+        url: ""
+      },
+      {
+        id: 2,
+        title: "How it Works",
+        url: ""
+      },
+      {
+        id: 3,
+        title: "Features",
+        url: ""
+      },
+      {
+        id: 4,
+        title: "Pricing",
+        url: ""
+      },
+    ]
+  },
+  {
+    id: 3,
+    title: "Services",
+    items: [
+      {
+        id: 5,
+        title: "Find a Job",
+        url: ""
+      }
+    ]
+  },
+  {
+    id: 4,
+    title: "Resources",
+    items: [
+      {
+        id: 6,
+        title: "Care Guide",
+        url: ""
+      },
+      {
+        id: 7,
+        title: "Tutorials",
+        url: ""
+      },
+      {
+        id: 8,
+        title: "Terms & Conditions",
+        url: ""
+      },
+      {
+        id: 9,
+        title: "Privacy Policy",
+        url: ""
+      },
+    ]
+  },
+  {
+    id: 5,
+    title: "Support",
+    items: [
+      {
+        id: 10,
+        title: "Contact Us",
+        url: ""
+      },
+      {
+        id: 11,
+        title: "Whatsapp Us",
+        url: ""
+      },
+      {
+        id: 11,
+        title: "FAQs",
+        url: ""
+      }
+    ]
+  },
+]
+
+export interface FooterItem {
+  id: number;
+  title: string;
+  url: string;
+}
+
+export interface FooterType {
+  id: number;
+  title: string;
+  items: FooterItem[];
+}
+
+export const footerItems: FooterType[] = [
+  {
+    id: 1,
+    title: "About Us",
+    items: [
+      {
+        id: 1,
+        title: "About Yaya",
+        url: ""
+      },
+      {
+        id: 2,
+        title: "How it Works",
+        url: ""
+      },
+      {
+        id: 3,
+        title: "Features",
+        url: ""
+      },
+      {
+        id: 4,
+        title: "Pricing",
+        url: ""
+      },
+    ]
+  },
+  {
+    id: 2,
+    title: "Services",
+    items: [
+      {
+        id: 5,
+        title: "Find Nannies",
+        url: ""
+      },
+      {
+        id: 6,
+        title: "Find Jobs",
+        url: ""
+      },
+      {
+        id: 7,
+        title: "Filipino Nannies",
+        url: ""
+      },
+      {
+        id: 8,
+        title: "Ugandan Nannies",
+        url: ""
+      },
+      {
+        id: 9,
+        title: "Live Out Nannies",
+        url: ""
+      },
+      {
+        id: 10,
+        title: "Maids in Dubai",
+        url: ""
+      },
+    ]
+  },
+  {
+    id: 3,
+    title: "Resources",
+    items: [
+      {
+        id: 11,
+        title: "Care Guide",
+        url: ""
+      },
+      {
+        id: 12,
+        title: "Tutorials",
+        url: ""
+      },
+      {
+        id: 13,
+        title: "Terms & Conditions",
+        url: ""
+      },
+      {
+        id: 14,
+        title: "Privacy Policy",
+        url: ""
+      },
+    ]
+  },
+  {
+    id: 4,
+    title: "Support",
+    items: [
+      {
+        id: 15,
+        title: "Contact Us",
+        url: ""
+      },
+      {
+        id: 16,
+        title: "FAQs",
+        url: ""
+      }
+    ]
+  },
+  {
+    id: 5,
+    title: "Download Our App",
+    items: [
+      {
+        id: 17,
+        title: "App Store",
+        url: ""
+      },
+      {
+        id: 18,
+        title: "Play Store",
+        url: ""
+      }
+    ]
+  }
+]

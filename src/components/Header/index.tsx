@@ -1,107 +1,86 @@
 import { FC } from "react";
-import {
-  useTheme,
-  Box,
-  Grid,
-  Typography,
-  Button,
-} from "@mui/material";
+import { useTheme, Grid, Box, Typography, Button } from "@mui/material";
 
-import RightDrawer from "@components/RightDrawer";
+import LeftDrawer from "@components/Header/LeftDrawer";
+import HoverMenu from "@components/HoverMenu";
+import Logo from "@components/Logo";
+import Icon from "@components/Icon";
 
-import Logo from "@assets/logo.png";
-import Flag from "@assets/flag.png";
+import FlagPNG from "@assets/flag.png";
 
-export interface HeaderProps {
-  handleNavigate: () => void;
-}
+import { headerItems } from "@utils";
 
-const menu = ["Home", "About Us", "Services", "Resources", "Support"];
-
-const Header: FC<HeaderProps> = ({ handleNavigate }) => {
+const Header: FC = () => {
   const theme = useTheme();
 
   return (
-    <Grid
-      container
-      px={{ xs: 1, sm: 1, md: 1, lg: 6 }}
-      py={2}
-      bgcolor={theme.palette.primary.light}
-    >
-      <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
-        <Box display="flex" justifyContent="space-between" alignItems="center">
-          <Box
-            display="flex"
-            alignItems="center"
-            sx={{ cursor: "pointer" }}
-            onClick={handleNavigate}
-          >
-            <img src={Logo} alt="Yaya Middle East" width={32} height={32} />
-            <Typography
-              variant="h6"
-              ml={1}
-              fontWeight="bold"
-              display={{ xs: "none", sm: "none", md: "none", lg: "block", xl: "block" }}
+    <>
+      <Box
+        bgcolor={theme.palette.common.white}
+        display={{
+          xs: "none",
+          sm: "none",
+          md: "none",
+          lg: "block",
+          xl: "block",
+        }}
+      >
+        <Grid
+          container
+          spacing={1}
+          px={{ xs: 2, sm: 2, md: 4, lg: 8, xl: 8 }}
+          py={2.5}
+        >
+          <Grid item xs={12} sm={12} md={12} lg={6} xl={6}>
+            <Logo />
+          </Grid>
+
+          <Grid item xs={12} sm={12} md={12} lg={6} xl={6}>
+            <Box
+              display="flex"
+              justifyContent="space-around"
+              alignItems="center"
             >
-              Yaya Middle East
-            </Typography>
-          </Box>
-
-          <Box display={{ xs: "none", sm: "none", md: "none", lg: "block", xl: "block" }}>
-            <Box display="flex" alignItems="center">
-              {menu.map((item, _idx) => (
-                <Typography
-                  key={`${item}_${_idx}`}
-                  variant="body1"
-                  mx={2}
-                  sx={{
-                    cursor: "pointer",
-                    "&:hover": { color: theme.palette.primary.main },
-                  }}
-                  color={theme.palette.grey[500]}
-                  onClick={handleNavigate}
-                >
-                  {item}
-                </Typography>
+              {headerItems.map((item, _idx) => (
+                <HoverMenu
+                  key={`${item.title}_${_idx}`}
+                  menu={item.title}
+                  items={item.items}
+                />
               ))}
-
-              <Box
-                display="flex"
-                alignItems="center"
-                mx={2}
-                sx={{ cursor: "pointer" }}
-              >
-                <img src={Flag} alt="Flag" width={36} height={24} />
-                <Typography
-                  variant="body1"
-                  ml={1}
-                  sx={{
-                    cursor: "pointer",
-                    "&:hover": { color: theme.palette.primary.dark },
-                  }}
-                  color={theme.palette.grey[800]}
-                >
+              <Box display="flex" alignItems="center">
+                <img src={FlagPNG} alt="Flag" width={36} height={24} />
+                <Typography variant="body1" fontSize={16} ml={2}>
                   UAE
                 </Typography>
+                <Box ml={0.5}>
+                  <Icon name="down" size={12} />
+                </Box>
               </Box>
-
-              <Button
-                variant="contained"
-                color="primary"
-                size="large"
-                sx={{ ml: 2, fontSize: 16 }}
-              >
-                Download
+              <Button variant="contained" color="primary" size="large">
+                DOWNLOAD
               </Button>
             </Box>
-          </Box>
+          </Grid>
+        </Grid>
+      </Box>
 
-          <Box display={{ xs: "block", sm: "block", md: "block", lg: "none", xl: "none" }}>
-            <RightDrawer routes={menu} handleNavigate={handleNavigate} />
-          </Box>
+      <Box
+        bgcolor={theme.palette.common.white}
+        display={{
+          xs: "block",
+          sm: "block",
+          md: "block",
+          lg: "none",
+          xl: "none",
+        }}
+      >
+        <Box p={2} display="flex" justifyContent="space-between" alignItems="center">
+          <Logo />
+          <LeftDrawer />
         </Box>
-      </Grid>
-    </Grid>
+      </Box>
+    </>
   );
 };
 
