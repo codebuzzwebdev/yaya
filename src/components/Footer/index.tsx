@@ -5,7 +5,7 @@ import Icon from "@components/Icon";
 import Logo from "@components/Logo";
 import GooglePNG from "@assets/google.svg";
 import ApplePNG from "@assets/apple.svg";
-import FlagPNG from "@assets/flag.png";
+import UAESVG from "@assets/uae.svg";
 
 import { footerItems } from "@utils";
 
@@ -62,7 +62,7 @@ const Footer: FC = () => {
         </Box>
 
         <Box display="flex" alignItems="center" mt={2}>
-          <img src={FlagPNG} alt="Flag" width={36} height={24} />
+          <img src={UAESVG} alt="Flag" width={36} height={24} />
           <Typography variant="body1" fontSize={16} ml={1}>
             UAE
           </Typography>

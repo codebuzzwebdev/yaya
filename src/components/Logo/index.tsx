@@ -24,7 +24,7 @@ const Logo = () => {
         display={{
           xs: "none",
           sm: "none",
-          md: "none",
+          md: "block",
           lg: "block",
           xl: "block",
         }}

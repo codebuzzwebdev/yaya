@@ -13,32 +13,15 @@ import {
 
 import Icon from "@components/Icon";
 
-import { HeaderItem } from "@utils";
+import UAESVG from "@assets/uae.svg";
+import SASVG from "@assets/sa.svg";
 
-const currentOpenMenu = {
-  menu: null as string | null,
-  close: () => {},
-};
-
-export interface HoverMenuProps {
-  menu: string;
-  items: HeaderItem[];
-}
-
-const HoverMenu: React.FC<HoverMenuProps> = ({ menu, items }) => {
+const FlagMenu: React.FC = () => {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
   const anchorRef = React.useRef<HTMLButtonElement>(null);
 
-  const handleToggle = () => {
-    if (currentOpenMenu.menu && currentOpenMenu.menu !== menu) {
-      currentOpenMenu.close();
-    }
-    if (items.length === 0) return;
-    setOpen(true);
-    currentOpenMenu.menu = menu;
-    currentOpenMenu.close = () => setOpen(false);
-  };
+  const handleToggle = () => {};
 
   const handleClose = (event: Event | React.SyntheticEvent) => {
     if (
@@ -49,7 +32,6 @@ const HoverMenu: React.FC<HoverMenuProps> = ({ menu, items }) => {
     }
 
     setOpen(false);
-    currentOpenMenu.menu = null;
   };
 
   function handleListKeyDown(event: React.KeyboardEvent) {
@@ -62,17 +44,17 @@ const HoverMenu: React.FC<HoverMenuProps> = ({ menu, items }) => {
   }
 
   React.useEffect(() => {
-    if (!open && currentOpenMenu.menu === menu) {
+    if (!open) {
       anchorRef.current!.focus();
     }
-  }, [open, menu]);
+  }, [open]);
 
   return (
     <Box px={{ xs: 1, sm: 1, md: 1, lg: 1, xl: "15px" }}>
       <Box
         ref={anchorRef}
-        id={`${menu}_composition-button`}
-        aria-controls={open ? `${menu}_composition-button` : undefined}
+        id={`composition-button`}
+        aria-controls={open ? `composition-button` : undefined}
         aria-expanded={open ? "true" : undefined}
         aria-haspopup="true"
         onMouseEnter={handleToggle}
@@ -89,12 +71,15 @@ const HoverMenu: React.FC<HoverMenuProps> = ({ menu, items }) => {
           },
         }}
       >
-        <Typography variant="body1">{menu}</Typography>
-        {items.length > 0 && (
+        <Box display="flex" alignItems="center" px={1}>
+          <img src={UAESVG} alt="Flag" width={36} height={24} />
+          <Typography variant="body1" fontSize={16} ml={1}>
+            UAE
+          </Typography>
           <Box ml={0.5}>
             <Icon name="down" size={12} />
           </Box>
-        )}
+        </Box>
       </Box>
       <Popper
         open={open}
@@ -129,8 +114,8 @@ const HoverMenu: React.FC<HoverMenuProps> = ({ menu, items }) => {
               <ClickAwayListener onClickAway={handleClose}>
                 <MenuList
                   autoFocusItem={false}
-                  id={`${menu}_composition-button`}
-                  aria-labelledby={`${menu}_composition-button`}
+                  id={`composition-button`}
+                  aria-labelledby={`composition-button`}
                   onKeyDown={handleListKeyDown}
                   sx={{
                     "&.MuiList-root": {
@@ -139,28 +124,33 @@ const HoverMenu: React.FC<HoverMenuProps> = ({ menu, items }) => {
                     },
                   }}
                 >
-                  {items.map((item: HeaderItem, _idx: number) => (
-                    <MenuItem
-                      key={`${item.title}_${_idx}`}
-                      onClick={handleClose}
-                      sx={{
-                        py: 1,
-                        color: theme.palette.grey[500],
-                        cursor: "pointer",
+                  <MenuItem
+                    onClick={handleClose}
+                    sx={{
+                      py: 1,
+                      color: theme.palette.grey[500],
+                      cursor: "pointer",
+                      background: theme.palette.common.white,
+                      "&:hover": {
                         background: theme.palette.common.white,
-                        "&:hover": {
-                          background: theme.palette.common.white,
-                          color: theme.palette.primary.main,
-                        },
-                        "&.Mui-selected": {
-                          background: theme.palette.common.white,
-                          color: theme.palette.common.white,
-                        },
-                      }}
-                    >
-                      {item.title}
-                    </MenuItem>
-                  ))}
+                        color: theme.palette.primary.main,
+                      },
+                      "&.Mui-selected": {
+                        background: theme.palette.common.white,
+                        color: theme.palette.common.white,
+                      },
+                    }}
+                  >
+                    <Box display="flex" alignItems="center" px={1}>
+                      <img src={SASVG} alt="Flag" width={36} height={24} />
+                      <Typography variant="body1" fontSize={16} ml={1}>
+                        SA
+                      </Typography>
+                      <Box ml={0.5}>
+                        <Icon name="down" size={12} />
+                      </Box>
+                    </Box>
+                  </MenuItem>
                 </MenuList>
               </ClickAwayListener>
             </Paper>
@@ -171,4 +161,4 @@ const HoverMenu: React.FC<HoverMenuProps> = ({ menu, items }) => {
   );
 };
 
-export default HoverMenu;
+export default FlagMenu;

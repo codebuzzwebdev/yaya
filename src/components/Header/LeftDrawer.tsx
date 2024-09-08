@@ -11,7 +11,7 @@ import {
 import Icon from "@components/Icon";
 import Logo from "@components/Logo";
 
-import FlagPNG from "@assets/flag.png";
+import UAESVG from "@assets/uae.svg";
 
 import { headerItems } from "@utils";
 
@@ -129,7 +129,7 @@ const LeftDrawer: React.FC = () => {
               }}
             >
               <Box display="flex" alignItems="center">
-                <img src={FlagPNG} alt="Flag" width={36} height={24} />
+                <img src={UAESVG} alt="Flag" width={36} height={24} />
                 <Typography variant="body1" fontSize={16} ml={1}>
                   UAE
                 </Typography>
@@ -150,7 +150,7 @@ const LeftDrawer: React.FC = () => {
               }}
             >
               <Box display="flex" alignItems="center">
-                <img src={FlagPNG} alt="Flag" width={36} height={24} />
+                <img src={UAESVG} alt="Flag" width={36} height={24} />
                 <Typography variant="body1" fontSize={16} ml={1}>
                   SA
                 </Typography>
