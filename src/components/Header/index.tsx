@@ -1,13 +1,10 @@
 import { FC } from "react";
-import { useTheme, Box, Typography, Button } from "@mui/material";
+import { useTheme, Box, Button } from "@mui/material";
 
 import LeftDrawer from "@components/Header/LeftDrawer";
 import HoverMenu from "@components/HoverMenu";
 import FlagMenu from "@components/FlagMenu";
 import Logo from "@components/Logo";
-import Icon from "@components/Icon";
-
-import UAESVG from "@assets/uae.svg";
 
 import { headerItems } from "@utils";
 
