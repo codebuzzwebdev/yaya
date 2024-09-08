@@ -16,6 +16,8 @@ import SASVG from "@assets/sa.svg";
 
 import { headerItems } from "@utils";
 
+const VITE_WP_URL = import.meta.env.VITE_WP_URL;
+
 const LeftDrawer: React.FC = () => {
   const theme = useTheme();
 
@@ -28,6 +30,12 @@ const LeftDrawer: React.FC = () => {
 
   const handleMenu = (_idx: number) => {
     setSubMenu(_idx);
+  };
+
+  const handleSubMenu = (url: string) => {
+    if (url !== "#") {
+      window.location.href = `${VITE_WP_URL}${url}`;
+    }
   };
 
   const DrawerList = (
@@ -74,6 +82,7 @@ const LeftDrawer: React.FC = () => {
                     color: theme.palette.primary.main,
                   },
                 }}
+                onClick={() => handleSubMenu(item.url)}
               >
                 {item.title}
               </Typography>

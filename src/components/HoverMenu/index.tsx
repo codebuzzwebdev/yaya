@@ -71,7 +71,7 @@ const HoverMenu: React.FC<HoverMenuProps> = ({ menu, items }) => {
 
   const handleMenu = (url: string) => {
     if (url !== "#") {
-      window.open(`${VITE_WP_URL}${url}`);
+      window.location.href = `${VITE_WP_URL}${url}`;
     }
   };
 

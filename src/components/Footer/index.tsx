@@ -18,7 +18,7 @@ const Footer: FC = () => {
 
   const handleMenu = (url: string) => {
     if (url !== "#") {
-      window.open(`${VITE_WP_URL}${url}`);
+      window.location.href = `${VITE_WP_URL}${url}`;
     }
   };
 
@@ -64,7 +64,6 @@ const Footer: FC = () => {
               <Icon name="instagram" color={theme.palette.common.black} />
             </IconButton>
             <IconButton>
-              handleMenu
               <Icon name="youtube" color={theme.palette.common.black} />
             </IconButton>
           </Box>
