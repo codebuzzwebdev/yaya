@@ -141,10 +141,9 @@ const Mobile: FC<MobileProps> = ({
               bgcolor={colors.theme.pink}
               px={2}
               py={0.5}
-              height={28}
               borderRadius={1}
-              bottom={16}
-              left={16}
+              bottom={8}
+              left={8}
               sx={{
                 cursor: "pointer",
                 "&:hover": {
@@ -154,7 +153,7 @@ const Mobile: FC<MobileProps> = ({
             >
               <Typography
                 variant="body1"
-                fontSize={14}
+                fontSize={10}
                 color={theme.palette.common.white}
               >
                 {data?.jobType}
@@ -165,10 +164,9 @@ const Mobile: FC<MobileProps> = ({
               bgcolor={colors.theme.blue}
               px={2}
               py={0.5}
-              height={28}
               borderRadius={1}
-              bottom={16}
-              right={16}
+              bottom={8}
+              right={8}
               sx={{
                 display: data?.videoUrl ? "block" : "none",
                 cursor: "pointer",
@@ -179,7 +177,7 @@ const Mobile: FC<MobileProps> = ({
             >
               <Typography
                 variant="body1"
-                fontSize={14}
+                fontSize={10}
                 color={theme.palette.common.white}
               >
                 Video Greeting

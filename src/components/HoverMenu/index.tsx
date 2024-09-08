@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useNavigate } from "react-router-dom";
 import {
   useTheme,
   Box,
@@ -29,6 +30,7 @@ export interface HoverMenuProps {
 
 const HoverMenu: React.FC<HoverMenuProps> = ({ menu, items }) => {
   const theme = useTheme();
+  const navigate = useNavigate();
   const [open, setOpen] = React.useState(false);
   const anchorRef = React.useRef<HTMLButtonElement>(null);
 
@@ -70,7 +72,9 @@ const HoverMenu: React.FC<HoverMenuProps> = ({ menu, items }) => {
   }, [open, menu]);
 
   const handleMenu = (url: string) => {
-    if (url !== "#") {
+    if (url === "/") {
+      navigate("/");
+    } else if (url !== "#") {
       window.location.href = `${VITE_WP_URL}${url}`;
     }
   };
@@ -97,7 +101,14 @@ const HoverMenu: React.FC<HoverMenuProps> = ({ menu, items }) => {
           },
         }}
       >
-        <Typography variant="body1">{menu}</Typography>
+        <Typography
+          variant="body1"
+          onClick={() => {
+            handleMenu("/");
+          }}
+        >
+          {menu}
+        </Typography>
         {items.length > 0 && (
           <Box ml={0.5}>
             <Icon name="down" size={12} />
