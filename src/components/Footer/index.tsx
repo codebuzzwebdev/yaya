@@ -87,7 +87,7 @@ const Footer: FC = () => {
               {item.items.map((subItem, _idx2) => {
                 if (subItem.id === 17) {
                   return (
-                    <>
+                    <Box key={`${subItem.title}_${_idx}_${_idx2}`}>
                       <img
                         src={ApplePNG}
                         alt="Apple"
@@ -96,11 +96,11 @@ const Footer: FC = () => {
                         className="store-images"
                         onClick={handleApple}
                       />
-                    </>
+                    </Box>
                   );
                 } else if (subItem.id === 18) {
                   return (
-                    <>
+                    <Box key={`${subItem.title}_${_idx}_${_idx2}`}>
                       <img
                         src={GooglePNG}
                         alt="Google"
@@ -109,7 +109,7 @@ const Footer: FC = () => {
                         className="store-images"
                         onClick={handleGoogle}
                       />
-                    </>
+                    </Box>
                   );
                 } else {
                   return (

@@ -151,7 +151,7 @@ const Home: FC = () => {
             ? `${BASE_URL}/${ele.photos[0].imageUrl}`
             : PlaceholderPNG,
         createdAt: ele?.createdAt,
-        countryCode: ele?.nationality?.countryCode
+        countryCode: ele?.nationality?.countryCode,
       };
     });
     setData(_data);
@@ -343,38 +343,24 @@ const Home: FC = () => {
         </Grid>
 
         <Grid item xs={12} sm={12} md={12} lg={7} xl={7}>
-          <Grid container spacing={2}>
+          <Box display="flex" justifyContent="center" flexWrap="wrap">
             {!isLoading && data && data.length > 0 ? (
               data.map((item, _idx) => (
-                <Grid
-                  key={`${item.id}_${_idx}`}
-                  item
-                  xs={12}
-                  sm={6}
-                  md={3}
-                  lg={4}
-                  xl={3}
-                >
-                  <Card data={item} handleNavigate={navigateToUser} />
-                </Grid>
+                <Card key={`${item.id}_${_idx}`} data={item} handleNavigate={navigateToUser} />
               ))
             ) : !isLoading && data && data.length === 0 ? (
-              <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
-                <Typography
-                  variant="h6"
-                  textAlign="center"
-                  p={2}
-                  color={theme.palette.grey[300]}
-                >
-                  No Results Found!
-                </Typography>
-              </Grid>
+              <Typography
+                variant="h6"
+                textAlign="center"
+                p={2}
+                color={theme.palette.grey[300]}
+              >
+                No Results Found!
+              </Typography>
             ) : (
-              <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
-                <Loader />
-              </Grid>
+              <Loader />
             )}
-          </Grid>
+          </Box>
 
           <Grid
             container

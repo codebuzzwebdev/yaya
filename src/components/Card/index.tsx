@@ -46,14 +46,16 @@ const Card: FC<CardProps> = ({ data, handleNavigate }) => {
         },
       }}
       onClick={() => handleNavigate(data)}
-      width={260}
+      width={240}
+      mt={2}
+      mr={2}
     >
       <Box position="relative">
         <img
           src={data.photo}
           alt="Nannie"
           width="100%"
-          height={220}
+          height={200}
           style={{
             objectFit: "fill",
             cursor: "pointer",
