@@ -15,6 +15,8 @@ import Icon from "@components/Icon";
 
 import { HeaderItem } from "@utils";
 
+const VITE_WP_URL = import.meta.env.VITE_WP_URL;
+
 const currentOpenMenu = {
   menu: null as string | null,
   close: () => {},
@@ -66,6 +68,12 @@ const HoverMenu: React.FC<HoverMenuProps> = ({ menu, items }) => {
       anchorRef.current!.focus();
     }
   }, [open, menu]);
+
+  const handleMenu = (url: string) => {
+    if (url !== "#") {
+      window.open(`${VITE_WP_URL}${url}`);
+    }
+  };
 
   return (
     <Box px={{ xs: 1, sm: 1, md: 1, lg: 1, xl: "15px" }}>
@@ -142,7 +150,10 @@ const HoverMenu: React.FC<HoverMenuProps> = ({ menu, items }) => {
                   {items.map((item: HeaderItem, _idx: number) => (
                     <MenuItem
                       key={`${item.title}_${_idx}`}
-                      onClick={handleClose}
+                      onClick={(event) => {
+                        handleMenu(item.url);
+                        handleClose(event);
+                      }}
                       sx={{
                         py: 1,
                         color: theme.palette.grey[500],
