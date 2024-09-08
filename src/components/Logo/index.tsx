@@ -23,7 +23,7 @@ const Logo = () => {
         display={{
           xs: "none",
           sm: "none",
-          md: "block",
+          md: "none",
           lg: "block",
           xl: "block",
         }}
@@ -35,7 +35,7 @@ const Logo = () => {
         display={{
           xs: "block",
           sm: "block",
-          md: "none",
+          md: "block",
           lg: "none",
           xl: "none",
         }}
