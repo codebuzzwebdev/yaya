@@ -622,7 +622,7 @@ export const headerItems: HeaderType[] = [
   {
     id: 1,
     title: "Home",
-    items: []
+    items: [],
   },
   {
     id: 2,
@@ -631,24 +631,24 @@ export const headerItems: HeaderType[] = [
       {
         id: 1,
         title: "About Yaya",
-        url: ""
+        url: "/about-us",
       },
       {
         id: 2,
         title: "How it Works",
-        url: ""
+        url: "/how-it-works",
       },
       {
         id: 3,
         title: "Features",
-        url: ""
+        url: "/features",
       },
       {
         id: 4,
         title: "Pricing",
-        url: ""
+        url: "/pricing",
       },
-    ]
+    ],
   },
   {
     id: 3,
@@ -657,9 +657,9 @@ export const headerItems: HeaderType[] = [
       {
         id: 5,
         title: "Find a Job",
-        url: ""
-      }
-    ]
+        url: "/find-a-job",
+      },
+    ],
   },
   {
     id: 4,
@@ -668,24 +668,24 @@ export const headerItems: HeaderType[] = [
       {
         id: 6,
         title: "Care Guide",
-        url: ""
+        url: "/careguide",
       },
       {
         id: 7,
         title: "Tutorials",
-        url: ""
+        url: "/find-a-job/#Tutorial",
       },
       {
         id: 8,
         title: "Terms & Conditions",
-        url: ""
+        url: "/terms-and-conditions",
       },
       {
         id: 9,
         title: "Privacy Policy",
-        url: ""
+        url: "/privacy-policy",
       },
-    ]
+    ],
   },
   {
     id: 5,
@@ -694,21 +694,21 @@ export const headerItems: HeaderType[] = [
       {
         id: 10,
         title: "Contact Us",
-        url: ""
+        url: "/contact-us",
       },
       {
         id: 11,
         title: "Whatsapp Us",
-        url: ""
+        url: "https://api.whatsapp.com/send/?phone=971568578544&text=Hi+Yaya+Team&type=phone_number&app_absent=0",
       },
       {
-        id: 11,
+        id: 12,
         title: "FAQs",
-        url: ""
-      }
-    ]
+        url: "/How-it-Works/#faq",
+      },
+    ],
   },
-]
+];
 
 export interface FooterItem {
   id: number;
@@ -730,24 +730,24 @@ export const footerItems: FooterType[] = [
       {
         id: 1,
         title: "About Yaya",
-        url: ""
+        url: "/about-us",
       },
       {
         id: 2,
         title: "How it Works",
-        url: ""
+        url: "/how-it-works",
       },
       {
         id: 3,
         title: "Features",
-        url: ""
+        url: "/features",
       },
       {
         id: 4,
         title: "Pricing",
-        url: ""
+        url: "/pricing",
       },
-    ]
+    ],
   },
   {
     id: 2,
@@ -756,34 +756,34 @@ export const footerItems: FooterType[] = [
       {
         id: 5,
         title: "Find Nannies",
-        url: ""
+        url: "#",
       },
       {
         id: 6,
         title: "Find Jobs",
-        url: ""
+        url: "/find-a-job",
       },
       {
         id: 7,
         title: "Filipino Nannies",
-        url: ""
+        url: "#",
       },
       {
         id: 8,
         title: "Ugandan Nannies",
-        url: ""
+        url: "#",
       },
       {
         id: 9,
         title: "Live Out Nannies",
-        url: ""
+        url: "#",
       },
       {
         id: 10,
         title: "Maids in Dubai",
-        url: ""
+        url: "#",
       },
-    ]
+    ],
   },
   {
     id: 3,
@@ -792,24 +792,24 @@ export const footerItems: FooterType[] = [
       {
         id: 11,
         title: "Care Guide",
-        url: ""
+        url: "/careguide",
       },
       {
         id: 12,
         title: "Tutorials",
-        url: ""
+        url: "/find-a-job/#Tutorial",
       },
       {
         id: 13,
         title: "Terms & Conditions",
-        url: ""
+        url: "/terms-and-conditions",
       },
       {
         id: 14,
         title: "Privacy Policy",
-        url: ""
+        url: "/privacy-policy",
       },
-    ]
+    ],
   },
   {
     id: 4,
@@ -818,14 +818,14 @@ export const footerItems: FooterType[] = [
       {
         id: 15,
         title: "Contact Us",
-        url: ""
+        url: "/contact-us",
       },
       {
         id: 16,
         title: "FAQs",
-        url: ""
-      }
-    ]
+        url: "/How-it-Works/#faq",
+      },
+    ],
   },
   {
     id: 5,
@@ -834,13 +834,13 @@ export const footerItems: FooterType[] = [
       {
         id: 17,
         title: "App Store",
-        url: ""
+        url: "#",
       },
       {
         id: 18,
         title: "Play Store",
-        url: ""
-      }
-    ]
-  }
-]
+        url: "#",
+      },
+    ],
+  },
+];

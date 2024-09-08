@@ -11,9 +11,16 @@ import { footerItems } from "@utils";
 
 const APP_STORE_URL = import.meta.env.VITE_APP_STORE_URL;
 const PLAY_STORE_URL = import.meta.env.VITE_PLAY_STORE_URL;
+const VITE_WP_URL = import.meta.env.VITE_WP_URL;
 
 const Footer: FC = () => {
   const theme = useTheme();
+
+  const handleMenu = (url: string) => {
+    if (url !== "#") {
+      window.open(`${VITE_WP_URL}${url}`);
+    }
+  };
 
   const handleApple = () => {
     window.open(APP_STORE_URL);
@@ -32,7 +39,7 @@ const Footer: FC = () => {
         bgcolor={theme.palette.secondary.light}
       >
         <Grid item xs={12} sm={12} md={12} lg={4} xl={4}>
-          <Logo />
+          <Logo isFull />
           <Typography
             variant="body1"
             color={theme.palette.grey[500]}
@@ -57,6 +64,7 @@ const Footer: FC = () => {
               <Icon name="instagram" color={theme.palette.common.black} />
             </IconButton>
             <IconButton>
+              handleMenu
               <Icon name="youtube" color={theme.palette.common.black} />
             </IconButton>
           </Box>
@@ -69,7 +77,15 @@ const Footer: FC = () => {
           </Box>
         </Grid>
 
-        <Grid item xs={12} sm={12} md={12} lg={8} xl={8}>
+        <Grid
+          item
+          xs={12}
+          sm={12}
+          md={12}
+          lg={8}
+          xl={8}
+          mt={{ xs: 3, sm: 3, md: 3, lg: 0, xl: 0 }}
+        >
           <Grid container>
             {footerItems.map((item, _idx) => (
               <Grid
@@ -125,6 +141,7 @@ const Footer: FC = () => {
                             color: theme.palette.primary.main,
                           },
                         }}
+                        onClick={() => handleMenu(subItem.url)}
                       >
                         {subItem.title}
                       </Typography>
@@ -142,6 +159,7 @@ const Footer: FC = () => {
         textAlign="center"
         sx={{
           py: "40px",
+          px: "8px",
         }}
       >
         © Copyright 2024 Yaya Middle East FZ-LLC. All rights reserved.
