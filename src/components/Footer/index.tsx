@@ -9,9 +9,12 @@ import UAESVG from "@assets/uae.svg";
 
 import { footerItems } from "@utils";
 
-const APP_STORE_URL = import.meta.env.VITE_APP_STORE_URL;
-const PLAY_STORE_URL = import.meta.env.VITE_PLAY_STORE_URL;
+const VITE_APP_STORE_URL = import.meta.env.VITE_APP_STORE_URL;
+const VITE_PLAY_STORE_URL = import.meta.env.VITE_PLAY_STORE_URL;
 const VITE_WP_URL = import.meta.env.VITE_WP_URL;
+const VITE_FACEBOOK_URL = import.meta.env.VITE_FACEBOOK_URL;
+const VITE_INSTAGRAM_URL = import.meta.env.VITE_INSTAGRAM_URL;
+const VITE_YOUTUBE_URL = import.meta.env.VITE_YOUTUBE_URL;
 
 const Footer: FC = () => {
   const theme = useTheme();
@@ -23,11 +26,23 @@ const Footer: FC = () => {
   };
 
   const handleApple = () => {
-    window.open(APP_STORE_URL);
+    window.open(VITE_APP_STORE_URL);
   };
 
   const handleGoogle = () => {
-    window.open(PLAY_STORE_URL);
+    window.open(VITE_PLAY_STORE_URL);
+  };
+
+  const handleFacebook = () => {
+    window.open(VITE_FACEBOOK_URL);
+  };
+
+  const handleInstagram = () => {
+    window.open(VITE_INSTAGRAM_URL);
+  };
+
+  const handleYoutube = () => {
+    window.open(VITE_YOUTUBE_URL);
   };
 
   return (
@@ -57,13 +72,13 @@ const Footer: FC = () => {
           </Typography>
 
           <Box mt={2} ml={-1}>
-            <IconButton>
+            <IconButton onClick={handleFacebook}>
               <Icon name="facebook" color={theme.palette.common.black} />
             </IconButton>
-            <IconButton>
+            <IconButton onClick={handleInstagram}>
               <Icon name="instagram" color={theme.palette.common.black} />
             </IconButton>
-            <IconButton>
+            <IconButton onClick={handleYoutube}>
               <Icon name="youtube" color={theme.palette.common.black} />
             </IconButton>
           </Box>
