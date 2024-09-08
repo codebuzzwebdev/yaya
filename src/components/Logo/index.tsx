@@ -1,7 +1,9 @@
 import { useNavigate } from "react-router-dom";
-import { Box, Typography } from "@mui/material";
+import { Box } from "@mui/material";
 
-import LogoPNG from "@assets/logo.png";
+// import LogoPNG from "@assets/logo.png";
+import Logo1 from "@assets/logo-1.svg";
+import Logo2 from "@assets/logo-2.png";
 
 const Logo = () => {
   const navigate = useNavigate();
@@ -17,10 +19,7 @@ const Logo = () => {
       sx={{ cursor: "pointer" }}
       onClick={navigateToHome}
     >
-      <img src={LogoPNG} alt="Yaya Middle East" width={32} height={32} />
-      <Typography
-        variant="h6"
-        ml={1}
+      <Box
         display={{
           xs: "none",
           sm: "none",
@@ -29,8 +28,20 @@ const Logo = () => {
           xl: "block",
         }}
       >
-        Yaya Middle East
-      </Typography>
+        <img src={Logo1} alt="Yaya Middle East" />
+      </Box>
+
+      <Box
+        display={{
+          xs: "block",
+          sm: "block",
+          md: "none",
+          lg: "none",
+          xl: "none",
+        }}
+      >
+        <img src={Logo2} alt="Yaya Middle East" width={40} height={40} />
+      </Box>
     </Box>
   );
 };

@@ -10,7 +10,6 @@ import {
   MenuList,
   Typography,
 } from "@mui/material";
-
 import Icon from "@components/Icon";
 
 import UAESVG from "@assets/uae.svg";
@@ -21,7 +20,9 @@ const FlagMenu: React.FC = () => {
   const [open, setOpen] = React.useState(false);
   const anchorRef = React.useRef<HTMLButtonElement>(null);
 
-  const handleToggle = () => {};
+  const handleToggle = (isOpen: boolean) => {
+    setOpen(isOpen);
+  };
 
   const handleClose = (event: Event | React.SyntheticEvent) => {
     if (
@@ -45,20 +46,22 @@ const FlagMenu: React.FC = () => {
 
   React.useEffect(() => {
     if (!open) {
-      anchorRef.current!.focus();
+      anchorRef.current?.focus();
     }
   }, [open]);
 
   return (
-    <Box px={{ xs: 1, sm: 1, md: 1, lg: 1, xl: "15px" }}>
+    <Box
+      px={{ xs: 1, sm: 1, md: 1, lg: 1, xl: "15px" }}
+      onMouseLeave={() => handleToggle(false)}
+    >
       <Box
         ref={anchorRef}
-        id={`composition-button`}
-        aria-controls={open ? `composition-button` : undefined}
+        id="composition-button"
+        aria-controls={open ? "composition-button" : undefined}
         aria-expanded={open ? "true" : undefined}
         aria-haspopup="true"
-        onMouseEnter={handleToggle}
-        onMouseLeave={handleClose}
+        onMouseEnter={() => handleToggle(true)}
         color={theme.palette.common.black}
         display="flex"
         alignItems="center"
@@ -114,8 +117,8 @@ const FlagMenu: React.FC = () => {
               <ClickAwayListener onClickAway={handleClose}>
                 <MenuList
                   autoFocusItem={false}
-                  id={`composition-button`}
-                  aria-labelledby={`composition-button`}
+                  id="composition-button"
+                  aria-labelledby="composition-button"
                   onKeyDown={handleListKeyDown}
                   sx={{
                     "&.MuiList-root": {
@@ -123,6 +126,8 @@ const FlagMenu: React.FC = () => {
                       py: 2,
                     },
                   }}
+                  onMouseEnter={() => handleToggle(true)}
+                  onMouseLeave={() => handleToggle(true)}
                 >
                   <MenuItem
                     onClick={handleClose}
@@ -146,9 +151,6 @@ const FlagMenu: React.FC = () => {
                       <Typography variant="body1" fontSize={16} ml={1}>
                         SA
                       </Typography>
-                      <Box ml={0.5}>
-                        <Icon name="down" size={12} />
-                      </Box>
                     </Box>
                   </MenuItem>
                 </MenuList>

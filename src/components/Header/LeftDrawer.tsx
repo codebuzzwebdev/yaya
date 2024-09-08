@@ -12,6 +12,7 @@ import Icon from "@components/Icon";
 import Logo from "@components/Logo";
 
 import UAESVG from "@assets/uae.svg";
+import SASVG from "@assets/sa.svg";
 
 import { headerItems } from "@utils";
 
@@ -86,7 +87,7 @@ const LeftDrawer: React.FC = () => {
                 display="flex"
                 justifyContent="space-between"
                 alignItems="center"
-                pt={3}
+                py={1.5}
                 sx={{
                   cursor: "pointer",
                   "&:hover": {
@@ -96,14 +97,11 @@ const LeftDrawer: React.FC = () => {
                     },
                   },
                 }}
+                onClick={() =>
+                  item.items.length > 0 ? handleMenu(_idx) : undefined
+                }
               >
-                <Typography
-                  variant="body1"
-                  fontSize={16}
-                  onClick={() =>
-                    item.items.length > 0 ? handleMenu(_idx) : undefined
-                  }
-                >
+                <Typography variant="body1" fontSize={16}>
                   {item.title}
                 </Typography>
                 {item.items.length > 0 && (
@@ -120,7 +118,7 @@ const LeftDrawer: React.FC = () => {
               display="flex"
               justifyContent="space-between"
               alignItems="center"
-              pt={3}
+              py={1.5}
               sx={{
                 cursor: "pointer",
                 "&:hover": {
@@ -141,7 +139,7 @@ const LeftDrawer: React.FC = () => {
               display="flex"
               justifyContent="space-between"
               alignItems="center"
-              pt={3}
+              py={1.5}
               sx={{
                 cursor: "pointer",
                 "&:hover": {
@@ -150,7 +148,7 @@ const LeftDrawer: React.FC = () => {
               }}
             >
               <Box display="flex" alignItems="center">
-                <img src={UAESVG} alt="Flag" width={36} height={24} />
+                <img src={SASVG} alt="Flag" width={36} height={24} />
                 <Typography variant="body1" fontSize={16} ml={1}>
                   SA
                 </Typography>
@@ -160,8 +158,8 @@ const LeftDrawer: React.FC = () => {
           </Box>
         )}
       </Box>
-      <Box position="absolute" bottom={16} width="calc(100vw - 32px)">
-        <Button variant="contained" fullWidth color="primary">
+      <Box position="absolute" bottom={40} width="calc(100vw - 50px)">
+        <Button variant="contained" fullWidth color="primary" size="large">
           Download
         </Button>
       </Box>
