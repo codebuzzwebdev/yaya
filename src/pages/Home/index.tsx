@@ -311,80 +311,42 @@ const Home: FC = () => {
           />
         </Grid>
 
-        <Grid item xs={12} sm={12} md={12} lg={8} xl={8}>
-          <Box
-            display="flex"
-            flexDirection={{
-              xs: "column",
-              sm: "column",
-              md: "row",
-              lg: "row",
-              xl: "row",
-            }}
-            justifyContent="space-between"
-          >
-            <Box
-              display="flex"
-              justifyContent={isLoading ? "center" : "space-around"}
-              flexWrap={isLoading ? "nowrap" : "wrap"}
-            >
-              {!isLoading && data && data.length > 0 ? (
-                data.map((item, _idx) => (
-                  <Card
-                    key={`${item.id}_${_idx}`}
-                    data={item}
-                    handleNavigate={navigateToUser}
-                  />
-                ))
-              ) : !isLoading && data && data.length === 0 ? (
-                <Typography
-                  variant="h6"
-                  textAlign="center"
-                  p={2}
-                  color={theme.palette.grey[300]}
-                >
-                  No Results Found!
-                </Typography>
-              ) : (
-                <Loader />
-              )}
+        {!isLoading && data && data.length > 0 ? (
+          <Grid item xs={12} sm={12} md={12} lg={8} xl={8}>
+            <Box display="flex" justifyContent="space-around" flexWrap="wrap">
+              {data.map((item, _idx) => (
+                <Card
+                  key={`${item.id}_${_idx}`}
+                  data={item}
+                  handleNavigate={navigateToUser}
+                />
+              ))}
             </Box>
-          </Box>
-
-          <Grid
-            container
-            mt={12}
-            display={{
-              xs: "none",
-              sm: "none",
-              md: "block",
-              lg: "block",
-              xl: "block",
-            }}
-          >
-            <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
-              <Pagination
-                count={pagination.totalPages}
-                onChange={onPagination}
-              />
-            </Grid>
           </Grid>
+        ) : !isLoading && data && data.length === 0 ? (
+          <Grid item xs={12} sm={12} md={12} lg={8} xl={8}>
+            <Typography
+              variant="h6"
+              textAlign="center"
+              p={2}
+              color={theme.palette.grey[300]}
+            >
+              No Results Found!
+            </Typography>
+          </Grid>
+        ) : (
+          <Grid item xs={12} sm={12} md={12} lg={8} xl={8}>
+            <Loader />
+          </Grid>
+        )}
+
+        <Grid item xs={12} sm={12} md={12} lg={4} xl={4}></Grid>
+        <Grid item xs={12} sm={12} md={12} lg={8} xl={8}>
+          <Box mt={{ xs: 3, sm: 3, md: 3, lg: 6, xl: 6 }}>
+            <Pagination count={pagination.totalPages} onChange={onPagination} />
+          </Box>
         </Grid>
       </Grid>
-
-      <Box
-        display={{
-          xs: "block",
-          sm: "block",
-          md: "none",
-          lg: "none",
-          xl: "none",
-        }}
-        mb={6}
-      >
-        <Pagination count={pagination.totalPages} onChange={onPagination} />
-      </Box>
-
       <Bottom />
     </>
   );
