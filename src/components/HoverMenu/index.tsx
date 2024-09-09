@@ -88,8 +88,8 @@ const HoverMenu: React.FC<HoverMenuProps> = ({ menu, items }) => {
         aria-expanded={open ? "true" : undefined}
         aria-haspopup="true"
         onMouseEnter={handleToggle}
-        onMouseLeave={handleClose}
-        color={theme.palette.common.black}
+        onMouseLeave={() => setOpen(false)}
+        color="#667785"
         display="flex"
         alignItems="center"
         sx={{
@@ -103,6 +103,7 @@ const HoverMenu: React.FC<HoverMenuProps> = ({ menu, items }) => {
       >
         <Typography
           variant="body1"
+          fontFamily="Inter Medium !important"
           onClick={() => {
             handleMenu("/");
           }}
@@ -167,7 +168,7 @@ const HoverMenu: React.FC<HoverMenuProps> = ({ menu, items }) => {
                       }}
                       sx={{
                         py: 1,
-                        color: theme.palette.grey[500],
+                        color: "#667785",
                         cursor: "pointer",
                         background: theme.palette.common.white,
                         "&:hover": {

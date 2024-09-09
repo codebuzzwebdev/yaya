@@ -1,20 +1,19 @@
 import { FC } from "react";
-import { useNavigate } from "react-router-dom";
 import { Box } from "@mui/material";
 
 // import LogoPNG from "@assets/logo.png";
 import Logo1 from "@assets/logo-1.svg";
 import Logo2 from "@assets/logo-2.png";
 
+const VITE_WP_URL = import.meta.env.VITE_WP_URL;
+
 export interface LogoProps {
   isFull?: boolean;
 }
 
 const Logo: FC<LogoProps> = ({ isFull }) => {
-  const navigate = useNavigate();
-
   const navigateToHome = () => {
-    navigate("/");
+    window.location.href = VITE_WP_URL;
   };
 
   if (isFull) {

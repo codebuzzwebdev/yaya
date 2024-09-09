@@ -62,6 +62,7 @@ const FlagMenu: React.FC = () => {
         aria-expanded={open ? "true" : undefined}
         aria-haspopup="true"
         onMouseEnter={() => handleToggle(true)}
+        onMouseLeave={handleClose}
         color={theme.palette.common.black}
         display="flex"
         alignItems="center"
@@ -76,7 +77,7 @@ const FlagMenu: React.FC = () => {
       >
         <Box display="flex" alignItems="center" px={1}>
           <img src={UAESVG} alt="Flag" width={36} height={24} />
-          <Typography variant="body1" fontSize={16} ml={1}>
+          <Typography variant="body1" color="#667785" fontSize={16} ml={1}>
             UAE
           </Typography>
           <Box ml={0.5}>
@@ -133,7 +134,6 @@ const FlagMenu: React.FC = () => {
                     onClick={handleClose}
                     sx={{
                       py: 1,
-                      color: theme.palette.grey[500],
                       cursor: "pointer",
                       background: theme.palette.common.white,
                       "&:hover": {
@@ -148,7 +148,12 @@ const FlagMenu: React.FC = () => {
                   >
                     <Box display="flex" alignItems="center" px={1}>
                       <img src={SASVG} alt="Flag" width={36} height={24} />
-                      <Typography variant="body1" fontSize={16} ml={1}>
+                      <Typography
+                        variant="body1"
+                        color="#667785"
+                        fontSize={16}
+                        ml={1}
+                      >
                         SA
                       </Typography>
                     </Box>

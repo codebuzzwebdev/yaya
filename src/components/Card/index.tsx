@@ -46,7 +46,7 @@ const Card: FC<CardProps> = ({ data, handleNavigate }) => {
         },
       }}
       onClick={() => handleNavigate(data)}
-      width={240}
+      width={197}
       mt={2}
       mr={2}
     >
@@ -55,7 +55,7 @@ const Card: FC<CardProps> = ({ data, handleNavigate }) => {
           src={data.photo}
           alt="Nannie"
           width="100%"
-          height={200}
+          height={195}
           style={{
             objectFit: "fill",
             cursor: "pointer",
@@ -66,22 +66,22 @@ const Card: FC<CardProps> = ({ data, handleNavigate }) => {
         <img
           src={VideoPNG}
           alt="Video"
-          width={32}
-          height={32}
+          width={18}
+          height={18}
           style={{
             display: data?.videoUrl ? "block" : "none",
             objectFit: "cover",
             cursor: "pointer",
             position: "absolute",
-            bottom: 16,
+            bottom: 18,
             left: 8,
           }}
         />
         <img
           src={BadgePNG}
           alt="Badge"
-          width={32}
-          height={32}
+          width={18}
+          height={18}
           style={{
             display: data.yayaPick === 1 ? "block" : "none",
             objectFit: "cover",

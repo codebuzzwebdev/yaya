@@ -65,6 +65,7 @@ const LeftDrawer: React.FC = () => {
               fontSize={10}
               onClick={() => setSubMenu(-1)}
               py={2}
+              color="#161C2D"
               sx={{
                 cursor: "pointer",
                 "&:hover": {
@@ -81,6 +82,7 @@ const LeftDrawer: React.FC = () => {
                 variant="body1"
                 fontSize={16}
                 py={2}
+                color="#161C2D"
                 sx={{
                   cursor: "pointer",
                   "&:hover": {
@@ -115,15 +117,11 @@ const LeftDrawer: React.FC = () => {
                   item.items.length > 0 ? handleMenu(_idx) : handleSubMenu("/")
                 }
               >
-                <Typography variant="body1" fontSize={16}>
+                <Typography variant="body1" color="#161C2D" fontSize={16}>
                   {item.title}
                 </Typography>
                 {item.items.length > 0 && (
-                  <Icon
-                    className="icon-hover"
-                    name="right"
-                    color={theme.palette.common.black}
-                  />
+                  <Icon className="icon-hover" name="right" color="#161C2D" />
                 )}
               </Box>
             ))}
@@ -142,11 +140,11 @@ const LeftDrawer: React.FC = () => {
             >
               <Box display="flex" alignItems="center">
                 <img src={UAESVG} alt="Flag" width={36} height={24} />
-                <Typography variant="body1" fontSize={16} ml={1}>
+                <Typography variant="body1" color="#161C2D" fontSize={16} ml={1}>
                   UAE
                 </Typography>
               </Box>
-              <Icon name="right" />
+              <Icon name="right" color="#161C2D" />
             </Box>
 
             <Box
@@ -163,7 +161,7 @@ const LeftDrawer: React.FC = () => {
             >
               <Box display="flex" alignItems="center">
                 <img src={SASVG} alt="Flag" width={36} height={24} />
-                <Typography variant="body1" fontSize={16} ml={1}>
+                <Typography variant="body1" color="#161C2D" fontSize={16} ml={1}>
                   SA
                 </Typography>
               </Box>

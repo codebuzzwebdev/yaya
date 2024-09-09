@@ -9,6 +9,11 @@
   src: local('Inter'), url('./assets//fonts/Inter/static/Inter_24pt-Regular.ttf') format('truetype');
 }
 
+@font-face {
+  font-family: 'Inter Medium';
+  src: local('Inter Medium'), url('./assets//fonts/Inter/static/Inter_24pt-Medium.ttf') format('truetype');
+}
+
 .store-images {
   object-fit: cover;
   cursor: pointer;
