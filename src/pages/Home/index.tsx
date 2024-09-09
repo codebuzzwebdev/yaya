@@ -11,11 +11,11 @@ import Sorting from "@components/Sorting";
 import LeftDrawer from "@components/LeftDrawer";
 import Pagination from "@components/Pagination";
 
-import PlaceholderPNG from "@assets/placeholder.png";
-
 import * as constants from "@store/constants";
 import * as apis from "@store/apis";
 import request from "@store/request";
+
+import { getPhoto } from "@utils";
 
 import {
   CityType,
@@ -25,8 +25,6 @@ import {
   PaginationType,
   FiltersType,
 } from "@utils";
-
-const BASE_URL = import.meta.env.VITE_IMAGE_URL;
 
 const init = {
   page: 1,
@@ -146,10 +144,7 @@ const Home: FC = () => {
         maxSalary: `${ele?.maxSalary.toLocaleString()}` || "NA",
         yayaPick: ele?.yayaPick,
         videoUrl: ele?.videoUrl,
-        photo:
-          ele.photos && ele.photos.length > 0 && ele.photos[0].imageUrl
-            ? `${BASE_URL}/${ele.photos[0].imageUrl}`
-            : PlaceholderPNG,
+        photo: getPhoto(ele?.photos),
         createdAt: ele?.createdAt,
         countryCode: ele?.nationality?.countryCode,
       };

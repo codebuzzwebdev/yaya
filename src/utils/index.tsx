@@ -1,4 +1,8 @@
 import moment from "moment";
+import PlaceholderPNG from "@assets/placeholder.png";
+
+const BASE_URL = import.meta.env.VITE_IMAGE_URL;
+
 export interface CountryType {
   code: string;
   label: string;
@@ -844,3 +848,9 @@ export const footerItems: FooterType[] = [
     ],
   },
 ];
+
+export const getPhoto = (photos: any) => {
+  const _p = photos.find((e: any) => e.isDefault === 1);
+  if (_p) return `${BASE_URL}/${_p.imageUrl}`;
+  else return PlaceholderPNG;
+};

@@ -5,15 +5,12 @@ import { Box } from "@mui/material";
 import Desktop from "@pages/User/Desktop";
 import Mobile from "@pages/User/Mobile";
 
-import PlaceholderPNG from "@assets/placeholder.png";
-
 import * as constants from "@store/constants";
 import * as apis from "@store/apis";
 import request from "@store/request";
 
-import { formatDate, isNew } from "@utils";
+import { formatDate, isNew, getPhoto } from "@utils";
 
-const BASE_URL = import.meta.env.VITE_IMAGE_URL;
 const APP_STORE_URL = import.meta.env.VITE_APP_STORE_URL;
 const PLAY_STORE_URL = import.meta.env.VITE_PLAY_STORE_URL;
 
@@ -58,10 +55,7 @@ const User: FC = () => {
     });
     const ele: any = res.data.data;
     const _data = {
-      photo:
-        ele.photos && ele.photos.length > 0 && ele.photos[0].imageUrl
-          ? `${BASE_URL}/${ele.photos[0].imageUrl}`
-          : PlaceholderPNG,
+      photo: getPhoto(ele?.photos),
       firstName: ele?.firstName,
       lastName: ele?.lastName,
       position: ele?.position?.title || "NA",
