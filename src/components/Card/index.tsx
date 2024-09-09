@@ -47,7 +47,7 @@ const Card: FC<CardProps> = ({ data, handleNavigate }) => {
       }}
       onClick={() => handleNavigate(data)}
       width={197}
-      mt={2}
+      mb={2}
       mr={2}
     >
       <Box position="relative">

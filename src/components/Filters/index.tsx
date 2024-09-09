@@ -179,28 +179,32 @@ const AllFilter: React.FC<AllFilterProps> = ({ data, callback }) => {
   };
 
   const handleClearAll = () => {
-    setListCities(
-      data.cities.map((e) => {
-        return { ...e, checked: false };
-      })
-    );
-    setNationalities(
-      data.nationalities.map((e) => {
-        return { ...e, checked: false };
-      })
-    );
-    setJobTypes(
-      data.jobTypes.map((e) => {
-        return { ...e, checked: false };
-      })
-    );
-    setExperiences(
-      data.experiences.map((e) => {
-        return { ...e, checked: false };
-      })
-    );
+    const _c = data.cities.map((e) => {
+      return { ...e, checked: false };
+    });
+    const _n = data.nationalities.map((e) => {
+      return { ...e, checked: false };
+    });
+    const _j = data.jobTypes.map((e) => {
+      return { ...e, checked: false };
+    });
+    const _e = data.experiences.map((e) => {
+      return { ...e, checked: false };
+    });
+    setListCities(_c);
+    setNationalities(_n);
+    setJobTypes(_j);
+    setExperiences(_e);
     setMinSalary("");
     setMaxSalary("");
+    callback({
+      cities: _c,
+      nationalities: _n,
+      jobTypes: _j,
+      experiences: _e,
+      minSalary: "",
+      maxSalary: "",
+    });
   };
 
   const checkClearAllVisibility = () => {

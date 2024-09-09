@@ -221,30 +221,15 @@ const Home: FC = () => {
     <>
       <Banner />
 
-      <Grid container spacing={2} p={{ xs: 8, sm: 8, md: 4, lg: 4, xl: 4 }}>
-        {/* TOP SECTION */}
-        <Grid
-          item
-          xs={12}
-          sm={12}
-          md={12}
-          lg={1}
-          xl={1}
-          display={{
-            xs: "none",
-            sm: "none",
-            md: "none",
-            lg: "block",
-            xl: "block",
-          }}
-        />
+      <Grid spacing={4} container px="70px" py={8}>
+        {/* Top Section */}
         <Grid
           item
           xs={12}
           sm={12}
           md={4}
-          lg={3}
-          xl={3}
+          lg={4}
+          xl={4}
           display={{
             xs: "none",
             sm: "none",
@@ -252,8 +237,9 @@ const Home: FC = () => {
             lg: "block",
             xl: "block",
           }}
-        />
-        <Grid item xs={12} sm={12} md={12} lg={7} xl={7}>
+        ></Grid>
+
+        <Grid item xs={12} sm={12} md={12} lg={8} xl={8}>
           <Box
             display="flex"
             flexDirection={{
@@ -301,32 +287,15 @@ const Home: FC = () => {
             </Box>
           </Box>
         </Grid>
+
+        {/* Center Section */}
         <Grid
           item
           xs={12}
           sm={12}
-          md={12}
-          lg={1}
-          xl={1}
-          display={{
-            xs: "none",
-            sm: "none",
-            md: "none",
-            lg: "block",
-            xl: "block",
-          }}
-        />
-
-        {/* CENTER SECTION */}
-        <Grid item xs={12} sm={12} md={12} lg={1} xl={1} />
-
-        <Grid
-          item
-          xs={12}
-          sm={12}
-          md={3}
-          lg={3}
-          xl={3}
+          md={4}
+          lg={4}
+          xl={4}
           display={{
             xs: "none",
             sm: "none",
@@ -342,24 +311,44 @@ const Home: FC = () => {
           />
         </Grid>
 
-        <Grid item xs={12} sm={12} md={12} lg={7} xl={7}>
-          <Box display="flex" justifyContent="center" flexWrap="wrap">
-            {!isLoading && data && data.length > 0 ? (
-              data.map((item, _idx) => (
-                <Card key={`${item.id}_${_idx}`} data={item} handleNavigate={navigateToUser} />
-              ))
-            ) : !isLoading && data && data.length === 0 ? (
-              <Typography
-                variant="h6"
-                textAlign="center"
-                p={2}
-                color={theme.palette.grey[300]}
-              >
-                No Results Found!
-              </Typography>
-            ) : (
-              <Loader />
-            )}
+        <Grid item xs={12} sm={12} md={12} lg={8} xl={8}>
+          <Box
+            display="flex"
+            flexDirection={{
+              xs: "column",
+              sm: "column",
+              md: "row",
+              lg: "row",
+              xl: "row",
+            }}
+            justifyContent="space-between"
+          >
+            <Box
+              display="flex"
+              justifyContent={isLoading ? "center" : "space-around"}
+              flexWrap={isLoading ? "nowrap" : "wrap"}
+            >
+              {!isLoading && data && data.length > 0 ? (
+                data.map((item, _idx) => (
+                  <Card
+                    key={`${item.id}_${_idx}`}
+                    data={item}
+                    handleNavigate={navigateToUser}
+                  />
+                ))
+              ) : !isLoading && data && data.length === 0 ? (
+                <Typography
+                  variant="h6"
+                  textAlign="center"
+                  p={2}
+                  color={theme.palette.grey[300]}
+                >
+                  No Results Found!
+                </Typography>
+              ) : (
+                <Loader />
+              )}
+            </Box>
           </Box>
 
           <Grid
@@ -381,8 +370,6 @@ const Home: FC = () => {
             </Grid>
           </Grid>
         </Grid>
-
-        <Grid item xs={12} sm={12} md={12} lg={1} xl={1} />
       </Grid>
 
       <Box
@@ -398,9 +385,7 @@ const Home: FC = () => {
         <Pagination count={pagination.totalPages} onChange={onPagination} />
       </Box>
 
-      <Box>
-        <Bottom />
-      </Box>
+      <Bottom />
     </>
   );
 };

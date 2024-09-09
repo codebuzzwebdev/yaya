@@ -90,7 +90,7 @@ const Bottom: FC = () => {
                 sx={{
                   cursor: "pointer",
                   "&:hover": {
-                    bgcolor: theme.palette.error.dark,
+                    bgcolor: theme.palette.primary.main,
                     "& .typography-hover": {
                       color: theme.palette.common.white,
                     },
@@ -125,7 +125,7 @@ const Bottom: FC = () => {
   }
 
   return (
-    <Grid container px={6} py={12}>
+    <Grid container px="70px" py={12}>
       <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
         <Box
           display="flex"
@@ -183,7 +183,7 @@ const Bottom: FC = () => {
               sx={{
                 cursor: "pointer",
                 "&:hover": {
-                  bgcolor: theme.palette.error.dark,
+                  bgcolor: theme.palette.primary.main,
                   "& .typography-hover": {
                     color: theme.palette.common.white,
                   },

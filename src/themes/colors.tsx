@@ -17,12 +17,12 @@ export const primary = {
   light: {
     light: theme.primary,
     main: theme.main,
-    dark: theme.red,
+    dark: theme.main,
   },
   dark: {
     light: theme.primary,
     main: theme.main,
-    dark: theme.red,
+    dark: theme.main,
   },
 };
 
@@ -30,12 +30,12 @@ export const secondary = {
   light: {
     light: theme.secondary,
     main: theme.territory,
-    dark: theme.red,
+    dark: theme.main,
   },
   dark: {
     light: theme.secondary,
     main: theme.territory,
-    dark: theme.red,
+    dark: theme.main,
   },
 };
 
