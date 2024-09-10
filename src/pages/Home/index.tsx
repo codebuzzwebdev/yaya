@@ -121,10 +121,10 @@ const Home: FC = () => {
     formData.append("perPage", JSON.stringify(pagination.perPage));
     if (c?.length > 0) formData.append("cities", JSON.stringify(c));
     if (n?.length > 0) formData.append("nationalities", JSON.stringify(n));
-    if (j?.length > 0) formData.append("positions", JSON.stringify(j));
+    if (j?.length > 0) formData.append("jobTypes", JSON.stringify(j));
     if (e?.length > 0) formData.append("experiences", JSON.stringify(e));
-    if (min) formData.append("minSalary", min);
-    if (max) formData.append("maxSalary", max);
+    if (min !== "0" && min !== "") formData.append("minSalary", min);
+    if (max !== "0" && max !== "") formData.append("maxSalary", max);
     const res: any = await request(apis.GET_FILTERED_NANNIES_API, {
       method: constants.POST,
       data: formData,
