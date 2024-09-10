@@ -19,7 +19,6 @@ import {
   NationalityType,
   JobType,
   ExperienceType,
-  nationalities,
 } from "@utils";
 
 const Accordion = styled((props: AccordionProps) => (
@@ -117,7 +116,7 @@ const AllFilter: React.FC<AllFilterProps> = ({ data, callback }) => {
   }, [isChanged, minSalary, maxSalary]);
 
   const handleChange =
-    (panel: string) => (_event: React.SyntheticEvent, newExpanded: boolean) => {
+    (panel: string) => (_event: React.SyntheticEvent) => {
       switch (panel) {
         case "panel1":
           setExpanded({
