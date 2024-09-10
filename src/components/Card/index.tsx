@@ -103,6 +103,12 @@ const Card: FC<CardProps> = ({ data, handleNavigate }) => {
             variant="body1"
             fontSize={16}
             color={theme.palette.common.black}
+            sx={{
+              whiteSpace: 'nowrap',
+              overflow: 'hidden',
+              textOverflow: 'ellipsis',
+              width: 180,
+            }}
           >
             {data.firstName} {data.lastName}
           </Typography>
