@@ -298,6 +298,9 @@ const Home: FC = () => {
             lg: "block",
             xl: "block",
           }}
+          position="sticky"
+          top="70px"
+          height="fit-content"
         >
           <Filters
             isLoading={isFilterLoading}

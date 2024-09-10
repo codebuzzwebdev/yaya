@@ -14,7 +14,13 @@ import useDebounce from "@hooks/useDebounce";
 import Loader from "@components/Loader";
 import CheckItem from "@components/CheckItem";
 
-import { CityType, NationalityType, JobType, ExperienceType } from "@utils";
+import {
+  CityType,
+  NationalityType,
+  JobType,
+  ExperienceType,
+  nationalities,
+} from "@utils";
 
 const Accordion = styled((props: AccordionProps) => (
   <MuiAccordion disableGutters elevation={0} square {...props} />
@@ -67,9 +73,23 @@ export interface FilterLoadingProps {
   callback: (e: any) => void;
 }
 
+export interface ExpandedType {
+  city: string;
+  nationality: string;
+  jobType: string;
+  salary: string;
+  experience: string;
+}
+
 const AllFilter: React.FC<AllFilterProps> = ({ data, callback }) => {
   const theme = useTheme();
-  const [expanded, setExpanded] = React.useState<string | false>(false);
+  const [expanded, setExpanded] = React.useState<ExpandedType>({
+    city: "panel1",
+    nationality: "panel2",
+    jobType: "panel3",
+    salary: "panel4",
+    experience: "panel5",
+  });
 
   const [listCities, setListCities] = React.useState<CityType[]>(data.cities);
   const [listNationalities, setNationalities] = React.useState<
@@ -98,7 +118,45 @@ const AllFilter: React.FC<AllFilterProps> = ({ data, callback }) => {
 
   const handleChange =
     (panel: string) => (_event: React.SyntheticEvent, newExpanded: boolean) => {
-      setExpanded(newExpanded ? panel : false);
+      switch (panel) {
+        case "panel1":
+          setExpanded({
+            ...expanded,
+            city: expanded.city === "panel1" ? "false" : panel,
+          });
+          break;
+
+        case "panel2":
+          setExpanded({
+            ...expanded,
+            nationality: expanded.nationality === "panel2" ? "false" : panel,
+          });
+          break;
+
+        case "panel3":
+          setExpanded({
+            ...expanded,
+            jobType: expanded.jobType === "panel3" ? "false" : panel,
+          });
+          break;
+
+        case "panel4":
+          setExpanded({
+            ...expanded,
+            salary: expanded.salary === "panel4" ? "false" : panel,
+          });
+          break;
+
+        case "panel5":
+          setExpanded({
+            ...expanded,
+            experience: expanded.experience === "panel5" ? "false" : panel,
+          });
+          break;
+
+        default:
+          break;
+      }
     };
 
   const handleCheck = (_event: React.ChangeEvent<HTMLInputElement>) => {
@@ -240,7 +298,8 @@ const AllFilter: React.FC<AllFilterProps> = ({ data, callback }) => {
         </Typography>
       </Box>
       <Accordion
-        expanded={expanded === "panel1"}
+        defaultExpanded={true}
+        expanded={expanded?.city === "panel1"}
         onChange={handleChange("panel1")}
       >
         <AccordionSummary aria-controls="panel1d-content" id="panel1d-header">
@@ -263,7 +322,8 @@ const AllFilter: React.FC<AllFilterProps> = ({ data, callback }) => {
       </Accordion>
 
       <Accordion
-        expanded={expanded === "panel2"}
+        defaultExpanded={true}
+        expanded={expanded?.nationality === "panel2"}
         onChange={handleChange("panel2")}
       >
         <AccordionSummary aria-controls="panel2d-content" id="panel2d-header">
@@ -286,7 +346,8 @@ const AllFilter: React.FC<AllFilterProps> = ({ data, callback }) => {
       </Accordion>
 
       <Accordion
-        expanded={expanded === "panel3"}
+        defaultExpanded={true}
+        expanded={expanded?.jobType === "panel3"}
         onChange={handleChange("panel3")}
       >
         <AccordionSummary aria-controls="panel3d-content" id="panel3d-header">
@@ -309,7 +370,8 @@ const AllFilter: React.FC<AllFilterProps> = ({ data, callback }) => {
       </Accordion>
 
       <Accordion
-        expanded={expanded === "panel4"}
+        defaultExpanded={true}
+        expanded={expanded?.salary === "panel4"}
         onChange={handleChange("panel4")}
       >
         <AccordionSummary aria-controls="panel4d-content" id="panel4d-header">
@@ -348,7 +410,8 @@ const AllFilter: React.FC<AllFilterProps> = ({ data, callback }) => {
       </Accordion>
 
       <Accordion
-        expanded={expanded === "panel5"}
+        defaultExpanded={true}
+        expanded={expanded?.experience === "panel5"}
         onChange={handleChange("panel5")}
       >
         <AccordionSummary aria-controls="panel5d-content" id="panel5d-header">

@@ -34,6 +34,9 @@ const HoverMenu: React.FC<HoverMenuProps> = ({ menu, items }) => {
   const [open, setOpen] = React.useState(false);
   const anchorRef = React.useRef<HTMLButtonElement>(null);
 
+  // State to track mouse hover on menu or menu list
+  const [hovering, setHovering] = React.useState(false);
+
   const handleToggle = () => {
     if (currentOpenMenu.menu && currentOpenMenu.menu !== menu) {
       currentOpenMenu.close();
@@ -52,8 +55,10 @@ const HoverMenu: React.FC<HoverMenuProps> = ({ menu, items }) => {
       return;
     }
 
-    setOpen(false);
-    currentOpenMenu.menu = null;
+    if (!hovering) {
+      setOpen(false);
+      currentOpenMenu.menu = null;
+    }
   };
 
   function handleListKeyDown(event: React.KeyboardEvent) {
@@ -80,15 +85,20 @@ const HoverMenu: React.FC<HoverMenuProps> = ({ menu, items }) => {
   };
 
   return (
-    <Box px={{ xs: 1, sm: 1, md: 1, lg: 1, xl: "15px" }}>
+    <Box
+      px={{ xs: 1, sm: 1, md: 1, lg: 1, xl: "15px" }}
+      onMouseLeave={() => setHovering(false)}
+    >
       <Box
         ref={anchorRef}
         id={`${menu}_composition-button`}
         aria-controls={open ? `${menu}_composition-button` : undefined}
         aria-expanded={open ? "true" : undefined}
         aria-haspopup="true"
-        onMouseEnter={handleToggle}
-        onMouseLeave={() => setOpen(false)}
+        onMouseEnter={() => {
+          setHovering(true);
+          handleToggle();
+        }}
         color="#667785"
         display="flex"
         alignItems="center"
@@ -123,6 +133,11 @@ const HoverMenu: React.FC<HoverMenuProps> = ({ menu, items }) => {
         placement="bottom-start"
         transition
         disablePortal
+        onMouseEnter={() => setHovering(true)}
+        onMouseLeave={() => {
+          setHovering(false);
+          setOpen(false);
+        }}
         sx={{
           width: 250,
           pt: 2,

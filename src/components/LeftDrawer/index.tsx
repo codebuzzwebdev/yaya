@@ -31,8 +31,8 @@ const LeftDrawer: FC<FilterLoadingProps> = (props) => {
     };
 
   const list = (anchor: Position) => (
-    <Box bgcolor={theme.palette.secondary.light} height="100vh" width="100vw">
-      <Box position="absolute" right={4} top={4}>
+    <Box p={2} bgcolor={theme.palette.secondary.light} height="100vh" width="100vw">
+      <Box position="absolute" right={16} top={24}>
         <IconButton onClick={toggleDrawer(anchor, false)}>
           <Icon name="close" />
         </IconButton>
