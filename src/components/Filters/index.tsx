@@ -83,11 +83,11 @@ export interface ExpandedType {
 const AllFilter: React.FC<AllFilterProps> = ({ data, callback }) => {
   const theme = useTheme();
   const [expanded, setExpanded] = React.useState<ExpandedType>({
-    city: "panel1",
-    nationality: "panel2",
-    jobType: "panel3",
-    salary: "panel4",
-    experience: "panel5",
+    city: "false",
+    nationality: "false",
+    jobType: "false",
+    salary: "false",
+    experience: "false",
   });
 
   const [listCities, setListCities] = React.useState<CityType[]>(data.cities);
@@ -297,7 +297,6 @@ const AllFilter: React.FC<AllFilterProps> = ({ data, callback }) => {
         </Typography>
       </Box>
       <Accordion
-        defaultExpanded={true}
         expanded={expanded?.city === "panel1"}
         onChange={handleChange("panel1")}
       >
@@ -321,7 +320,6 @@ const AllFilter: React.FC<AllFilterProps> = ({ data, callback }) => {
       </Accordion>
 
       <Accordion
-        defaultExpanded={true}
         expanded={expanded?.nationality === "panel2"}
         onChange={handleChange("panel2")}
       >
@@ -345,7 +343,6 @@ const AllFilter: React.FC<AllFilterProps> = ({ data, callback }) => {
       </Accordion>
 
       <Accordion
-        defaultExpanded={true}
         expanded={expanded?.jobType === "panel3"}
         onChange={handleChange("panel3")}
       >
@@ -369,7 +366,6 @@ const AllFilter: React.FC<AllFilterProps> = ({ data, callback }) => {
       </Accordion>
 
       <Accordion
-        defaultExpanded={true}
         expanded={expanded?.salary === "panel4"}
         onChange={handleChange("panel4")}
       >
@@ -409,7 +405,6 @@ const AllFilter: React.FC<AllFilterProps> = ({ data, callback }) => {
       </Accordion>
 
       <Accordion
-        defaultExpanded={true}
         expanded={expanded?.experience === "panel5"}
         onChange={handleChange("panel5")}
       >

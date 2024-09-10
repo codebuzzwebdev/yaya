@@ -80,7 +80,7 @@ const Mobile: FC<MobileProps> = ({
                 sx={{
                   cursor: "pointer",
                   "&:hover": {
-                    bgcolor: theme.palette.error.dark,
+                    bgcolor: theme.palette.primary.main,
                   },
                 }}
               >
@@ -104,7 +104,7 @@ const Mobile: FC<MobileProps> = ({
                 sx={{
                   cursor: "pointer",
                   "&:hover": {
-                    bgcolor: theme.palette.error.dark,
+                    bgcolor: theme.palette.primary.main,
                   },
                 }}
               >
@@ -147,7 +147,7 @@ const Mobile: FC<MobileProps> = ({
               sx={{
                 cursor: "pointer",
                 "&:hover": {
-                  bgcolor: theme.palette.error.dark,
+                  bgcolor: theme.palette.primary.main,
                 },
               }}
             >
@@ -171,7 +171,7 @@ const Mobile: FC<MobileProps> = ({
                 display: data?.videoUrl ? "block" : "none",
                 cursor: "pointer",
                 "&:hover": {
-                  bgcolor: theme.palette.error.dark,
+                  bgcolor: theme.palette.primary.main,
                 },
               }}
             >
@@ -280,7 +280,7 @@ const Mobile: FC<MobileProps> = ({
           sx={{
             cursor: "pointer",
             "&:hover": {
-              bgcolor: theme.palette.error.dark,
+              bgcolor: theme.palette.primary.main,
             },
           }}
         >

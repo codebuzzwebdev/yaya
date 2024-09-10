@@ -95,7 +95,7 @@ const Desktop: FC<DesktopProps> = ({
                 sx={{
                   cursor: "pointer",
                   "&:hover": {
-                    bgcolor: theme.palette.error.dark,
+                    bgcolor: theme.palette.primary.main,
                   },
                 }}
               >
@@ -120,7 +120,7 @@ const Desktop: FC<DesktopProps> = ({
                 sx={{
                   cursor: "pointer",
                   "&:hover": {
-                    bgcolor: theme.palette.error.dark,
+                    bgcolor: theme.palette.primary.main,
                   },
                 }}
               >
@@ -156,7 +156,7 @@ const Desktop: FC<DesktopProps> = ({
                   display: data?.videoUrl ? "block" : "none",
                   cursor: "pointer",
                   "&:hover": {
-                    bgcolor: theme.palette.error.dark,
+                    bgcolor: theme.palette.primary.main,
                   },
                 }}
               >
@@ -181,7 +181,7 @@ const Desktop: FC<DesktopProps> = ({
               sx={{
                 cursor: "pointer",
                 "&:hover": {
-                  bgcolor: theme.palette.error.dark,
+                  bgcolor: theme.palette.primary.main,
                 },
               }}
             >

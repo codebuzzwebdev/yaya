@@ -39,6 +39,7 @@ const Sorting: FC<SortingProps> = ({ callback }) => {
           value={sort}
           label=""
           onChange={handleChange}
+          autoFocus={false}
         >
           <MenuItem value="Latest">Latest</MenuItem>
           <MenuItem value="Old">Old</MenuItem>
