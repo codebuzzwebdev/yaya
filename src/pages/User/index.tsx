@@ -9,10 +9,16 @@ import * as constants from "@store/constants";
 import * as apis from "@store/apis";
 import request from "@store/request";
 
-import { formatDate, isNew, getPhoto } from "@utils";
+import { formatDate, isNew, getPhoto, getSalary } from "@utils";
 
 const APP_STORE_URL = import.meta.env.VITE_APP_STORE_URL;
 const PLAY_STORE_URL = import.meta.env.VITE_PLAY_STORE_URL;
+
+export interface SalaryType {
+  price: string;
+  duration: string;
+  short: string;
+}
 
 export interface ItemProps {
   photo: string;
@@ -25,9 +31,7 @@ export interface ItemProps {
   registeredOn: string;
   age: number;
   nationality: string;
-  minSalary: string;
-  maxSalary: string;
-  hourlyRate: string;
+  salary: SalaryType;
   jobType: string;
   experience: string;
   visa: string;
@@ -65,9 +69,7 @@ const User: FC = () => {
       registeredOn: formatDate(ele?.createdAt),
       age: ele?.age,
       nationality: ele?.nationality?.nationality || "NA",
-      minSalary: `${ele?.minSalary.toLocaleString()}` || "NA",
-      maxSalary: `${ele?.maxSalary.toLocaleString()}` || "NA",
-      hourlyRate: ele?.hourlyRate,
+      salary: getSalary(ele),
       jobType: ele?.jobType?.title || "NA",
       experience:
         `${ele?.yearOfExperience?.experienceOperator} ${ele?.yearOfExperience?.years} year(s)` ||

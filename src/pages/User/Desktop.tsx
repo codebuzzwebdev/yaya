@@ -94,9 +94,6 @@ const Desktop: FC<DesktopProps> = ({
                 display={data?.isNew ? "block" : "none"}
                 sx={{
                   cursor: "pointer",
-                  "&:hover": {
-                    bgcolor: theme.palette.primary.main,
-                  },
                 }}
               >
                 <Typography
@@ -119,9 +116,6 @@ const Desktop: FC<DesktopProps> = ({
                 alignItems="center"
                 sx={{
                   cursor: "pointer",
-                  "&:hover": {
-                    bgcolor: theme.palette.primary.main,
-                  },
                 }}
               >
                 <img
@@ -155,9 +149,6 @@ const Desktop: FC<DesktopProps> = ({
                 sx={{
                   display: data?.videoUrl ? "block" : "none",
                   cursor: "pointer",
-                  "&:hover": {
-                    bgcolor: theme.palette.primary.main,
-                  },
                 }}
               >
                 <Typography
@@ -180,9 +171,6 @@ const Desktop: FC<DesktopProps> = ({
               mt={3}
               sx={{
                 cursor: "pointer",
-                "&:hover": {
-                  bgcolor: theme.palette.primary.main,
-                },
               }}
             >
               <Box display="flex" alignItems="center">

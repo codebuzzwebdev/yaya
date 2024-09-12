@@ -103,9 +103,6 @@ const Mobile: FC<MobileProps> = ({
                 alignItems="center"
                 sx={{
                   cursor: "pointer",
-                  "&:hover": {
-                    bgcolor: theme.palette.primary.main,
-                  },
                 }}
               >
                 <Typography
@@ -146,9 +143,6 @@ const Mobile: FC<MobileProps> = ({
               left={8}
               sx={{
                 cursor: "pointer",
-                "&:hover": {
-                  bgcolor: theme.palette.primary.main,
-                },
               }}
             >
               <Typography
@@ -170,9 +164,6 @@ const Mobile: FC<MobileProps> = ({
               sx={{
                 display: data?.videoUrl ? "block" : "none",
                 cursor: "pointer",
-                "&:hover": {
-                  bgcolor: theme.palette.primary.main,
-                },
               }}
             >
               <Typography
@@ -279,9 +270,6 @@ const Mobile: FC<MobileProps> = ({
           textAlign="center"
           sx={{
             cursor: "pointer",
-            "&:hover": {
-              bgcolor: theme.palette.primary.main,
-            },
           }}
         >
           <Box display="flex" alignItems="center">

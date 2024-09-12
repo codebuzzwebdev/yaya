@@ -854,3 +854,28 @@ export const getPhoto = (photos: any) => {
   if (_p) return `${BASE_URL}/${_p.imageUrl}`;
   else return PlaceholderPNG;
 };
+
+export const getSalary = (data: any) => {
+  if (data && data.hourlyRate && data.hourlyRate === "Negotiable") {
+    return {
+      price: `Negotiable`,
+      duration: "Hourly Rate",
+      short: "Hr",
+    };
+  } else if (data && data.hourlyRate) {
+    return {
+      price: data.isSalaryNegotiable
+        ? `AED ${data.hourlyRate.toLocaleString()} Negotiable`
+        : `AED ${data.hourlyRate.toLocaleString()}`,
+      duration: "Hourly Rate",
+      short: "Hr",
+    };
+  }
+  return {
+    price: data.isSalaryNegotiable
+      ? `AED ${data.minSalary.toLocaleString()}-${data.maxSalary.toLocaleString()} Negotiable`
+      : `AED ${data.minSalary.toLocaleString()}-${data.maxSalary.toLocaleString()}`,
+    duration: "Monthly Salary",
+    short: "Mo",
+  };
+};

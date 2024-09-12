@@ -101,14 +101,14 @@ const Mobile: FC<MobileProps> = ({ loading, data }) => {
             fontSize={20}
             color={theme.palette.primary.main}
           >
-            AED {data?.minSalary}-{data?.maxSalary}
+            {data?.salary.price}
           </Typography>
           <Typography
             variant="body1"
             fontSize={14}
             color={theme.palette.grey[300]}
           >
-            Monthly Salary
+            {data?.salary.duration}
           </Typography>
         </Box>
       </Box>

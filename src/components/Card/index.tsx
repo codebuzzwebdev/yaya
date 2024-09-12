@@ -8,6 +8,12 @@ import * as colors from "@themes/colors";
 
 const VITE_FLAG_URL = import.meta.env.VITE_FLAG_URL;
 
+export interface SalaryType {
+  price: string;
+  duration: string;
+  short: string;
+}
+
 export interface ItemProps {
   id: string;
   firstName: string;
@@ -15,8 +21,7 @@ export interface ItemProps {
   position: string;
   jobType: string;
   experience: string;
-  minSalary: string;
-  maxSalary: string;
+  salary: SalaryType;
   yayaPick: number;
   videoUrl: string;
   photo: string;
@@ -104,9 +109,9 @@ const Card: FC<CardProps> = ({ data, handleNavigate }) => {
             fontSize={16}
             color={theme.palette.common.black}
             sx={{
-              whiteSpace: 'nowrap',
-              overflow: 'hidden',
-              textOverflow: 'ellipsis',
+              whiteSpace: "nowrap",
+              overflow: "hidden",
+              textOverflow: "ellipsis",
               width: 180,
             }}
           >
@@ -174,14 +179,14 @@ const Card: FC<CardProps> = ({ data, handleNavigate }) => {
             fontSize={12}
             color={theme.palette.common.black}
           >
-            AED{data.minSalary}-{data.maxSalary}
+            {data.salary.price}
           </Typography>
           <Typography
             variant="body1"
             fontSize={12}
             color={theme.palette.grey[300]}
           >
-            /Mo
+            /{data.salary.short}
           </Typography>
         </Box>
       </Box>

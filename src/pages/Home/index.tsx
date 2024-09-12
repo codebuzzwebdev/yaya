@@ -15,7 +15,7 @@ import * as constants from "@store/constants";
 import * as apis from "@store/apis";
 import request from "@store/request";
 
-import { getPhoto } from "@utils";
+import { getPhoto, getSalary } from "@utils";
 
 import {
   CityType,
@@ -140,8 +140,7 @@ const Home: FC = () => {
         experience:
           `${ele?.yearOfExperience?.experienceOperator} ${ele?.yearOfExperience?.years} year(s)` ||
           "NA",
-        minSalary: `${ele?.minSalary.toLocaleString()}` || "NA",
-        maxSalary: `${ele?.maxSalary.toLocaleString()}` || "NA",
+        salary: getSalary(ele),
         yayaPick: ele?.yayaPick,
         videoUrl: ele?.videoUrl,
         photo: getPhoto(ele?.photos),

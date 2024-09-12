@@ -289,7 +289,6 @@ const AllFilter: React.FC<AllFilterProps> = ({ data, callback }) => {
           sx={{
             display: isVisible ? "block" : "none",
             cursor: "pointer",
-            "&:hover": { color: theme.palette.primary.dark },
           }}
           onClick={handleClearAll}
         >
