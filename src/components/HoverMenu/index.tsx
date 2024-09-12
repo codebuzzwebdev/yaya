@@ -99,7 +99,7 @@ const HoverMenu: React.FC<HoverMenuProps> = ({ menu, items }) => {
           setHovering(true);
           handleToggle();
         }}
-        color="#667785"
+        color="#161D2D"
         display="flex"
         alignItems="center"
         sx={{
@@ -183,7 +183,7 @@ const HoverMenu: React.FC<HoverMenuProps> = ({ menu, items }) => {
                       }}
                       sx={{
                         py: 1,
-                        color: "#667785",
+                        color: "#161D2D",
                         cursor: "pointer",
                         background: theme.palette.common.white,
                         "&:hover": {

@@ -77,7 +77,7 @@ const FlagMenu: React.FC = () => {
       >
         <Box display="flex" alignItems="center" px={1}>
           <img src={UAESVG} alt="Flag" width={36} height={24} />
-          <Typography variant="body1" color="#667785" fontSize={16} ml={1}>
+          <Typography variant="body1" color="#161D2D" fontSize={16} ml={1}>
             UAE
           </Typography>
           <Box ml={0.5}>
@@ -150,7 +150,7 @@ const FlagMenu: React.FC = () => {
                       <img src={SASVG} alt="Flag" width={36} height={24} />
                       <Typography
                         variant="body1"
-                        color="#667785"
+                        color="#161D2D"
                         fontSize={16}
                         ml={1}
                       >
