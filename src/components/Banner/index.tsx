@@ -111,7 +111,7 @@ const Banner: FC = () => {
                 fontSize={20}
                 color={theme.palette.grey[600]}
               >
-                Download our app today to get started. Now
+                Download our app today to get started.
               </Typography>
               <Typography
                 variant="body1"
@@ -119,7 +119,7 @@ const Banner: FC = () => {
                 fontSize={20}
                 color={theme.palette.grey[600]}
               >
-                completely free, no hidden costs.
+                Now completely free, no hidden costs.
               </Typography>
             </Box>
             <Box
@@ -137,7 +137,7 @@ const Banner: FC = () => {
                 color={theme.palette.grey[700]}
                 fontSize={{ xs: 36, sm: 36, md: 64, lg: 64, xl: 64 }}
               >
-                Search through
+                Discover
               </Typography>
 
               <Typography
@@ -146,7 +146,7 @@ const Banner: FC = () => {
                 color={theme.palette.grey[700]}
                 fontSize={{ xs: 36, sm: 36, md: 64, lg: 64, xl: 64 }}
               >
-                hundreds of
+                Hundreds of
               </Typography>
 
               <Typography
@@ -159,12 +159,19 @@ const Banner: FC = () => {
               </Typography>
               <Typography
                 variant="body1"
-                my={2}
+                mt={2}
                 fontSize={20}
                 color={theme.palette.grey[600]}
               >
-                Download our app today to get started. Now completely free, no
-                hidden costs.
+                Download our app today to get started.
+              </Typography>
+              <Typography
+                variant="body1"
+                mb={2}
+                fontSize={20}
+                color={theme.palette.grey[600]}
+              >
+                Now completely free, no hidden costs.
               </Typography>
             </Box>
 

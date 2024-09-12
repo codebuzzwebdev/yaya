@@ -42,7 +42,6 @@ const Sorting: FC<SortingProps> = ({ callback }) => {
           autoFocus={false}
         >
           <MenuItem value="Latest">Latest</MenuItem>
-          <MenuItem value="Old">Old</MenuItem>
         </Select>
       </FormControl>
     </Box>
