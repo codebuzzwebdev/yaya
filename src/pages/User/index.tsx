@@ -44,6 +44,7 @@ const User: FC = () => {
   const { id } = useParams();
 
   const [isLoading, setLoading] = useState(true);
+  const [open, setOpen] = useState<boolean>(false);
   const [data, setData] = useState<ItemProps | null>(null);
 
   useEffect(() => {
@@ -109,6 +110,14 @@ const User: FC = () => {
       });
   };
 
+  const handleOpen = () => {
+    setOpen(true);
+  }
+
+  const handleClose = () => {
+    setOpen(false);
+  }
+
   return (
     <>
       <Box display={{ xs: "none", sm: "block" }}>
@@ -118,6 +127,9 @@ const User: FC = () => {
           handleApple={handleApple}
           handleGoogle={handleGoogle}
           handleCopy={handleCopy}
+          open={open}
+          handleOpen={handleOpen}
+          handleClose={handleClose}
         />
       </Box>
 
@@ -128,6 +140,9 @@ const User: FC = () => {
           handleApple={handleApple}
           handleGoogle={handleGoogle}
           handleCopy={handleCopy}
+          open={open}
+          handleOpen={handleOpen}
+          handleClose={handleClose}
         />
       </Box>
     </>

@@ -6,6 +6,7 @@ import { ItemProps } from "@pages/User";
 import Loader from "@components/Loader";
 import Icon from "@components/Icon";
 import Snapshot from "@components/Snapshot";
+import Dialog from "@components/Dialog";
 
 import BadgePNG from "@assets/icons/white-badge.png";
 import GooglePNG from "@assets/google.svg";
@@ -21,6 +22,9 @@ export interface DesktopProps {
   handleApple: () => void;
   handleGoogle: () => void;
   handleCopy: () => void;
+  open: boolean;
+  handleOpen: () => void;
+  handleClose: () => void;
 }
 
 const Desktop: FC<DesktopProps> = ({
@@ -29,6 +33,9 @@ const Desktop: FC<DesktopProps> = ({
   handleApple,
   handleGoogle,
   handleCopy,
+  open,
+  handleOpen,
+  handleClose,
 }) => {
   const theme = useTheme();
 
@@ -172,6 +179,7 @@ const Desktop: FC<DesktopProps> = ({
               sx={{
                 cursor: "pointer",
               }}
+              onClick={handleOpen}
             >
               <Box display="flex" alignItems="center">
                 <Typography
@@ -185,6 +193,14 @@ const Desktop: FC<DesktopProps> = ({
                 <Icon name="rightArrow" color={theme.palette.common.white} />
               </Box>
             </Box>
+
+            <Dialog
+              open={open}
+              data={data}
+              handleApple={handleApple}
+              handleGoogle={handleGoogle}
+              handleClose={handleClose}
+            />
           </Box>
         </Box>
       </Grid>

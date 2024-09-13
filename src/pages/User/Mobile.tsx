@@ -6,6 +6,7 @@ import { ItemProps } from "@pages/User";
 import Loader from "@components/Loader";
 import Icon from "@components/Icon";
 import Snapshot from "@components/Snapshot";
+import Dialog from "@components/Dialog";
 
 import GooglePNG from "@assets/google.svg";
 import ApplePNG from "@assets/apple.svg";
@@ -20,6 +21,9 @@ export interface MobileProps {
   handleApple: () => void;
   handleGoogle: () => void;
   handleCopy: () => void;
+  open: boolean;
+  handleOpen: () => void;
+  handleClose: () => void;
 }
 
 const Mobile: FC<MobileProps> = ({
@@ -28,6 +32,9 @@ const Mobile: FC<MobileProps> = ({
   handleApple,
   handleGoogle,
   handleCopy,
+  open,
+  handleOpen,
+  handleClose,
 }) => {
   const theme = useTheme();
 
@@ -271,6 +278,7 @@ const Mobile: FC<MobileProps> = ({
           sx={{
             cursor: "pointer",
           }}
+          onClick={handleOpen}
         >
           <Box display="flex" alignItems="center">
             <Typography variant="h6" color={theme.palette.common.white} mr={1}>
@@ -279,6 +287,14 @@ const Mobile: FC<MobileProps> = ({
             <Icon name="rightArrow" color={theme.palette.common.white} />
           </Box>
         </Box>
+
+        <Dialog
+          open={open}
+          data={data}
+          handleApple={handleApple}
+          handleGoogle={handleGoogle}
+          handleClose={handleClose}
+        />
 
         <Typography
           variant="body1"
