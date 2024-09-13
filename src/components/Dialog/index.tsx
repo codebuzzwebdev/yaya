@@ -16,7 +16,8 @@ const BootstrapDialog = styled(MuiDialog)(({ theme }) => ({
     padding: theme.spacing(2),
   },
   "& .MuiPaper-root": {
-    borderRadius: 24
+    borderRadius: 24,
+    margin: 8,
   },
   "& .MuiDialogActions-root": {
     padding: theme.spacing(1),
@@ -58,14 +59,27 @@ const Dialog: React.FC<DialogProps> = ({
           <CloseIcon />
         </IconButton>
         <DialogContent dividers sx={{ mt: 7 }}>
-          <Typography
-            gutterBottom
-            textAlign="center"
-            variant="body1"
-            fontWeight="bold"
-          >
-            Connect with {data?.firstName} {data?.lastName}
-          </Typography>
+          <Box display="flex" justifyContent="center" alignItems="center">
+            <Typography
+              gutterBottom
+              textAlign="center"
+              variant="body1"
+              fontWeight="bold"
+            >
+              Connect with
+            </Typography>
+
+            <Typography
+              gutterBottom
+              textAlign="center"
+              variant="body1"
+              fontWeight="bold"
+              fontSize={18}
+              ml={1}
+            >
+              {data?.firstName} {data?.lastName} 👋
+            </Typography>
+          </Box>
 
           <Box display="flex" justifyContent="center" my={4}>
             <img
@@ -81,7 +95,7 @@ const Dialog: React.FC<DialogProps> = ({
             />
           </Box>
 
-          <Typography gutterBottom textAlign="center">
+          <Typography gutterBottom textAlign="center" color="gray">
             To contact {data?.firstName} {data?.lastName}, please download our
             app and create your family profile. Register today to unlock access
             to direct communication with our helpers and find the perfect match
