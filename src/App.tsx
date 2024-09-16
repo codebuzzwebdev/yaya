@@ -1,14 +1,11 @@
-import "@fontsource/roboto/300.css";
-import "@fontsource/roboto/400.css";
-import "@fontsource/roboto/500.css";
-import "@fontsource/roboto/700.css";
-
 import { Suspense } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Theme from "@themes/index";
+
+import MainLayout from "@pages/MainLayout";
 
 import Loader from "@components/Loader";
 
+import Theme from "@themes/index";
 import { routes, RouteType } from "@routes";
 
 const renderRoute = (route: RouteType) => {
@@ -36,7 +33,9 @@ const RouteMapper: React.FC<{ routes: RouteType[] }> = ({ routes }) => (
 );
 const PublicRoutes: React.FC = () => (
   <Suspense fallback={<Loader />}>
-    <RouteMapper routes={routes} />
+    <MainLayout>
+      <RouteMapper routes={routes} />
+    </MainLayout>
   </Suspense>
 );
 

@@ -2,6 +2,7 @@ import React, { lazy } from "react";
 import { IconName } from "@components/Icon";
 
 const Home = lazy(() => import("@pages/Home"));
+const NotFound = lazy(() => import("@pages/NotFound"));
 const User = lazy(() => import("@pages/User"));
 
 export interface RouteType {
@@ -21,8 +22,14 @@ export const routes: RouteType[] = [
   },
   {
     title: "User",
-    path: "/user",
+    path: "/user/:id",
     icon: "speed",
     element: User,
+  },
+  {
+    title: "NotFound",
+    path: "*",
+    icon: "speed",
+    element: NotFound,
   },
 ];

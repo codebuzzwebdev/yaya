@@ -3,8 +3,12 @@ import { useTheme, Box, Grid, Typography } from "@mui/material";
 
 import BannerPNG from "@assets/banner.png";
 import BannerSquarePNG from "@assets/banner-square.png";
-import GooglePNG from "@assets/google.png";
-import ApplePNG from "@assets/apple.png";
+import GooglePNG from "@assets/google.svg";
+import ApplePNG from "@assets/apple.svg";
+
+const APP_STORE_URL = import.meta.env.VITE_APP_STORE_URL;
+const PLAY_STORE_URL = import.meta.env.VITE_PLAY_STORE_URL;
+
 const Banner: FC = () => {
   const theme = useTheme();
 
@@ -28,12 +32,21 @@ const Banner: FC = () => {
     };
   }, []);
 
+  const handleApple = () => {
+    window.open(APP_STORE_URL);
+  };
+
+  const handleGoogle = () => {
+    window.open(PLAY_STORE_URL);
+  };
+
   return (
     <Grid
       container
-      px={{ xs: 2, sm: 2, md: 2, lg: 6 }}
-      py={{ xs: 4, sm: 4, md: 4, lg: 0 }}
-      bgcolor={theme.palette.grey[100]}
+      px={{ xs: 1, sm: 1, md: 2, lg: "70px" }}
+      py={{ xs: 2, sm: 2, md: 4, lg: 0 }}
+      pr={{ lg: 0 }}
+      bgcolor={theme.palette.secondary.light}
     >
       <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
         <Box
@@ -48,40 +61,119 @@ const Banner: FC = () => {
           }}
         >
           <Box
-            textAlign={{ xs: "center", sm: "center", md: "center", lg: "left" }}
+            textAlign={{
+              xs: "center",
+              sm: "center",
+              md: "center",
+              lg: "left",
+              xl: "left",
+            }}
+            mt={{ xs: 3, sm: 3, md: 3, lg: 0, xl: 0 }}
           >
-            <Typography
-              variant="h2"
-              fontWeight="bold"
-              color={theme.palette.common.black}
+            <Box
+              display={{
+                xs: "none",
+                sm: "none",
+                md: "none",
+                lg: "block",
+                xl: "block",
+              }}
             >
-              Discover
-            </Typography>
+              <Typography
+                variant="h2"
+                fontWeight="bold"
+                color={theme.palette.grey[700]}
+                fontSize={{ xs: 36, sm: 36, md: 64, lg: 64, xl: 64 }}
+              >
+                Discover
+              </Typography>
 
-            <Typography
-              variant="h2"
-              fontWeight="bold"
-              color={theme.palette.common.black}
-            >
-              Hundreds of
-            </Typography>
+              <Typography
+                variant="h2"
+                fontWeight="bold"
+                color={theme.palette.grey[700]}
+                fontSize={{ xs: 36, sm: 36, md: 64, lg: 64, xl: 64 }}
+              >
+                Hundreds of
+              </Typography>
 
-            <Typography
-              variant="h2"
-              fontWeight="bold"
-              color={theme.palette.primary.main}
+              <Typography
+                variant="h2"
+                fontWeight="bold"
+                color={theme.palette.primary.main}
+                fontSize={{ xs: 36, sm: 36, md: 64, lg: 64, xl: 64 }}
+              >
+                Nannies in UAE
+              </Typography>
+              <Typography
+                variant="body1"
+                mt={2}
+                fontSize={20}
+                color={theme.palette.grey[600]}
+              >
+                Download our app today to get started.
+              </Typography>
+              <Typography
+                variant="body1"
+                mb={2}
+                fontSize={20}
+                color={theme.palette.grey[600]}
+              >
+                Now completely free, no hidden costs.
+              </Typography>
+            </Box>
+            <Box
+              display={{
+                xs: "block",
+                sm: "block",
+                md: "block",
+                lg: "none",
+                xl: "none",
+              }}
             >
-              Nannies in UAE
-            </Typography>
+              <Typography
+                variant="h2"
+                fontWeight="bold"
+                color={theme.palette.grey[700]}
+                fontSize={{ xs: 36, sm: 36, md: 64, lg: 64, xl: 64 }}
+              >
+                Discover
+              </Typography>
 
-            <Typography
-              variant="body1"
-              my={2}
-              color={theme.palette.secondary.main}
-            >
-              Download our app today to get started. Now completely free, no
-              hidden costs.
-            </Typography>
+              <Typography
+                variant="h2"
+                fontWeight="bold"
+                color={theme.palette.grey[700]}
+                fontSize={{ xs: 36, sm: 36, md: 64, lg: 64, xl: 64 }}
+              >
+                Hundreds of
+              </Typography>
+
+              <Typography
+                variant="h2"
+                fontWeight="bold"
+                color={theme.palette.primary.main}
+                fontSize={{ xs: 36, sm: 36, md: 64, lg: 64, xl: 64 }}
+              >
+                Nannies in UAE
+              </Typography>
+              <Typography
+                variant="body1"
+                mt={2}
+                fontSize={20}
+                color={theme.palette.grey[600]}
+              >
+                Download our app today to get started.
+              </Typography>
+              <Typography
+                variant="body1"
+                mb={2}
+                fontSize={20}
+                color={theme.palette.grey[600]}
+              >
+                Now completely free, no hidden costs.
+              </Typography>
+            </Box>
 
             <Box
               display="flex"
@@ -109,13 +201,8 @@ const Banner: FC = () => {
                 alt="Google"
                 width={180}
                 height={50}
-                style={{
-                  objectFit: "cover",
-                  cursor: "pointer",
-                  marginRight: 8,
-                  marginTop: 8,
-                  borderRadius: 8,
-                }}
+                className="store-images"
+                onClick={handleGoogle}
               />
 
               <img
@@ -123,26 +210,22 @@ const Banner: FC = () => {
                 alt="Apple"
                 width={180}
                 height={50}
-                style={{
-                  objectFit: "cover",
-                  cursor: "pointer",
-                  marginTop: 8,
-                  borderRadius: 8,
-                }}
+                className="store-images"
+                onClick={handleApple}
               />
             </Box>
           </Box>
 
           <Box
-            width={{ xs: 400, sm: 400, md: 600, lg: 800 }}
-            height={{ xs: 275, sm: 275, md: 475, lg: 550 }}
+            width={{ xs: 290, sm: 290, md: 600, lg: 800, xl: 800 }}
+            height={{ xs: 220, sm: 220, md: 475, lg: 550, xl: 550 }}
           >
             <img
               src={imageSrc}
               alt="Yaya Middle East"
               width="100%"
               height="100%"
-              style={{ objectFit: "cover" }}
+              style={{ objectFit: "cover", borderRadius: 8 }}
             />
           </Box>
         </Box>

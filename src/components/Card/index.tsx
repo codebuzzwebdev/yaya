@@ -4,59 +4,91 @@ import { useTheme, Box, Typography } from "@mui/material";
 import BadgePNG from "@assets/icons/badge.png";
 import VideoPNG from "@assets/icons/video.png";
 
-import NanniePNG from "@assets/nannie.png";
-import FlagPNG from "@assets/flag2.png";
-
 import * as colors from "@themes/colors";
 
-export interface CardProps {
-  handleNavigate: () => void;
+const VITE_FLAG_URL = import.meta.env.VITE_FLAG_URL;
+
+export interface SalaryType {
+  price: string;
+  duration: string;
+  short: string;
 }
 
-const Card: FC<CardProps> = ({ handleNavigate }) => {
+export interface ItemProps {
+  id: string;
+  firstName: string;
+  lastName: string;
+  position: string;
+  jobType: string;
+  experience: string;
+  salary: SalaryType;
+  yayaPick: number;
+  videoUrl: string;
+  photo: string;
+  createdAt: number;
+  countryCode: string;
+}
+export interface CardProps {
+  data: ItemProps;
+  handleNavigate: (data: ItemProps) => void;
+}
+
+const Card: FC<CardProps> = ({ data, handleNavigate }) => {
   const theme = useTheme();
 
   return (
     <Box
       borderRadius={3}
       sx={{
-        boxShadow: "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px",
+        border: `0.1px solid ${theme.palette.grey[200]}`,
+        boxShadow:
+          "rgba(145, 158, 171, 0.2) 0px 0px 2px 0px, rgba(145, 158, 171, 0.12) 0px 12px 24px -4px;",
         cursor: "pointer",
+        "&:hover": {
+          border: `0.1px solid ${theme.palette.grey[300]}`,
+          boxShadow:
+            "rgba(145, 158, 171, 0.2) 0px 0px 2px 0px, rgba(145, 158, 171, 0.12) 0px 12px 24px -4px;",
+        },
       }}
-      onClick={handleNavigate}
+      onClick={() => handleNavigate(data)}
+      width={197}
+      mb={2}
+      mr={2}
     >
       <Box position="relative">
         <img
-          src={NanniePNG}
+          src={data.photo}
           alt="Nannie"
           width="100%"
-          height={295}
+          height={195}
           style={{
-            objectFit: "cover",
+            objectFit: "fill",
             cursor: "pointer",
-            borderTopLeftRadius: 16,
-            borderTopRightRadius: 16,
+            borderTopLeftRadius: 12,
+            borderTopRightRadius: 12,
           }}
         />
         <img
           src={VideoPNG}
           alt="Video"
-          width={32}
-          height={32}
+          width={18}
+          height={18}
           style={{
+            display: data?.videoUrl ? "block" : "none",
             objectFit: "cover",
             cursor: "pointer",
             position: "absolute",
-            bottom: 16,
+            bottom: 18,
             left: 8,
           }}
         />
         <img
           src={BadgePNG}
           alt="Badge"
-          width={32}
-          height={32}
+          width={18}
+          height={18}
           style={{
+            display: data.yayaPick === 1 ? "block" : "none",
             objectFit: "cover",
             cursor: "pointer",
             position: "absolute",
@@ -74,16 +106,21 @@ const Card: FC<CardProps> = ({ handleNavigate }) => {
         >
           <Typography
             variant="body1"
-            fontSize={20}
-            fontWeight="bold"
+            fontSize={16}
             color={theme.palette.common.black}
+            sx={{
+              whiteSpace: "nowrap",
+              overflow: "hidden",
+              textOverflow: "ellipsis",
+              width: 180,
+            }}
           >
-            Jane
+            {data.firstName} {data.lastName}
           </Typography>
           <img
-            src={FlagPNG}
+            src={`${VITE_FLAG_URL}/${data.countryCode.toLowerCase()}.png`}
             alt="Flag"
-            width={32}
+            width={24}
             height={16}
             style={{
               objectFit: "cover",
@@ -92,7 +129,7 @@ const Card: FC<CardProps> = ({ handleNavigate }) => {
           />
         </Box>
         <Box
-          bgcolor={theme.palette.grey[200]}
+          bgcolor={theme.palette.grey[400]}
           px={1}
           py={0.5}
           borderRadius={1}
@@ -100,14 +137,14 @@ const Card: FC<CardProps> = ({ handleNavigate }) => {
         >
           <Typography
             variant="body1"
-            fontWeight="bold"
+            fontSize={12}
             color={theme.palette.common.black}
           >
-            Nanny / Nurse
+            {data.position}
           </Typography>
         </Box>
         <Box
-          bgcolor={colors.others.pink}
+          bgcolor={colors.theme.pink}
           px={1}
           py={0.5}
           borderRadius={1}
@@ -115,14 +152,14 @@ const Card: FC<CardProps> = ({ handleNavigate }) => {
         >
           <Typography
             variant="body1"
-            fontWeight="bold"
+            fontSize={12}
             color={theme.palette.common.white}
           >
-            Full Time + Live Out
+            {data.jobType}
           </Typography>
         </Box>
         <Box
-          bgcolor={colors.others.blue}
+          bgcolor={colors.theme.blue}
           px={1}
           py={0.5}
           borderRadius={1}
@@ -130,18 +167,26 @@ const Card: FC<CardProps> = ({ handleNavigate }) => {
         >
           <Typography
             variant="body1"
-            fontWeight="bold"
+            fontSize={12}
             color={theme.palette.common.white}
           >
-            More than 10 years
+            {data.experience}
           </Typography>
         </Box>
         <Box display="flex" mt={0.5}>
-          <Typography variant="body1" color={theme.palette.common.black}>
-            AED2,500-3,000
+          <Typography
+            variant="body1"
+            fontSize={12}
+            color={theme.palette.common.black}
+          >
+            {data.salary.price}
           </Typography>
-          <Typography variant="body1" color={theme.palette.grey[400]}>
-            /Mo
+          <Typography
+            variant="body1"
+            fontSize={12}
+            color={theme.palette.grey[300]}
+          >
+            /{data.salary.short}
           </Typography>
         </Box>
       </Box>

@@ -1,3 +1,8 @@
+import moment from "moment";
+import PlaceholderPNG from "@assets/placeholder.png";
+
+const BASE_URL = import.meta.env.VITE_IMAGE_URL;
+
 export interface CountryType {
   code: string;
   label: string;
@@ -431,6 +436,7 @@ export const countries: readonly CountryType[] = [
 ];
 
 export interface CityType {
+  id: number;
   label: string;
   count: number;
   checked: boolean;
@@ -438,26 +444,31 @@ export interface CityType {
 
 export const cities: CityType[] = [
   {
+    id: 1,
     label: "United States",
     count: 1200,
     checked: false,
   },
   {
+    id: 2,
     label: "Canada",
     count: 1200,
     checked: false,
   },
   {
+    id: 3,
     label: "England",
     count: 1200,
     checked: false,
   },
   {
+    id: 4,
     label: "UAE",
     count: 1200,
     checked: false,
   },
   {
+    id: 5,
     label: "Philippines",
     count: 1200,
     checked: false,
@@ -465,6 +476,7 @@ export const cities: CityType[] = [
 ];
 
 export interface NationalityType {
+  id: number;
   label: string;
   count: number;
   checked: boolean;
@@ -472,26 +484,31 @@ export interface NationalityType {
 
 export const nationalities: NationalityType[] = [
   {
+    id: 1,
     label: "Philippines",
     count: 1200,
     checked: false,
   },
   {
+    id: 2,
     label: "Uganda",
     count: 1200,
     checked: false,
   },
   {
+    id: 3,
     label: "Sri Lanka",
     count: 1200,
     checked: false,
   },
   {
+    id: 4,
     label: "Kenya",
     count: 1200,
     checked: false,
   },
   {
+    id: 5,
     label: "Bangladesh",
     count: 1200,
     checked: false,
@@ -499,6 +516,7 @@ export const nationalities: NationalityType[] = [
 ];
 
 export interface JobType {
+  id: number;
   label: string;
   count: number;
   checked: boolean;
@@ -506,21 +524,25 @@ export interface JobType {
 
 export const jobTypes: JobType[] = [
   {
+    id: 1,
     label: "Full Time + Live In",
     count: 1200,
     checked: false,
   },
   {
+    id: 2,
     label: "Full Time + Live Out",
     count: 1200,
     checked: false,
   },
   {
+    id: 3,
     label: "Full Time + Flexible",
     count: 1200,
     checked: false,
   },
   {
+    id: 4,
     label: "Part Time",
     count: 1200,
     checked: false,
@@ -528,6 +550,7 @@ export const jobTypes: JobType[] = [
 ];
 
 export interface ExperienceType {
+  id: number;
   label: string;
   count: number;
   checked: boolean;
@@ -535,23 +558,324 @@ export interface ExperienceType {
 
 export const experiences: ExperienceType[] = [
   {
+    id: 1,
     label: "Less than 2 years",
     count: 1200,
     checked: false,
   },
   {
+    id: 2,
     label: "More than 2 years",
     count: 1200,
     checked: false,
   },
   {
+    id: 3,
     label: "More than 5 years",
     count: 1200,
     checked: false,
   },
   {
+    id: 4,
     label: "More than 10 years",
     count: 1200,
     checked: false,
   },
 ];
+
+export interface PaginationType {
+  page: number;
+  perPage: number;
+  totalPages: number;
+  totalRecords: number;
+}
+
+export const formatDate = (date: number) => {
+  return moment(date).format("Do MMMM YYYY");
+};
+
+export const isNew = (createdAt: number) => {
+  const currentTime = new Date().getTime();
+  const timeDifference = currentTime - createdAt;
+  const fortyEightHoursInMs = 48 * 60 * 60 * 1000;
+  if (timeDifference < fortyEightHoursInMs) return true;
+  return false;
+};
+
+export interface FiltersType {
+  c: number[];
+  n: number[];
+  j: number[];
+  e: number[];
+  min: string;
+  max: string;
+}
+
+export interface HeaderItem {
+  id: number;
+  title: string;
+  url: string;
+}
+export interface HeaderType {
+  id: number;
+  title: string;
+  items: HeaderItem[];
+}
+
+export const headerItems: HeaderType[] = [
+  {
+    id: 1,
+    title: "Home",
+    items: [],
+  },
+  {
+    id: 2,
+    title: "About Us",
+    items: [
+      {
+        id: 1,
+        title: "About Yaya",
+        url: "/about-us",
+      },
+      {
+        id: 2,
+        title: "How it Works",
+        url: "/how-it-works",
+      },
+      {
+        id: 3,
+        title: "Features",
+        url: "/features",
+      },
+      {
+        id: 4,
+        title: "Pricing",
+        url: "/pricing",
+      },
+    ],
+  },
+  {
+    id: 3,
+    title: "Services",
+    items: [
+      {
+        id: 5,
+        title: "Find a Job",
+        url: "/find-a-job",
+      },
+    ],
+  },
+  {
+    id: 4,
+    title: "Resources",
+    items: [
+      {
+        id: 6,
+        title: "Care Guide",
+        url: "/careguide",
+      },
+      {
+        id: 7,
+        title: "Tutorials",
+        url: "/find-a-job/#Tutorial",
+      },
+      {
+        id: 8,
+        title: "Terms & Conditions",
+        url: "/terms-and-conditions",
+      },
+      {
+        id: 9,
+        title: "Privacy Policy",
+        url: "/privacy-policy",
+      },
+    ],
+  },
+  {
+    id: 5,
+    title: "Support",
+    items: [
+      {
+        id: 10,
+        title: "Contact Us",
+        url: "/contact-us",
+      },
+      {
+        id: 11,
+        title: "Whatsapp Us",
+        url: "https://api.whatsapp.com/send/?phone=971568578544&text=Hi+Yaya+Team&type=phone_number&app_absent=0",
+      },
+      {
+        id: 12,
+        title: "FAQs",
+        url: "/How-it-Works/#faq",
+      },
+    ],
+  },
+];
+
+export interface FooterItem {
+  id: number;
+  title: string;
+  url: string;
+}
+
+export interface FooterType {
+  id: number;
+  title: string;
+  items: FooterItem[];
+}
+
+export const footerItems: FooterType[] = [
+  {
+    id: 1,
+    title: "About Us",
+    items: [
+      {
+        id: 1,
+        title: "About Yaya",
+        url: "/about-us",
+      },
+      {
+        id: 2,
+        title: "How it Works",
+        url: "/how-it-works",
+      },
+      {
+        id: 3,
+        title: "Features",
+        url: "/features",
+      },
+      {
+        id: 4,
+        title: "Pricing",
+        url: "/pricing",
+      },
+    ],
+  },
+  {
+    id: 2,
+    title: "Services",
+    items: [
+      {
+        id: 5,
+        title: "Find Nannies",
+        url: "#",
+      },
+      {
+        id: 6,
+        title: "Find Jobs",
+        url: "/find-a-job",
+      },
+      {
+        id: 7,
+        title: "Filipino Nannies",
+        url: "#",
+      },
+      {
+        id: 8,
+        title: "Ugandan Nannies",
+        url: "#",
+      },
+      {
+        id: 9,
+        title: "Live Out Nannies",
+        url: "#",
+      },
+      {
+        id: 10,
+        title: "Maids in Dubai",
+        url: "#",
+      },
+    ],
+  },
+  {
+    id: 3,
+    title: "Resources",
+    items: [
+      {
+        id: 11,
+        title: "Care Guide",
+        url: "/careguide",
+      },
+      {
+        id: 12,
+        title: "Tutorials",
+        url: "/find-a-job/#Tutorial",
+      },
+      {
+        id: 13,
+        title: "Terms & Conditions",
+        url: "/terms-and-conditions",
+      },
+      {
+        id: 14,
+        title: "Privacy Policy",
+        url: "/privacy-policy",
+      },
+    ],
+  },
+  {
+    id: 4,
+    title: "Support",
+    items: [
+      {
+        id: 15,
+        title: "Contact Us",
+        url: "/contact-us",
+      },
+      {
+        id: 16,
+        title: "FAQs",
+        url: "/How-it-Works/#faq",
+      },
+    ],
+  },
+  {
+    id: 5,
+    title: "Download Our App",
+    items: [
+      {
+        id: 17,
+        title: "App Store",
+        url: "#",
+      },
+      {
+        id: 18,
+        title: "Play Store",
+        url: "#",
+      },
+    ],
+  },
+];
+
+export const getPhoto = (photos: any) => {
+  const _p = photos.find((e: any) => e.isDefault === 1);
+  if (_p) return `${BASE_URL}/${_p.imageUrl}`;
+  else return PlaceholderPNG;
+};
+
+export const getSalary = (data: any) => {
+  if (data && data.hourlyRate && data.hourlyRate === "Negotiable") {
+    return {
+      price: `Negotiable`,
+      duration: "Hourly Rate",
+      short: "Hr",
+    };
+  } else if (data && data.hourlyRate) {
+    return {
+      price: data.isSalaryNegotiable
+        ? `AED ${data.hourlyRate.toLocaleString()} Negotiable`
+        : `AED ${data.hourlyRate.toLocaleString()}`,
+      duration: "Hourly Rate",
+      short: "Hr",
+    };
+  }
+  return {
+    price: data.isSalaryNegotiable
+      ? `AED ${data.minSalary.toLocaleString()}-${data.maxSalary.toLocaleString()} Negotiable`
+      : `AED ${data.minSalary.toLocaleString()}-${data.maxSalary.toLocaleString()}`,
+    duration: "Monthly Salary",
+    short: "Mo",
+  };
+};

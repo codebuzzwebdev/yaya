@@ -25,8 +25,10 @@
     "paths": {
       "@assets/*": ["src/assets/*"],
       "@components/*": ["src/components/*"],
+      "@hooks/*": ["src/hooks/*"],
       "@pages/*": ["src/pages/*"],
       "@routes": ["src/routes"],
+      "@store/*": ["src/store/*"],
       "@themes/*": ["src/themes/*"],
       "@utils": ["src/utils"],
     }

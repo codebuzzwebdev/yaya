@@ -1,35 +1,51 @@
-import React, { FC } from 'react';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
-import Select, { SelectChangeEvent } from '@mui/material/Select';
+import React, { FC } from "react";
+import {
+  useTheme,
+  Box,
+  Typography,
+  MenuItem,
+  FormControl,
+  Select,
+  SelectChangeEvent,
+} from "@mui/material";
 
-const Sorting:FC = () => {
-  const [sort, setSort] = React.useState('');
+export interface SortingProps {
+  callback: (e: string) => void;
+}
+
+const Sorting: FC<SortingProps> = ({ callback }) => {
+  const theme = useTheme();
+
+  const [sort, setSort] = React.useState("Latest");
 
   const handleChange = (event: SelectChangeEvent) => {
     setSort(event.target.value);
+    callback(event.target.value);
   };
 
   return (
-    <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
-      <InputLabel id="demo-select-small-label">Sorting</InputLabel>
-      <Select
-        labelId="demo-select-small-label"
-        id="demo-select-small"
-        value={sort}
-        label="Sorting"
-        onChange={handleChange}
+    <Box display="flex" alignItems="center">
+      <Typography
+        variant="body1"
+        fontSize={{ xs: 14, sm: 14, md: 20, lg: 20, xl: 20 }}
+        color={theme.palette.grey[900]}
       >
-        <MenuItem value="">
-          <em>None</em>
-        </MenuItem>
-        <MenuItem value={0}>Recent</MenuItem>
-        <MenuItem value={1}>Latest</MenuItem>
-        <MenuItem value={2}>Old</MenuItem>
-      </Select>
-    </FormControl>
+        Sort by
+      </Typography>
+      <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
+        <Select
+          labelId="demo-select-small-label"
+          id="demo-select-small"
+          value={sort}
+          label=""
+          onChange={handleChange}
+          autoFocus={false}
+        >
+          <MenuItem value="Latest">Latest</MenuItem>
+        </Select>
+      </FormControl>
+    </Box>
   );
-}
+};
 
 export default Sorting;

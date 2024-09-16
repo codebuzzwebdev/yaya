@@ -1,189 +1,184 @@
-import { FC, useEffect, useState } from "react";
-import { useTheme, Box, Grid, Typography } from "@mui/material";
+import { FC } from "react";
+import { useTheme, Grid, Box, IconButton, Typography } from "@mui/material";
 
 import Icon from "@components/Icon";
+import Logo from "@components/Logo";
+import GooglePNG from "@assets/google.svg";
+import ApplePNG from "@assets/apple.svg";
+import UAESVG from "@assets/uae.svg";
 
-import FooterPNG from "@assets/footer.png";
+import { footerItems } from "@utils";
+
+const VITE_APP_STORE_URL = import.meta.env.VITE_APP_STORE_URL;
+const VITE_PLAY_STORE_URL = import.meta.env.VITE_PLAY_STORE_URL;
+const VITE_WP_URL = import.meta.env.VITE_WP_URL;
+const VITE_FACEBOOK_URL = import.meta.env.VITE_FACEBOOK_URL;
+const VITE_INSTAGRAM_URL = import.meta.env.VITE_INSTAGRAM_URL;
+const VITE_YOUTUBE_URL = import.meta.env.VITE_YOUTUBE_URL;
 
 const Footer: FC = () => {
   const theme = useTheme();
 
-  const handleResize = () => {
-    const width = window.innerWidth;
-    if (width <= 1200) {
-      setMobile(true);
-      return;
+  const handleMenu = (url: string) => {
+    if (url !== "#") {
+      window.location.href = `${VITE_WP_URL}${url}`;
     }
-    setMobile(false);
   };
 
-  const [isMobile, setMobile] = useState(window.innerWidth <= 1200);
+  const handleApple = () => {
+    window.open(VITE_APP_STORE_URL);
+  };
 
-  useEffect(() => {
-    window.addEventListener("resize", handleResize);
+  const handleGoogle = () => {
+    window.open(VITE_PLAY_STORE_URL);
+  };
 
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
+  const handleFacebook = () => {
+    window.open(VITE_FACEBOOK_URL);
+  };
 
-  if (isMobile) {
-    return (
-      <Grid container px={2} py={2}>
-        <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
-          <Box
-            display="flex"
-            justifyContent="center"
-            alignItems="center"
-            textAlign="center"
-            px={6}
-            py={6}
-            borderRadius={6}
-            bgcolor={theme.palette.primary.light}
-          >
-            <Box>
-              <img
-                src={FooterPNG}
-                alt="Footer"
-                width={329}
-                height={346}
-                style={{ objectFit: "cover", marginBottom: 48 }}
-              />
+  const handleInstagram = () => {
+    window.open(VITE_INSTAGRAM_URL);
+  };
 
-              <Box display="flex" justifyContent="center" textAlign="center">
-                <Typography
-                  variant="h5"
-                  fontWeight="bold"
-                  color={theme.palette.common.black}
-                >
-                  Become a
-                </Typography>
-                <Typography
-                  variant="h5"
-                  fontWeight="bold"
-                  mx={1}
-                  color={theme.palette.primary.main}
-                >
-                  Nanny
-                </Typography>
-                <Typography
-                  variant="h5"
-                  fontWeight="bold"
-                  color={theme.palette.common.black}
-                >
-                  on UAE’s
-                </Typography>
-              </Box>
-              <Typography
-                variant="h5"
-                fontWeight="bold"
-                color={theme.palette.common.black}
-              >
-                #1 Nanny App
-              </Typography>
-
-              <Box
-                bgcolor={theme.palette.common.white}
-                display="inline-block"
-                px={4}
-                py={1}
-                borderRadius={2}
-                mt={4}
-              >
-                <Box display="flex" alignItems="center">
-                  <Typography
-                    variant="h6"
-                    color={theme.palette.primary.main}
-                    mr={1}
-                  >
-                    Find out more
-                  </Typography>
-                  <Icon name="rightArrow" color={theme.palette.primary.main} />
-                </Box>
-              </Box>
-            </Box>
-          </Box>
-        </Grid>
-      </Grid>
-    );
-  }
+  const handleYoutube = () => {
+    window.open(VITE_YOUTUBE_URL);
+  };
 
   return (
-    <Grid container px={6} py={12}>
-      <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
-        <Box
-          display="flex"
-          justifyContent="space-between"
-          alignItems="center"
-          px={6}
-          borderRadius={6}
-          bgcolor={theme.palette.primary.light}
-          height={298}
-        >
-          <Box>
-            <Box display="flex">
-              <Typography
-                variant="h4"
-                fontWeight="bold"
-                color={theme.palette.common.black}
-              >
-                Become a
-              </Typography>
-              <Typography
-                variant="h4"
-                fontWeight="bold"
-                mx={1}
-                color={theme.palette.primary.main}
-              >
-                Nanny
-              </Typography>
-              <Typography
-                variant="h4"
-                fontWeight="bold"
-                color={theme.palette.common.black}
-              >
-                on UAE’s
-              </Typography>
-            </Box>
-            <Typography
-              variant="h4"
-              fontWeight="bold"
-              color={theme.palette.common.black}
-            >
-              #1 Nanny App
-            </Typography>
+    <>
+      <Grid
+        container
+        px={{ xs: 2, sm: 2, md: 4, lg: "90px", xl: "90px" }}
+        pt="50px"
+        bgcolor={theme.palette.secondary.light}
+      >
+        <Grid item xs={12} sm={12} md={12} lg={4} xl={4}>
+          <Logo isFull />
+          <Typography
+            variant="body1"
+            color={theme.palette.grey[500]}
+            fontSize={14}
+            mt={2}
+            maxWidth="85%"
+          >
+            Yaya Middle East is the region’s first childcare mobile app,
+            revolutionizing the way you find nannies and maids in the UAE. We’re
+            committed to streamlining your search, eliminating agency fees, and
+            providing a clear, direct, and transparent link to the largest
+            database of qualified nannies and maids in the UAE. Discover the
+            ideal nanny for your family in Dubai and Abu Dhabi with Yaya—the
+            comprehensive 360 childcare app.
+          </Typography>
 
-            <Box
-              bgcolor={theme.palette.common.white}
-              display="inline-block"
-              px={4}
-              py={1}
-              borderRadius={2}
-              mt={4}
-            >
-              <Box display="flex" alignItems="center">
-                <Typography
-                  variant="h6"
-                  color={theme.palette.primary.main}
-                  mr={1}
-                >
-                  Find out more
-                </Typography>
-                <Icon name="rightArrow" color={theme.palette.primary.main} />
-              </Box>
-            </Box>
+          <Box mt={2} ml={-1}>
+            <IconButton onClick={handleFacebook}>
+              <Icon name="facebook" color={theme.palette.common.black} />
+            </IconButton>
+            <IconButton onClick={handleInstagram}>
+              <Icon name="instagram" color={theme.palette.common.black} />
+            </IconButton>
+            <IconButton onClick={handleYoutube}>
+              <Icon name="youtube" color={theme.palette.common.black} />
+            </IconButton>
           </Box>
 
-          <img
-            src={FooterPNG}
-            alt="Footer"
-            width={329}
-            height={346}
-            style={{ objectFit: "cover", marginBottom: 48 }}
-          />
-        </Box>
+          <Box display="flex" alignItems="center" mt={2}>
+            <img src={UAESVG} alt="Flag" width={36} height={24} />
+            <Typography variant="body1" fontSize={16} ml={1}>
+              UAE
+            </Typography>
+          </Box>
+        </Grid>
+
+        <Grid
+          item
+          xs={12}
+          sm={12}
+          md={12}
+          lg={8}
+          xl={8}
+          mt={{ xs: 3, sm: 3, md: 3, lg: 0, xl: 0 }}
+        >
+          <Grid container>
+            {footerItems.map((item, _idx) => (
+              <Grid
+                key={`${item.title}_${_idx}`}
+                item
+                xs={12}
+                sm={12}
+                md={12}
+                lg={2.3}
+                xl={2.3}
+              >
+                <Typography variant="body1" fontWeight="bold" fontSize={18}>
+                  {item.title}
+                </Typography>
+                {item.items.map((subItem, _idx2) => {
+                  if (subItem.id === 17) {
+                    return (
+                      <Box key={`${subItem.title}_${_idx}_${_idx2}`}>
+                        <img
+                          src={ApplePNG}
+                          alt="Apple"
+                          width={180}
+                          height={50}
+                          className="store-images"
+                          onClick={handleApple}
+                        />
+                      </Box>
+                    );
+                  } else if (subItem.id === 18) {
+                    return (
+                      <Box key={`${subItem.title}_${_idx}_${_idx2}`}>
+                        <img
+                          src={GooglePNG}
+                          alt="Google"
+                          width={180}
+                          height={50}
+                          className="store-images"
+                          onClick={handleGoogle}
+                        />
+                      </Box>
+                    );
+                  } else {
+                    return (
+                      <Typography
+                        key={`${subItem.title}_${_idx}_${_idx2}`}
+                        variant="body1"
+                        color={theme.palette.grey[600]}
+                        fontSize={14}
+                        my={3}
+                        sx={{
+                          cursor: "pointer",
+                          "&:hover": {
+                            color: theme.palette.primary.main,
+                          },
+                        }}
+                        onClick={() => handleMenu(subItem.url)}
+                      >
+                        {subItem.title}
+                      </Typography>
+                    );
+                  }
+                })}
+              </Grid>
+            ))}
+          </Grid>
+        </Grid>
       </Grid>
-    </Grid>
+      <Typography
+        variant="body1"
+        color={theme.palette.grey[500]}
+        textAlign="center"
+        sx={{
+          py: "40px",
+          px: "8px",
+        }}
+      >
+        © Copyright 2024 Yaya Middle East FZ-LLC. All rights reserved.
+      </Typography>
+    </>
   );
 };
 

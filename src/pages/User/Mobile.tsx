@@ -1,303 +1,340 @@
 import { FC } from "react";
-import { useNavigate } from "react-router-dom";
 import { useTheme, Grid, Box, Typography } from "@mui/material";
 
-import Header from "@components/Header";
+import { ItemProps } from "@pages/User";
+
+import Loader from "@components/Loader";
 import Icon from "@components/Icon";
 import Snapshot from "@components/Snapshot";
+import Dialog from "@components/Dialog";
 
-import BadgePNG from "@assets/icons/white-badge.png";
-import NanniePNG from "@assets/nannie.png";
-import GooglePNG from "@assets/google.png";
-import ApplePNG from "@assets/apple.png";
+import GooglePNG from "@assets/google.svg";
+import ApplePNG from "@assets/apple.svg";
 import LinkPNG from "@assets/icons/link.png";
 import MailPNG from "@assets/icons/mail.png";
 
 import * as colors from "@themes/colors";
 
-const User: FC = () => {
-  const theme = useTheme();
-  const navigate = useNavigate();
+export interface MobileProps {
+  loading: boolean;
+  data: ItemProps | null;
+  handleApple: () => void;
+  handleGoogle: () => void;
+  handleCopy: () => void;
+  open: boolean;
+  handleOpen: () => void;
+  handleClose: () => void;
+}
 
-  const navigateToHome = () => {
-    navigate("/");
-  };
+const Mobile: FC<MobileProps> = ({
+  loading,
+  data,
+  handleApple,
+  handleGoogle,
+  handleCopy,
+  open,
+  handleOpen,
+  handleClose,
+}) => {
+  const theme = useTheme();
+
+  if (loading) {
+    return (
+      <Grid
+        container
+        spacing={2}
+        px={{ xs: 2, sm: 2, md: 2, lg: 16, xl: 16 }}
+        py={6}
+      >
+        <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+          <Loader />
+        </Grid>
+      </Grid>
+    );
+  }
 
   return (
-    <>
-      <Header handleNavigate={navigateToHome} />
+    <Grid
+      container
+      spacing={2}
+      px={{ xs: 6, sm: 6, md: 4, lg: 6, xl: 6 }}
+      py={6}
+    >
+      <Grid item xs={12} sm={12} md={7} lg={7} xl={7}>
+        <Box display="flex" flexDirection="column">
+          <Box textAlign="center">
+            <Typography variant="body1" fontSize={24} fontWeight="bold">
+              {data?.firstName} {data?.lastName}
+            </Typography>
 
-      <Grid container spacing={2} px={6} py={6}>
-        <Grid item xs={12} sm={12} md={7} lg={7} xl={7}>
-          <Box display="flex" flexDirection="column">
-            <Box textAlign="center">
-              <Typography variant="body1" fontWeight="bold">
-                Jane Doe
-              </Typography>
+            <Typography
+              variant="body1"
+              fontSize={18}
+              color={theme.palette.grey[600]}
+              mt={1}
+            >
+              {data?.position}
+            </Typography>
 
+            <Box display="flex" justifyContent="center" mt={1}>
+              <Box
+                bgcolor={colors.theme.red}
+                px={2}
+                py={0.5}
+                height={28}
+                borderRadius={1}
+                display={data?.isNew ? "block" : "none"}
+                sx={{
+                  cursor: "pointer",
+                  "&:hover": {
+                    bgcolor: theme.palette.primary.main,
+                  },
+                }}
+              >
+                <Typography
+                  variant="body1"
+                  fontSize={14}
+                  color={theme.palette.common.white}
+                >
+                  New
+                </Typography>
+              </Box>
+              <Box
+                bgcolor={colors.theme.green}
+                px={2}
+                py={0.5}
+                height={28}
+                ml={1}
+                borderRadius={1}
+                display={data?.yayaPick === 1 ? "flex" : "none"}
+                alignItems="center"
+                sx={{
+                  cursor: "pointer",
+                }}
+              >
+                <Typography
+                  variant="body1"
+                  fontSize={14}
+                  color={theme.palette.common.white}
+                >
+                  Yaya Pick
+                </Typography>
+              </Box>
+            </Box>
+          </Box>
+
+          <Box
+            position="relative"
+            display="flex"
+            justifyContent="center"
+            mt={2}
+          >
+            <img
+              src={data?.photo}
+              alt="Nannie"
+              width="100%"
+              height={350}
+              style={{
+                objectFit: "cover",
+                cursor: "pointer",
+                borderRadius: 8,
+              }}
+            />
+            <Box
+              position="absolute"
+              bgcolor={colors.theme.pink}
+              px={2}
+              py={0.5}
+              borderRadius={1}
+              bottom={8}
+              left={8}
+              sx={{
+                cursor: "pointer",
+              }}
+            >
               <Typography
                 variant="body1"
-                color={theme.palette.grey[600]}
-                mt={1}
+                fontSize={10}
+                color={theme.palette.common.white}
               >
-                Nanny / Nurse
+                {data?.jobType}
               </Typography>
+            </Box>
+            <Box
+              position="absolute"
+              bgcolor={colors.theme.blue}
+              px={2}
+              py={0.5}
+              borderRadius={1}
+              bottom={8}
+              right={8}
+              sx={{
+                display: data?.videoUrl ? "block" : "none",
+                cursor: "pointer",
+              }}
+            >
+              <Typography
+                variant="body1"
+                fontSize={10}
+                color={theme.palette.common.white}
+              >
+                Video Greeting
+              </Typography>
+            </Box>
+          </Box>
+        </Box>
 
-              <Box display="flex" justifyContent="center" mt={1}>
-                <Box bgcolor={colors.others.red} px={2} py={1} borderRadius={1}>
-                  <Typography
-                    variant="body1"
-                    color={theme.palette.common.white}
-                  >
-                    New
-                  </Typography>
-                </Box>
-                <Box
-                  bgcolor={colors.others.pink}
-                  px={2}
-                  py={1}
-                  ml={1}
-                  borderRadius={1}
-                  display="flex"
-                  alignItems="center"
-                >
-                  <img
-                    src={BadgePNG}
-                    alt="Badge"
-                    width={20}
-                    height={20}
-                    style={{
-                      objectFit: "cover",
-                      cursor: "pointer",
-                      marginRight: 2,
-                      borderRadius: 8,
-                    }}
-                  />
-                  <Typography
-                    variant="body1"
-                    color={theme.palette.common.white}
-                  >
-                    Yaya Pick
-                  </Typography>
-                </Box>
-              </Box>
+        <Grid item xs={12} sm={12} md={5} lg={5} xl={5}>
+          <Snapshot loading={loading} data={data} />
+
+          <Typography variant="h6" fontWeight="bold" mt={2}>
+            About Me
+          </Typography>
+
+          <Typography variant="body1" color={theme.palette.grey[600]} mt={2}>
+            {data?.about}
+          </Typography>
+
+          <Typography variant="body1" fontSize={18} fontWeight="bold" mt={2}>
+            Share this job:
+          </Typography>
+
+          <Box display="flex">
+            <Box
+              display="flex"
+              alignItems="center"
+              bgcolor={colors.theme.light_blue}
+              p={1}
+              borderRadius={1}
+              width="fit-content"
+              sx={{
+                cursor: "pointer",
+                "&:hover": {
+                  bgcolor: theme.palette.error.light,
+                },
+              }}
+            >
+              <img
+                src={LinkPNG}
+                alt="link"
+                width={24}
+                height={24}
+                style={{
+                  objectFit: "cover",
+                  marginRight: 8,
+                }}
+              />
+              <Typography
+                variant="body1"
+                color={theme.palette.primary.dark}
+                mr={1}
+                onClick={handleCopy}
+              >
+                Copy Link
+              </Typography>
             </Box>
 
             <Box
-              position="relative"
               display="flex"
-              justifyContent="center"
-              mt={2}
+              alignItems="center"
+              bgcolor={colors.theme.light_blue}
+              p={1}
+              borderRadius={1}
+              width="fit-content"
+              ml={1}
+              sx={{
+                cursor: "pointer",
+                "&:hover": {
+                  bgcolor: theme.palette.error.light,
+                },
+              }}
             >
               <img
-                src={NanniePNG}
-                alt="Nannie"
-                width="100%"
-                height={400}
+                src={MailPNG}
+                alt="mail"
+                width={24}
+                height={24}
                 style={{
                   objectFit: "cover",
-                  cursor: "pointer",
-                  borderRadius: 32,
                 }}
               />
-              <Box
-                position="absolute"
-                bgcolor={colors.others.pink}
-                px={2}
-                py={0.5}
-                borderRadius={1}
-                bottom={16}
-                left={16}
-              >
-                <Typography
-                  variant="caption"
-                  color={theme.palette.common.white}
-                >
-                  Full Time
-                </Typography>
-              </Box>
-              <Box
-                position="absolute"
-                bgcolor={colors.others.blue}
-                px={2}
-                py={0.5}
-                borderRadius={1}
-                bottom={16}
-                right={16}
-              >
-                <Typography
-                  variant="caption"
-                  color={theme.palette.common.white}
-                >
-                  Video Greeting
-                </Typography>
-              </Box>
             </Box>
-          </Box>
-
-          <Grid item xs={12} sm={12} md={5} lg={5} xl={5}>
-            <Snapshot />
-
-            <Typography variant="h6" fontWeight="bold" mt={2}>
-              About Me
-            </Typography>
-
-            <Typography variant="body1" color={theme.palette.grey[600]} mt={2}>
-              Velstar is a Shopify Plus agency, and we partner with brands to
-              help them grow, we also do the same with our people!
-            </Typography>
-
-            <Typography variant="body1" color={theme.palette.grey[600]} mt={2}>
-              Here at Velstar, we don't just make websites, we create
-              exceptional digital experiences that consumers love. Our team of
-              designers, developers, strategists, and creators work together to
-              push brands to the next level. From Platform Migration, User
-              Experience & User Interface Design, to Digital Marketing, we have
-              a proven track record in delivering outstanding eCommerce
-              solutions and driving sales for our clients.
-            </Typography>
-
-            <Typography variant="body1" color={theme.palette.grey[600]} mt={2}>
-              The role will involve translating project specifications into
-              clean, test-driven, easily maintainable code. You will work with
-              the Project and Development teams as well as with the Technical
-              Director, adhering closely to project plans and delivering work
-              that meets functional & non-functional requirements. You will have
-              the opportunity to create new, innovative, secure and scalable
-              features for our clients on the Shopify platform
-            </Typography>
-
-            <Typography variant="body1" color={theme.palette.grey[600]} mt={2}>
-              Want to work with us? You're in good company!
-            </Typography>
-
-            <Typography variant="h6" fontWeight="bold" mt={2}>
-              Share this job:
-            </Typography>
-
-            <Box display="flex">
-              <Box
-                display="flex"
-                alignItems="center"
-                bgcolor={theme.palette.grey[200]}
-                p={1}
-                borderRadius={1}
-                width="fit-content"
-              >
-                <img
-                  src={LinkPNG}
-                  alt="link"
-                  width={24}
-                  height={24}
-                  style={{
-                    objectFit: "cover",
-                    marginRight: 8,
-                  }}
-                />
-                <Typography
-                  variant="body1"
-                  color={theme.palette.primary.main}
-                  mr={1}
-                >
-                  Copy Link
-                </Typography>
-              </Box>
-
-              <Box
-                display="flex"
-                alignItems="center"
-                bgcolor={theme.palette.grey[200]}
-                p={1}
-                borderRadius={1}
-                ml={1}
-              >
-                <img
-                  src={MailPNG}
-                  alt="mail"
-                  width={24}
-                  height={24}
-                  style={{
-                    objectFit: "cover",
-                  }}
-                />
-              </Box>
-            </Box>
-          </Grid>
-
-          <Typography variant="body1" mt={2}>
-            Registered on: 15th June 2024
-          </Typography>
-
-          <Box
-            bgcolor={theme.palette.primary.main}
-            px={4}
-            py={2}
-            borderRadius={1}
-            mt={1}
-            display="flex"
-            justifyContent="center"
-            textAlign="center"
-          >
-            <Box display="flex" alignItems="center">
-              <Typography
-                variant="h6"
-                color={theme.palette.common.white}
-                mr={1}
-              >
-                Connect Now
-              </Typography>
-              <Icon name="rightArrow" color={theme.palette.common.white} />
-            </Box>
-          </Box>
-
-          <Typography
-            variant="body1"
-            textAlign="center"
-            color={theme.palette.grey[600]}
-            mt={2}
-          >
-            Download our app today to get started. Now completely free, no
-            hidden costs.
-          </Typography>
-
-          <Box
-            display="flex"
-            flexDirection="column-reverse"
-            justifyContent="center"
-            alignItems="center"
-            mt={2}
-          >
-            <img
-              src={GooglePNG}
-              alt="Google"
-              width={180}
-              height={50}
-              style={{
-                objectFit: "cover",
-                cursor: "pointer",
-                marginRight: 8,
-                borderRadius: 8,
-                marginTop: 8,
-              }}
-            />
-
-            <img
-              src={ApplePNG}
-              alt="Apple"
-              width={180}
-              height={50}
-              style={{
-                objectFit: "cover",
-                cursor: "pointer",
-                borderRadius: 8,
-                marginTop: 8,
-              }}
-            />
           </Box>
         </Grid>
+
+        <Typography variant="body1" mt={2}>
+          Registered on: {data?.registeredOn}
+        </Typography>
+
+        <Box
+          bgcolor={theme.palette.primary.main}
+          px={4}
+          py={2}
+          borderRadius={1}
+          mt={1}
+          display="flex"
+          justifyContent="center"
+          textAlign="center"
+          sx={{
+            cursor: "pointer",
+          }}
+          onClick={handleOpen}
+        >
+          <Box display="flex" alignItems="center">
+            <Typography variant="h6" color={theme.palette.common.white} mr={1}>
+              Connect Now
+            </Typography>
+            <Icon name="rightArrow" color={theme.palette.common.white} />
+          </Box>
+        </Box>
+
+        <Dialog
+          open={open}
+          data={data}
+          handleApple={handleApple}
+          handleGoogle={handleGoogle}
+          handleClose={handleClose}
+        />
+
+        <Typography
+          variant="body1"
+          fontSize={20}
+          color={theme.palette.grey[500]}
+          mt={2}
+          textAlign="center"
+        >
+          Download our app today to get started. Now completely free, no hidden
+          costs.
+        </Typography>
+
+        <Box
+          display="flex"
+          flexDirection="column-reverse"
+          justifyContent="center"
+          alignItems="center"
+          mt={2}
+        >
+          <img
+            src={GooglePNG}
+            alt="Google"
+            width={180}
+            height={50}
+            className="store-images"
+            onClick={handleGoogle}
+          />
+
+          <img
+            src={ApplePNG}
+            alt="Apple"
+            width={180}
+            height={50}
+            className="store-images"
+            onClick={handleApple}
+          />
+        </Box>
       </Grid>
-    </>
+    </Grid>
   );
 };
 
-export default User;
+export default Mobile;
