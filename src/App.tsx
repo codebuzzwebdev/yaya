@@ -41,7 +41,7 @@ const PublicRoutes: React.FC = () => (
 
 const Main = () => {
   return (
-    <Router>
+    <Router basename="/nannies-in-uae">
       <PublicRoutes />
     </Router>
   );
