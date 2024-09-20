@@ -8,8 +8,14 @@ import Logo from "@components/Logo";
 
 import { headerItems } from "@utils";
 
+const VITE_WP_URL = import.meta.env.VITE_WP_URL;
+
 const Header: FC = () => {
   const theme = useTheme();
+
+  const handleDownload = () => {
+    window.location.href = `${VITE_WP_URL}/download`;
+  };
 
   return (
     <>
@@ -61,6 +67,7 @@ const Header: FC = () => {
               color="primary"
               size="large"
               sx={{ ml: 3, mr: 3 }}
+              onClick={handleDownload}
             >
               DOWNLOAD
             </Button>

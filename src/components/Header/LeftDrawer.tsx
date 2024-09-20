@@ -37,10 +37,14 @@ const LeftDrawer: React.FC = () => {
   const handleSubMenu = (url: string) => {
     if (url === "/") {
       setOpen(false);
-      navigate("/");
+      window.location.href = `${VITE_WP_URL}`;
     } else if (url !== "#") {
       window.location.href = `${VITE_WP_URL}${url}`;
     }
+  };
+
+  const handleDownload = () => {
+    window.location.href = `${VITE_WP_URL}/download`;
   };
 
   const DrawerList = (
@@ -140,7 +144,12 @@ const LeftDrawer: React.FC = () => {
             >
               <Box display="flex" alignItems="center">
                 <img src={UAESVG} alt="Flag" width={36} height={24} />
-                <Typography variant="body1" color="#161C2D" fontSize={16} ml={1}>
+                <Typography
+                  variant="body1"
+                  color="#161C2D"
+                  fontSize={16}
+                  ml={1}
+                >
                   UAE
                 </Typography>
               </Box>
@@ -161,7 +170,12 @@ const LeftDrawer: React.FC = () => {
             >
               <Box display="flex" alignItems="center">
                 <img src={SASVG} alt="Flag" width={36} height={24} />
-                <Typography variant="body1" color="#161C2D" fontSize={16} ml={1}>
+                <Typography
+                  variant="body1"
+                  color="#161C2D"
+                  fontSize={16}
+                  ml={1}
+                >
                   SA
                 </Typography>
               </Box>
@@ -171,7 +185,13 @@ const LeftDrawer: React.FC = () => {
         )}
       </Box>
       <Box position="absolute" bottom={40} width="calc(100vw - 50px)">
-        <Button variant="contained" fullWidth color="primary" size="large">
+        <Button
+          variant="contained"
+          fullWidth
+          color="primary"
+          size="large"
+          onClick={handleDownload}
+        >
           Download
         </Button>
       </Box>

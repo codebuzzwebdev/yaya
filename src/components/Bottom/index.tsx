@@ -5,8 +5,14 @@ import Icon from "@components/Icon";
 
 import BottomPNG from "@assets/bottom.png";
 
+const VITE_WP_URL = import.meta.env.VITE_WP_URL;
+
 const Bottom: FC = () => {
   const theme = useTheme();
+
+  const handleFindMore = () => {
+    window.location.href = `${VITE_WP_URL}/find-a-job`;
+  };
 
   const handleResize = () => {
     const width = window.innerWidth;
@@ -97,7 +103,11 @@ const Bottom: FC = () => {
                   },
                 }}
               >
-                <Box display="flex" alignItems="center">
+                <Box
+                  display="flex"
+                  alignItems="center"
+                  onClick={handleFindMore}
+                >
                   <Typography
                     variant="h6"
                     fontSize={16}
@@ -107,7 +117,11 @@ const Bottom: FC = () => {
                   >
                     Find out more
                   </Typography>
-                  <Icon className="typography-hover" name="rightArrow" color={theme.palette.primary.main} />
+                  <Icon
+                    className="typography-hover"
+                    name="rightArrow"
+                    color={theme.palette.primary.main}
+                  />
                 </Box>
               </Box>
             </Box>
@@ -190,7 +204,7 @@ const Bottom: FC = () => {
                 },
               }}
             >
-              <Box display="flex" alignItems="center">
+              <Box display="flex" alignItems="center" onClick={handleFindMore}>
                 <Typography
                   variant="h6"
                   fontSize={18}
@@ -200,8 +214,12 @@ const Bottom: FC = () => {
                 >
                   Find out more
                 </Typography>
-                <Icon className="typography-hover" name="rightArrow" color={theme.palette.primary.main} />
-              </Box> 
+                <Icon
+                  className="typography-hover"
+                  name="rightArrow"
+                  color={theme.palette.primary.main}
+                />
+              </Box>
             </Box>
           </Box>
 

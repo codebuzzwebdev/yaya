@@ -78,7 +78,7 @@ const HoverMenu: React.FC<HoverMenuProps> = ({ menu, items }) => {
 
   const handleMenu = (url: string) => {
     if (url === "/") {
-      navigate("/");
+      window.location.href = `${VITE_WP_URL}`;
     } else if (url !== "#") {
       window.location.href = `${VITE_WP_URL}${url}`;
     }

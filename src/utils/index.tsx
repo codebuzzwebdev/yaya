@@ -660,6 +660,11 @@ export const headerItems: HeaderType[] = [
     items: [
       {
         id: 5,
+        title: "Find a Nanny",
+        url: "/nannies-in-uae",
+      },
+      {
+        id: 13,
         title: "Find a Job",
         url: "/find-a-job",
       },
@@ -760,7 +765,7 @@ export const footerItems: FooterType[] = [
       {
         id: 5,
         title: "Find Nannies",
-        url: "#",
+        url: "/nannies-in-uae",
       },
       {
         id: 6,
