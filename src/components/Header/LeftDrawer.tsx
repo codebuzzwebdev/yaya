@@ -1,5 +1,4 @@
 import * as React from "react";
-import { useNavigate } from "react-router-dom";
 import {
   useTheme,
   Box,
@@ -21,7 +20,6 @@ const VITE_WP_URL = import.meta.env.VITE_WP_URL;
 
 const LeftDrawer: React.FC = () => {
   const theme = useTheme();
-  const navigate = useNavigate();
 
   const [open, setOpen] = React.useState(false);
   const [subMenu, setSubMenu] = React.useState(-1);
@@ -35,7 +33,9 @@ const LeftDrawer: React.FC = () => {
   };
 
   const handleSubMenu = (url: string) => {
-    if (url === "/") {
+    if (url.includes("whatsapp")) {
+      window.location.href = url;
+    } else if (url === "/") {
       setOpen(false);
       window.location.href = `${VITE_WP_URL}`;
     } else if (url !== "#") {
