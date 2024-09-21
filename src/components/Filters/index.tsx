@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useSearchParams } from "react-router-dom";
 import { useTheme, Box, TextField, InputAdornment } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import ArrowForwardIosSharpIcon from "@mui/icons-material/ArrowForwardIosSharp";
@@ -14,12 +15,7 @@ import useDebounce from "@hooks/useDebounce";
 import Loader from "@components/Loader";
 import CheckItem from "@components/CheckItem";
 
-import {
-  CityType,
-  NationalityType,
-  JobType,
-  ExperienceType,
-} from "@utils";
+import { CityType, NationalityType, JobType, ExperienceType } from "@utils";
 
 const Accordion = styled((props: AccordionProps) => (
   <MuiAccordion disableGutters elevation={0} square {...props} />
@@ -80,15 +76,22 @@ export interface ExpandedType {
   experience: string;
 }
 
+const initExpanded = {
+  city: "false",
+  nationality: "false",
+  jobType: "false",
+  salary: "false",
+  experience: "false",
+};
+
 const AllFilter: React.FC<AllFilterProps> = ({ data, callback }) => {
   const theme = useTheme();
-  const [expanded, setExpanded] = React.useState<ExpandedType>({
-    city: "false",
-    nationality: "false",
-    jobType: "false",
-    salary: "false",
-    experience: "false",
-  });
+  const [searchParams, setSearchParams] = useSearchParams();
+  const nationality = searchParams.get("nationality");
+  const jobType = searchParams.get("jobType");
+  const city = searchParams.get("city");
+
+  const [expanded, setExpanded] = React.useState<ExpandedType>(initExpanded);
 
   const [listCities, setListCities] = React.useState<CityType[]>(data.cities);
   const [listNationalities, setNationalities] = React.useState<
@@ -101,6 +104,76 @@ const AllFilter: React.FC<AllFilterProps> = ({ data, callback }) => {
   const [listExperiences, setExperiences] = React.useState<ExperienceType[]>(
     data.experiences
   );
+
+  React.useEffect(() => {
+    window.scrollTo({
+      top: 600,
+      behavior: "smooth",
+    });
+  }, [
+    listCities,
+    listNationalities,
+    listJobTypes,
+    listExperiences,
+    minSalary,
+    maxSalary,
+  ]);
+
+  React.useEffect(() => {
+    if (typeof nationality === "string") {
+      const newNationalities = Array.from(listNationalities);
+      const updatedNationalities = newNationalities.map((e) => {
+        return {
+          ...e,
+          checked: e.id === Number(nationality) ? true : false,
+        };
+      });
+      setListCities(data.cities);
+      setNationalities(updatedNationalities);
+      setJobTypes(data.jobTypes);
+      setExperiences(data.experiences);
+      setExpanded({
+        ...expanded,
+        nationality: "panel2",
+      });
+    }
+
+    if (typeof jobType === "string") {
+      const newJobTypes = Array.from(listJobTypes);
+      const updatedJobTypes = newJobTypes.map((e) => {
+        return {
+          ...e,
+          checked: e.id === Number(jobType) ? true : false,
+        };
+      });
+      setListCities(data.cities);
+      setNationalities(data.nationalities);
+      setJobTypes(updatedJobTypes);
+      setExperiences(data.experiences);
+      setExpanded({
+        ...expanded,
+        jobType: "panel3",
+      });
+    }
+
+    if (typeof city === "string") {
+      const newCities = Array.from(listCities);
+      const updatedCities = newCities.map((e) => {
+        return {
+          ...e,
+          checked: e.id === Number(city) ? true : false,
+        };
+      });
+      setListCities(updatedCities);
+      setNationalities(data.nationalities);
+      setJobTypes(data.jobTypes);
+      setExperiences(data.experiences);
+      setExpanded({
+        ...expanded,
+        city: "panel1",
+      });
+    }
+  }, [nationality, jobType, city]);
 
   useDebounce(() => {
     if (isChanged) {
@@ -115,48 +188,58 @@ const AllFilter: React.FC<AllFilterProps> = ({ data, callback }) => {
     }
   }, [isChanged, minSalary, maxSalary]);
 
-  const handleChange =
-    (panel: string) => (_event: React.SyntheticEvent) => {
-      switch (panel) {
-        case "panel1":
-          setExpanded({
-            ...expanded,
-            city: expanded.city === "panel1" ? "false" : panel,
-          });
-          break;
+  React.useEffect(() => {
+    callback({
+      cities: listCities,
+      nationalities: listNationalities,
+      jobTypes: listJobTypes,
+      experiences: listExperiences,
+      minSalary,
+      maxSalary,
+    });
+  }, [listCities, listNationalities, listJobTypes, listExperiences]);
 
-        case "panel2":
-          setExpanded({
-            ...expanded,
-            nationality: expanded.nationality === "panel2" ? "false" : panel,
-          });
-          break;
+  const handleChange = (panel: string) => (_event: React.SyntheticEvent) => {
+    switch (panel) {
+      case "panel1":
+        setExpanded({
+          ...expanded,
+          city: expanded.city === "panel1" ? "false" : panel,
+        });
+        break;
 
-        case "panel3":
-          setExpanded({
-            ...expanded,
-            jobType: expanded.jobType === "panel3" ? "false" : panel,
-          });
-          break;
+      case "panel2":
+        setExpanded({
+          ...expanded,
+          nationality: expanded.nationality === "panel2" ? "false" : panel,
+        });
+        break;
 
-        case "panel4":
-          setExpanded({
-            ...expanded,
-            salary: expanded.salary === "panel4" ? "false" : panel,
-          });
-          break;
+      case "panel3":
+        setExpanded({
+          ...expanded,
+          jobType: expanded.jobType === "panel3" ? "false" : panel,
+        });
+        break;
 
-        case "panel5":
-          setExpanded({
-            ...expanded,
-            experience: expanded.experience === "panel5" ? "false" : panel,
-          });
-          break;
+      case "panel4":
+        setExpanded({
+          ...expanded,
+          salary: expanded.salary === "panel4" ? "false" : panel,
+        });
+        break;
 
-        default:
-          break;
-      }
-    };
+      case "panel5":
+        setExpanded({
+          ...expanded,
+          experience: expanded.experience === "panel5" ? "false" : panel,
+        });
+        break;
+
+      default:
+        break;
+    }
+  };
 
   const handleCheck = (_event: React.ChangeEvent<HTMLInputElement>) => {
     const newListCities = Array.from(listCities);
@@ -171,53 +254,21 @@ const AllFilter: React.FC<AllFilterProps> = ({ data, callback }) => {
       case "city":
         newListCities[_idx].checked = _event.target.checked;
         setListCities(newListCities);
-        callback({
-          cities: newListCities,
-          nationalities: newNationalities,
-          jobTypes: newJobTypes,
-          experiences: newExperiences,
-          minSalary,
-          maxSalary,
-        });
         break;
 
       case "nationality":
         newNationalities[_idx].checked = _event.target.checked;
         setNationalities(newNationalities);
-        callback({
-          cities: newListCities,
-          nationalities: newNationalities,
-          jobTypes: newJobTypes,
-          experiences: newExperiences,
-          minSalary,
-          maxSalary,
-        });
         break;
 
       case "jobType":
         newJobTypes[_idx].checked = _event.target.checked;
         setJobTypes(newJobTypes);
-        callback({
-          cities: newListCities,
-          nationalities: newNationalities,
-          jobTypes: newJobTypes,
-          experiences: newExperiences,
-          minSalary,
-          maxSalary,
-        });
         break;
 
       case "experience":
         newExperiences[_idx].checked = _event.target.checked;
         setExperiences(newExperiences);
-        callback({
-          cities: newListCities,
-          nationalities: newNationalities,
-          jobTypes: newJobTypes,
-          experiences: newExperiences,
-          minSalary,
-          maxSalary,
-        });
         break;
 
       default:
@@ -254,14 +305,9 @@ const AllFilter: React.FC<AllFilterProps> = ({ data, callback }) => {
     setExperiences(_e);
     setMinSalary("");
     setMaxSalary("");
-    callback({
-      cities: _c,
-      nationalities: _n,
-      jobTypes: _j,
-      experiences: _e,
-      minSalary: "",
-      maxSalary: "",
-    });
+    setIsChanged(true);
+    setExpanded(initExpanded);
+    setSearchParams({});
   };
 
   const checkClearAllVisibility = () => {

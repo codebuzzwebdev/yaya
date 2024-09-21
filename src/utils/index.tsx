@@ -775,22 +775,22 @@ export const footerItems: FooterType[] = [
       {
         id: 7,
         title: "Filipino Nannies",
-        url: "#",
+        url: "?nationality=62",
       },
       {
         id: 8,
         title: "Ugandan Nannies",
-        url: "#",
+        url: "?nationality=185",
       },
       {
         id: 9,
         title: "Live Out Nannies",
-        url: "#",
+        url: "?jobType=4",
       },
       {
         id: 10,
         title: "Maids in Dubai",
-        url: "#",
+        url: "?city=2339",
       },
     ],
   },

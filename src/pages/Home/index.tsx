@@ -57,7 +57,10 @@ const Home: FC = () => {
   const [filters, setFilters] = useState<FiltersType>(initFilters);
 
   useEffect(() => {
-    window.scrollTo(0, 0);
+    window.scrollTo({
+      top: 600,
+      behavior: "smooth",
+    });
   }, [pagination.page]);
 
   const fetchFilters = async () => {
@@ -310,7 +313,17 @@ const Home: FC = () => {
 
         {!isLoading && data && data.length > 0 ? (
           <Grid item xs={12} sm={12} md={12} lg={8} xl={8}>
-            <Box display="flex" justifyContent={{xs: "center", sm: "initial", md: "initial", lg: "initial", xl: "initial" }} flexWrap="wrap">
+            <Box
+              display="flex"
+              justifyContent={{
+                xs: "center",
+                sm: "initial",
+                md: "initial",
+                lg: "initial",
+                xl: "initial",
+              }}
+              flexWrap="wrap"
+            >
               {data.map((item, _idx) => (
                 <Card
                   key={`${item.id}_${_idx}`}
