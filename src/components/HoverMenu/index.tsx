@@ -1,5 +1,4 @@
 import * as React from "react";
-import { useNavigate } from "react-router-dom";
 import {
   useTheme,
   Box,
@@ -30,7 +29,6 @@ export interface HoverMenuProps {
 
 const HoverMenu: React.FC<HoverMenuProps> = ({ menu, items }) => {
   const theme = useTheme();
-  const navigate = useNavigate();
   const [open, setOpen] = React.useState(false);
   const anchorRef = React.useRef<HTMLButtonElement>(null);
 
