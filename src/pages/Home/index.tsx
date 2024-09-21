@@ -57,7 +57,10 @@ const Home: FC = () => {
   const [filters, setFilters] = useState<FiltersType>(initFilters);
 
   useEffect(() => {
-    window.scrollTo(0, 0);
+    window.scrollTo({
+      top: 600,
+      behavior: "smooth",
+    });
   }, [pagination.page]);
 
   const fetchFilters = async () => {
@@ -151,6 +154,7 @@ const Home: FC = () => {
     setData(_data);
     setPagination({
       ...pagination,
+      page: result.currentPage,
       totalPages: result.totalPages,
       totalRecords: result.totalRecords,
     });
@@ -178,6 +182,7 @@ const Home: FC = () => {
     const _experiences = callbackFilters.experiences
       .filter((e: ExperienceType) => e.checked)
       .map((e2: ExperienceType) => e2.id);
+    setPagination(init);
     setFilters({
       c: _cities,
       n: _nationalities,
@@ -310,7 +315,17 @@ const Home: FC = () => {
 
         {!isLoading && data && data.length > 0 ? (
           <Grid item xs={12} sm={12} md={12} lg={8} xl={8}>
-            <Box display="flex" justifyContent={{xs: "center", sm: "initial", md: "initial", lg: "initial", xl: "initial" }} flexWrap="wrap">
+            <Box
+              display="flex"
+              justifyContent={{
+                xs: "center",
+                sm: "initial",
+                md: "initial",
+                lg: "initial",
+                xl: "initial",
+              }}
+              flexWrap="wrap"
+            >
               {data.map((item, _idx) => (
                 <Card
                   key={`${item.id}_${_idx}`}
@@ -340,7 +355,11 @@ const Home: FC = () => {
         <Grid item xs={12} sm={12} md={12} lg={4} xl={4}></Grid>
         <Grid item xs={12} sm={12} md={12} lg={8} xl={8}>
           <Box mt={{ xs: 3, sm: 3, md: 3, lg: 6, xl: 6 }}>
-            <Pagination count={pagination.totalPages} onChange={onPagination} />
+            <Pagination
+              page={pagination.page}
+              count={pagination.totalPages}
+              onChange={onPagination}
+            />
           </Box>
         </Grid>
       </Grid>

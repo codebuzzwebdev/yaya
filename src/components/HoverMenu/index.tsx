@@ -77,8 +77,10 @@ const HoverMenu: React.FC<HoverMenuProps> = ({ menu, items }) => {
   }, [open, menu]);
 
   const handleMenu = (url: string) => {
-    if (url === "/") {
-      navigate("/");
+    if (url.includes("whatsapp")) {
+      window.location.href = url;
+    } else if (url === "/") {
+      window.location.href = `${VITE_WP_URL}`;
     } else if (url !== "#") {
       window.location.href = `${VITE_WP_URL}${url}`;
     }

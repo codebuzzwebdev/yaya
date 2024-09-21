@@ -1,4 +1,5 @@
 import { FC } from "react";
+import { useNavigate } from "react-router-dom";
 import { useTheme, Grid, Box, IconButton, Typography } from "@mui/material";
 
 import Icon from "@components/Icon";
@@ -18,10 +19,13 @@ const VITE_YOUTUBE_URL = import.meta.env.VITE_YOUTUBE_URL;
 
 const Footer: FC = () => {
   const theme = useTheme();
+  const navigate = useNavigate();
 
   const handleMenu = (url: string) => {
-    if (url !== "#") {
+    if (url !== "#" && !url.includes("?")) {
       window.location.href = `${VITE_WP_URL}${url}`;
+    } else {
+      navigate(url);
     }
   };
 

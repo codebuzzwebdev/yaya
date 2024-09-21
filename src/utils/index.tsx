@@ -660,6 +660,11 @@ export const headerItems: HeaderType[] = [
     items: [
       {
         id: 5,
+        title: "Find a Nanny",
+        url: "/nannies-in-uae",
+      },
+      {
+        id: 13,
         title: "Find a Job",
         url: "/find-a-job",
       },
@@ -760,7 +765,7 @@ export const footerItems: FooterType[] = [
       {
         id: 5,
         title: "Find Nannies",
-        url: "#",
+        url: "/nannies-in-uae",
       },
       {
         id: 6,
@@ -770,22 +775,22 @@ export const footerItems: FooterType[] = [
       {
         id: 7,
         title: "Filipino Nannies",
-        url: "#",
+        url: "?nationality=62",
       },
       {
         id: 8,
         title: "Ugandan Nannies",
-        url: "#",
+        url: "?nationality=185",
       },
       {
         id: 9,
         title: "Live Out Nannies",
-        url: "#",
+        url: "?jobType=4",
       },
       {
         id: 10,
         title: "Maids in Dubai",
-        url: "#",
+        url: "?city=2339",
       },
     ],
   },
