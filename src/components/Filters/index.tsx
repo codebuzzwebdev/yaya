@@ -133,7 +133,7 @@ const AllFilter: React.FC<AllFilterProps> = ({ data, callback }) => {
       setJobTypes(data.jobTypes);
       setExperiences(data.experiences);
       setExpanded({
-        ...expanded,
+        ...initExpanded,
         nationality: "panel2",
       });
     }
@@ -151,7 +151,7 @@ const AllFilter: React.FC<AllFilterProps> = ({ data, callback }) => {
       setJobTypes(updatedJobTypes);
       setExperiences(data.experiences);
       setExpanded({
-        ...expanded,
+        ...initExpanded,
         jobType: "panel3",
       });
     }
@@ -169,7 +169,7 @@ const AllFilter: React.FC<AllFilterProps> = ({ data, callback }) => {
       setJobTypes(data.jobTypes);
       setExperiences(data.experiences);
       setExpanded({
-        ...expanded,
+        ...initExpanded,
         city: "panel1",
       });
     }
@@ -254,21 +254,25 @@ const AllFilter: React.FC<AllFilterProps> = ({ data, callback }) => {
       case "city":
         newListCities[_idx].checked = _event.target.checked;
         setListCities(newListCities);
+        setSearchParams({});
         break;
 
       case "nationality":
         newNationalities[_idx].checked = _event.target.checked;
         setNationalities(newNationalities);
+        setSearchParams({});
         break;
 
       case "jobType":
         newJobTypes[_idx].checked = _event.target.checked;
         setJobTypes(newJobTypes);
+        setSearchParams({});
         break;
 
       case "experience":
         newExperiences[_idx].checked = _event.target.checked;
         setExperiences(newExperiences);
+        setSearchParams({});
         break;
 
       default:
@@ -277,11 +281,13 @@ const AllFilter: React.FC<AllFilterProps> = ({ data, callback }) => {
   };
 
   const handleMinChange = (e: any) => {
+    setSearchParams({});
     setMinSalary(e.target.value);
     setIsChanged(true);
   };
 
   const handleMaxChange = (e: any) => {
+    setSearchParams({});
     setMaxSalary(e.target.value);
     setIsChanged(true);
   };
