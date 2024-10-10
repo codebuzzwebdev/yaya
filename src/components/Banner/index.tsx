@@ -80,7 +80,7 @@ const Banner: FC = () => {
               }}
             >
               <Typography
-                variant="h2"
+                variant="h1"
                 fontWeight="bold"
                 color={theme.palette.grey[700]}
                 fontSize={{ xs: 36, sm: 36, md: 64, lg: 64, xl: 64 }}
@@ -89,7 +89,7 @@ const Banner: FC = () => {
               </Typography>
 
               <Typography
-                variant="h2"
+                variant="h1"
                 fontWeight="bold"
                 color={theme.palette.grey[700]}
                 fontSize={{ xs: 36, sm: 36, md: 64, lg: 64, xl: 64 }}
@@ -98,7 +98,7 @@ const Banner: FC = () => {
               </Typography>
 
               <Typography
-                variant="h2"
+                variant="h1"
                 fontWeight="bold"
                 color={theme.palette.primary.main}
                 fontSize={{ xs: 36, sm: 36, md: 64, lg: 64, xl: 64 }}
@@ -106,7 +106,7 @@ const Banner: FC = () => {
                 Nannies in UAE
               </Typography>
               <Typography
-                variant="body1"
+                variant="h2"
                 mt={2}
                 fontSize={20}
                 color={theme.palette.grey[600]}
@@ -114,7 +114,7 @@ const Banner: FC = () => {
                 Download our app today to get started.
               </Typography>
               <Typography
-                variant="body1"
+                variant="h2"
                 mb={2}
                 fontSize={20}
                 color={theme.palette.grey[600]}
