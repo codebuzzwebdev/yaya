@@ -668,6 +668,11 @@ export const headerItems: HeaderType[] = [
         title: "Find a Job",
         url: "/find-a-job",
       },
+      {
+        id: 14,
+        title: "Get a Visa",
+        url: "/visa",
+      },
     ],
   },
   {
@@ -771,6 +776,11 @@ export const footerItems: FooterType[] = [
         id: 6,
         title: "Find Jobs",
         url: "/find-a-job",
+      },
+      {
+        id: 19,
+        title: "Get a Visa",
+        url: "/visa",
       },
       {
         id: 7,
