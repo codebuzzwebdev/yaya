@@ -69,6 +69,7 @@ const Banner: FC = () => {
               xl: "left",
             }}
             mt={{ xs: 3, sm: 3, md: 3, lg: 0, xl: 0 }}
+            maxWidth={500}
           >
             <Box
               display={{
@@ -85,41 +86,25 @@ const Banner: FC = () => {
                 color={theme.palette.grey[700]}
                 fontSize={{ xs: 36, sm: 36, md: 64, lg: 64, xl: 64 }}
               >
-                Discover
+                Discover Hundreds of{" "}
+                <Typography
+                  variant="h1"
+                  fontWeight="bold"
+                  color={theme.palette.primary.main}
+                  fontSize={{ xs: 36, sm: 36, md: 64, lg: 64, xl: 64 }}
+                >
+                  Nannies in UAE
+                </Typography>
               </Typography>
 
-              <Typography
-                variant="h1"
-                fontWeight="bold"
-                color={theme.palette.grey[700]}
-                fontSize={{ xs: 36, sm: 36, md: 64, lg: 64, xl: 64 }}
-              >
-                Hundreds of
-              </Typography>
-
-              <Typography
-                variant="h1"
-                fontWeight="bold"
-                color={theme.palette.primary.main}
-                fontSize={{ xs: 36, sm: 36, md: 64, lg: 64, xl: 64 }}
-              >
-                Nannies in UAE
-              </Typography>
               <Typography
                 variant="h2"
                 mt={2}
                 fontSize={20}
                 color={theme.palette.grey[600]}
               >
-                Download our app today to get started.
-              </Typography>
-              <Typography
-                variant="h2"
-                mb={2}
-                fontSize={20}
-                color={theme.palette.grey[600]}
-              >
-                Now completely free, no hidden costs.
+                Download our app today to get started. Now completely free, no
+                hidden costs.
               </Typography>
             </Box>
             <Box
@@ -132,46 +117,30 @@ const Banner: FC = () => {
               }}
             >
               <Typography
-                variant="h2"
+                variant="h1"
                 fontWeight="bold"
                 color={theme.palette.grey[700]}
                 fontSize={{ xs: 36, sm: 36, md: 64, lg: 64, xl: 64 }}
               >
-                Discover
+                Discover Hundreds of{" "}
+                <Typography
+                  variant="h1"
+                  fontWeight="bold"
+                  color={theme.palette.primary.main}
+                  fontSize={{ xs: 36, sm: 36, md: 64, lg: 64, xl: 64 }}
+                >
+                  Nannies in UAE
+                </Typography>
               </Typography>
 
               <Typography
                 variant="h2"
-                fontWeight="bold"
-                color={theme.palette.grey[700]}
-                fontSize={{ xs: 36, sm: 36, md: 64, lg: 64, xl: 64 }}
-              >
-                Hundreds of
-              </Typography>
-
-              <Typography
-                variant="h2"
-                fontWeight="bold"
-                color={theme.palette.primary.main}
-                fontSize={{ xs: 36, sm: 36, md: 64, lg: 64, xl: 64 }}
-              >
-                Nannies in UAE
-              </Typography>
-              <Typography
-                variant="body1"
                 mt={2}
                 fontSize={20}
                 color={theme.palette.grey[600]}
               >
-                Download our app today to get started.
-              </Typography>
-              <Typography
-                variant="body1"
-                mb={2}
-                fontSize={20}
-                color={theme.palette.grey[600]}
-              >
-                Now completely free, no hidden costs.
+                Download our app today to get started. Now completely free, no
+                hidden costs.
               </Typography>
             </Box>
 
@@ -195,6 +164,7 @@ const Banner: FC = () => {
                 md: "center",
                 lg: "left",
               }}
+              mt={2}
             >
               <img
                 src={GooglePNG}
