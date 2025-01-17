@@ -34,6 +34,7 @@ export interface CardProps {
 }
 
 const Card: FC<CardProps> = ({ data, handleNavigate }) => {
+  console.log("Here is the data",data)
   const theme = useTheme();
 
   return (
@@ -117,7 +118,7 @@ const Card: FC<CardProps> = ({ data, handleNavigate }) => {
           >
             {data.firstName} {data.lastName}
           </Typography>
-          <img
+          {data.countryCode && <img
             src={`${VITE_FLAG_URL}/${data.countryCode.toLowerCase()}.png`}
             alt="Flag"
             width={24}
@@ -127,6 +128,7 @@ const Card: FC<CardProps> = ({ data, handleNavigate }) => {
               cursor: "pointer",
             }}
           />
+          }
         </Box>
         <Box
           bgcolor={theme.palette.grey[400]}

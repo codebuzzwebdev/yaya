@@ -152,6 +152,7 @@ const Home: FC = () => {
       };
     });
     setData(_data);
+    console.log(_data)
     setPagination({
       ...pagination,
       page: result.currentPage,
